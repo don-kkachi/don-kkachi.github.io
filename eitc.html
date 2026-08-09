@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>근로장려금, 나는 얼마 받나 | 돈까치</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--cream:#F2EDE3;--paper:#FFFCF6;--ink:#23252B;--sub:#6B6357;--gold:#E0B93F;--orange:#C8603C;--red:#E1464B;--green:#2E8C5A;--blue:#5674C8;--line:#E4DCCB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-bottom:78px;font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,'Apple SD Gothic Neo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto}
+.hero{background:var(--ink);color:var(--cream);padding:38px 22px 30px}
+.chip{display:inline-block;background:var(--red);color:#fff;font-size:13px;font-weight:800;padding:6px 13px;border-radius:999px}
+.hero h1{font-size:29px;line-height:1.32;font-weight:800;margin-top:16px;letter-spacing:-.7px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .by{margin-top:14px;font-size:13px;color:#A8A29A}
+.hero .stamp{margin-top:18px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 14px;font-size:13.5px;color:#E8E2D6;line-height:1.55}
+.hero .stamp b{color:var(--gold)}
+nav{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);padding:11px 0;overflow-x:auto;white-space:nowrap}
+nav .navbtn{display:inline-block;font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;margin-left:10px;padding:8px 15px;background:var(--paper);border:1px solid var(--line);border-radius:999px;font-size:13.5px;font-weight:700;color:var(--ink)}
+section{scroll-margin-top:76px;padding:34px 20px 6px}
+.sec-no{font-size:12px;font-weight:800;color:var(--sub);letter-spacing:1.2px}
+.sec-t{font-size:23px;font-weight:800;margin:6px 0 18px;letter-spacing:-.5px;line-height:1.35}
+.sec-lead{font-size:14.5px;color:var(--sub);margin:-10px 0 18px;line-height:1.6}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px 16px;margin-bottom:11px}
+.sum{display:flex;gap:13px;align-items:flex-start}
+.sum .n{flex:none;width:27px;height:27px;border-radius:50%;background:var(--ink);color:var(--gold);font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sum .tx{font-size:15.5px;font-weight:600;line-height:1.55}
+.sum .tx b{color:var(--red);font-weight:800}
+.sum .tx span{display:block;font-size:13px;color:var(--sub);font-weight:500;margin-top:3px}
+.q{display:flex;gap:13px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:15px 16px;margin-bottom:9px;cursor:pointer;user-select:none}
+.q.on{background:#FDF6E6;border-color:var(--gold)}
+.q .bx{flex:none;width:24px;height:24px;border:2px solid var(--orange);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;margin-top:2px}
+.q.on .bx{background:var(--orange)}
+.q .t{font-size:15.5px;font-weight:800;line-height:1.45}
+.q .d{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.6}
+.coinbar{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:13px}
+.coinbar .top{display:flex;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:9px}
+.track{height:11px;background:#E7E0D1;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:99px;transition:width .35s ease}
+.verdict{border-radius:15px;padding:17px;text-align:center;background:#EDE7DA}
+.verdict .v{font-size:18px;font-weight:800}
+.verdict .s{font-size:13.5px;color:var(--sub);margin-top:6px;line-height:1.6}
+table{width:100%;border-collapse:collapse;margin:4px 0 12px;font-size:14px}
+th{background:#EDE7DA;text-align:left;padding:10px 12px;font-weight:800;font-size:13px;color:var(--sub)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+td:first-child{font-weight:700}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}
+summary{padding:15px 16px;font-size:15px;font-weight:800;cursor:pointer;list-style:none;line-height:1.5}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'Q. ';color:var(--red);font-weight:800}
+details[open] summary{border-bottom:1px solid var(--line)}
+details p{padding:14px 16px;font-size:14px;color:var(--sub);line-height:1.75}
+details p::before{content:'A. ';color:var(--blue);font-weight:800}
+.warn{background:#FDF3DD;border:1px solid #EBD9A4;border-radius:14px;padding:15px 16px;margin-bottom:11px}
+.warn h4{font-size:14.5px;font-weight:800;color:#9A7212;margin-bottom:8px}
+.warn p{font-size:13.5px;color:var(--sub);line-height:1.7}
+.danger{background:#FBE6E4;border:1px solid #F0BDB8;border-radius:14px;padding:15px 16px;margin-bottom:11px}
+.danger h4{font-size:14.5px;font-weight:800;color:var(--red);margin-bottom:8px}
+.danger p{font-size:13.5px;color:var(--sub);line-height:1.7}
+.src{padding:26px 20px 16px;font-size:12.5px;color:var(--sub);line-height:1.85}
+.src b{color:var(--ink)}
+footer{background:var(--ink);color:#A8A29A;text-align:center;padding:30px 20px 38px;font-size:13px;line-height:1.8}
+footer .fb{color:var(--gold);font-weight:800;font-size:15px}
+hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
+</style>
+</head>
+<body><div class="wrap">
+
+<div class="hero">
+  <span class="chip">8월 27일 지급</span>
+  <h1>근로·자녀장려금,<br><em>나는 얼마 받나</em></h1>
+  <div class="by">@donkkachi · 몰라서 손해 보는 돈, 물어다 주는 까치</div>
+  <div class="stamp">
+    국세청 안내문이 나간 곳만 <b>324만 가구</b>예요.<br>
+    그중 <b>155만 가구는 자동으로 신청까지 끝난 상태</b>입니다. 신청한 기억이 없어도 꼭 확인해보세요.
+  </div>
+</div>
+
+<nav>
+  <button type="button" class="navbtn" data-go="s1">① 요약</button>
+  <button type="button" class="navbtn" data-go="s2">② 자가진단</button>
+  <button type="button" class="navbtn" data-go="s3">③ 확인하는 법</button>
+  <button type="button" class="navbtn" data-go="s4">④ 적게 들어왔다면</button>
+  <button type="button" class="navbtn" data-go="s5">⑤ 사기 주의</button>
+  <button type="button" class="navbtn" data-go="s6">⑥ FAQ</button>
+</nav>
+
+<section id="s1">
+  <div class="sec-no">SECTION ①</div>
+  <div class="sec-t">30초 요약</div>
+  <div class="card sum"><div class="n">1</div><div class="tx">5월에 정기신청했다면 <b>8월 27일</b> 지급 예정
+    <span>법정 기한은 9월 말인데 한 달 넘게 앞당겼어요</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">신청 기억이 없어도 <b>이미 신청됐을 수 있어요</b>
+    <span>작년에 자동신청에 동의했다면 올해는 자동으로 처리됩니다</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx">놓쳤어도 <b>12월 1일까지</b> 기한후신청 가능
+    <span>단, 지급액의 95%만 받고 8월 27일 일괄지급엔 포함되지 않아요</span></div></div>
+
+  <div class="warn" style="margin-top:14px">
+    <h4>이건 대출이 아닙니다</h4>
+    <p>일하지만 소득이 적은 가구에 국가가 지급하는 돈이에요. 갚지 않아도 되고,
+    받았다고 해서 다른 복지 혜택이 자동으로 줄어들지도 않습니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s2">
+  <div class="sec-no">SECTION ②</div>
+  <div class="sec-t">내가 대상일까</div>
+  <div class="sec-lead">해당하는 것만 눌러보세요. 대략적인 방향만 잡는 용도이고, 최종 판단은 홈택스에서 하셔야 합니다.</div>
+
+  <div class="coinbar">
+    <div class="top"><span>까치 주머니</span><span id="cnt">0 / 4</span></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+
+  <div class="q"><div class="bx">✓</div><div><div class="t">작년에 근로·사업·종교인 소득이 있었다</div>
+    <div class="d">아르바이트, 프리랜서, 자영업 모두 포함돼요. 소득이 아예 없으면 대상이 아닙니다</div></div></div>
+  <div class="q"><div class="bx">✓</div><div><div class="t">가구원 재산 합계가 2억 4천만 원 미만이다</div>
+    <div class="d">2025년 6월 1일 기준. 부동산·전세보증금·예금·주식 등을 모두 더한 금액입니다</div></div></div>
+  <div class="q"><div class="bx">✓</div><div><div class="t">부부합산 총소득이 기준 아래다</div>
+    <div class="d">가구 유형(단독·홑벌이·맞벌이)에 따라 기준이 달라요. 홈택스 모의계산으로 확인하세요</div></div></div>
+  <div class="q"><div class="bx">✓</div><div><div class="t">5월에 신청했거나, 안내문을 받았다</div>
+    <div class="d">신청한 기억이 없어도 자동신청에 동의했다면 처리돼 있습니다</div></div></div>
+
+  <div class="verdict" id="vd"><div class="v">항목을 눌러보세요</div><div class="s">네 개를 채우면 결과가 나옵니다</div></div>
+  <hr class="d">
+</section>
+
+<section id="s3">
+  <div class="sec-no">SECTION ③</div>
+  <div class="sec-t">5분이면 끝나는 확인 순서</div>
+  <div class="sec-lead">홈택스 앱(손택스)이 제일 빠릅니다.</div>
+  <table>
+    <tr><th>순서</th><th>할 일</th></tr>
+    <tr><td>1</td><td>홈택스 또는 손택스 앱 로그인</td></tr>
+    <tr><td>2</td><td>[장려금·연말정산·기부금] 메뉴 열기</td></tr>
+    <tr><td>3</td><td>심사 진행 상황과 <b>결정 금액</b> 확인</td></tr>
+    <tr><td>4</td><td>등록된 <b>계좌번호</b>가 지금 쓰는 계좌인지 확인</td></tr>
+    <tr><td>5</td><td>신청 내역이 없으면 그 자리에서 기한후신청</td></tr>
+  </table>
+  <div class="warn">
+    <h4>계좌 확인이 제일 중요합니다</h4>
+    <p>계좌를 바꿨거나 해지했는데 그대로 두면 입금이 실패합니다.
+    이 경우 현금 지급 대상이 되어 <b>통지서와 신분증을 들고 우체국에 직접</b> 가야 해요. 지금 5초면 고칩니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s4">
+  <div class="sec-no">SECTION ④</div>
+  <div class="sec-t">생각보다 적게 들어왔다면</div>
+  <div class="sec-lead">잘못 들어온 게 아니라, 정해진 사유로 깎인 경우가 대부분입니다.</div>
+  <table>
+    <tr><th>사유</th><th>어떻게 되나</th></tr>
+    <tr><td>가구 재산 1억 7천만 원 이상</td><td>지급액의 <b>50% 감액</b></td></tr>
+    <tr><td>체납된 국세가 있음</td><td>지급액의 <b>최대 30%</b>까지 먼저 충당</td></tr>
+    <tr><td>가구 재산 2억 4천만 원 이상</td><td>아예 <b>지급 대상 제외</b></td></tr>
+    <tr><td>기한후신청</td><td>지급액의 <b>95%</b>만 지급</td></tr>
+  </table>
+  <div class="warn">
+    <h4>재산 기준일은 2025년 6월 1일</h4>
+    <p>지금 재산이 아니라 그 시점 기준입니다. 그 뒤에 집을 팔았거나 예금이 줄었어도 반영되지 않아요.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s5">
+  <div class="sec-no">SECTION ⑤</div>
+  <div class="sec-t">이 시기에 꼭 조심할 것</div>
+  <div class="danger">
+    <h4>"장려금 대신 신청해 드립니다" = 사기</h4>
+    <p>지급 시기가 되면 문자와 전화가 쏟아집니다. 기억할 건 하나예요.<br><br>
+    <b>국세청은 문자 링크로 계좌번호나 주민등록번호를 요구하지 않습니다.</b><br><br>
+    · 문자 속 링크는 절대 누르지 마세요<br>
+    · 신청은 홈택스·손택스에서 직접만 하세요<br>
+    · 수수료를 받고 대신 신청해준다는 곳은 이용하지 마세요 — 무료입니다</p>
+  </div>
+  <div class="warn">
+    <h4>부모님께 이 부분만 전해주세요</h4>
+    <p>고령층이 특히 표적이 됩니다. 이 화면을 캡처해서 보내드리거나,
+    "장려금 문자 오면 누르지 말고 나한테 먼저 보여줘"라고 한마디만 해두셔도 크게 달라져요.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s6">
+  <div class="sec-no">SECTION ⑥</div>
+  <div class="sec-t">자주 묻는 질문</div>
+  <details><summary>27일에 모두 한꺼번에 들어오나요?</summary>
+    <p>아닙니다. 5월 정기신청자 중 심사가 끝난 가구가 대상이에요. 개인별 심사 상황, 계좌 정보, 체납 여부에 따라 실제 입금 시기가 달라집니다. 법정 기한인 9월 말까지는 순차 지급됩니다.</p></details>
+  <details><summary>기한후신청도 27일에 받나요?</summary>
+    <p>받지 못합니다. 기한후신청분은 일괄 지급 대상이 아니고, 신청일로부터 4개월 이내에 심사를 거쳐 따로 지급됩니다.</p></details>
+  <details><summary>27일이 지났는데 안 들어왔어요</summary>
+    <p>9월 말 이전이라면 순차 지급 중일 수 있습니다. 홈택스에서 심사 상태를 먼저 확인하고, 계좌 오류가 아닌지도 함께 보세요.</p></details>
+  <details><summary>받으면 세금을 내야 하나요?</summary>
+    <p>장려금 자체에 세금이 붙지는 않습니다. 다만 체납된 국세가 있으면 그 금액의 일부가 먼저 충당된 뒤 나머지가 지급됩니다.</p></details>
+  <details><summary>작년에 받았는데 올해는 안 나왔어요</summary>
+    <p>소득이나 재산이 기준을 넘었을 수 있습니다. 재산은 2025년 6월 1일 기준으로 판단하니, 그 시점의 상황을 기준으로 다시 확인해보세요.</p></details>
+</section>
+
+<div class="src">
+  <b>출처</b><br>
+  · 국세청 「2026년 근로·자녀장려금 정기신청 및 지급 안내」 (2026.4.30 발표)<br>
+  · 국세청 장려금 심사·지급 안내<br><br>
+  <b>기준일</b> 2026년 8월 9일<br>
+  <b>주의</b> 지급 예정일은 확정 입금일이 아니며 개인별 심사 상황에 따라 달라질 수 있습니다.
+  실제 대상 여부와 금액은 반드시 홈택스에서 확인하세요.<br>
+  <b>고지</b> 특정 금융상품·금융사에 대한 추천이 아닙니다.
+</div>
+
+<footer>
+  저장해두고 <span style="color:var(--gold);font-weight:700">27일에</span> 다시 꺼내 보세요<br><br>
+  <span class="fb">돈까치 @donkkachi</span><br>
+  몰라서 손해 보는 돈, 물어다 주는 까치
+</footer>
+</div>
+
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a>
+</div>
+<a href="https://www.instagram.com/donkkachi/" style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">돈까치 팔로우하기</a>
+
+<script>
+document.querySelectorAll('.navbtn').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.go); if(!el) return;
+    var nav=document.querySelector('nav');
+    var off=(nav?nav.offsetHeight:0)+12;
+    window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});
+  });
+});
+var qs=document.querySelectorAll('.q'),fill=document.getElementById('fill'),
+    cnt=document.getElementById('cnt'),vd=document.getElementById('vd');
+function sync(){
+  var n=document.querySelectorAll('.q.on').length;
+  fill.style.width=(n/qs.length*100)+'%';
+  cnt.textContent=n+' / '+qs.length;
+  if(n===qs.length){
+    vd.innerHTML='<div class="v" style="color:#2E8C5A">대상일 가능성이 높아요</div>'+
+      '<div class="s">③번 순서대로 홈택스에서 결정 금액과 계좌를 확인해보세요</div>';
+  }else if(n===0){
+    vd.innerHTML='<div class="v">항목을 눌러보세요</div><div class="s">네 개를 채우면 결과가 나옵니다</div>';
+  }else{
+    vd.innerHTML='<div class="v" style="color:#E1464B">아직 '+(qs.length-n)+'개가 비어 있어요</div>'+
+      '<div class="s">확실하지 않은 항목은 홈택스 모의계산으로 확인하는 게 정확합니다</div>';
+  }
+}
+qs.forEach(function(q){q.addEventListener('click',function(){q.classList.toggle('on');sync();});});
+sync();
+</script>
+</body></html>
