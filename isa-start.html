@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ISA 개설 3분 가이드 | 돈까치</title>
+<meta name="description" content="서민형? 중개형? ISA 만들 때 정할 건 3가지뿐입니다.">
+<style>
+  :root{
+    --cream:#F2EDE3; --paper:#FFFDFA; --ink:#23252B; --gold:#E0B93F;
+    --red:#E1464B; --green:#2E8C5A; --mute:#827C69; --line:#E3DCCB;
+  }
+  *{box-sizing:border-box}
+  html,body{padding-bottom:78px;margin:0}
+  body{
+    background:var(--cream); color:var(--ink);
+    font-family:'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.55;
+  }
+  .wrap{max-width:520px;margin:0 auto;padding:0 20px 96px}
+
+  /* header */
+  header{padding:28px 0 8px}
+  .chip{display:inline-block;background:var(--green);color:#fff;font-size:13px;font-weight:800;
+    letter-spacing:.02em;padding:7px 14px;border-radius:999px}
+  h1{font-size:34px;line-height:1.2;letter-spacing:-.03em;margin:16px 0 8px;font-weight:900}
+  h1 em{font-style:normal;color:#D97A12}
+  .lede{color:var(--mute);font-size:15px;margin:0 0 4px}
+
+  /* signature: coin bar */
+  .tally{position:sticky;top:0;z-index:5;background:var(--cream);
+    padding:14px 0 12px;border-bottom:1px solid var(--line);margin-bottom:22px}
+  .tally-row{display:flex;align-items:center;gap:10px}
+  .coins{display:flex;gap:6px;flex:1}
+  .coin{flex:1;height:14px;border-radius:999px;background:#E6DFCC;
+    border:2px solid #D9D1BB;transition:background .25s,border-color .25s,transform .25s}
+  .coin.on{background:var(--gold);border-color:#B8952C;transform:translateY(-2px)}
+  .tally-num{font-size:13px;font-weight:800;color:var(--mute);white-space:nowrap}
+  .tally-done{color:var(--green)}
+
+  /* items */
+  ol{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+  .item{background:var(--paper);border-radius:18px;padding:18px 18px 16px;
+    border:1px solid var(--line)}
+  .item.checked{border-color:#CFE3D6;background:#FBFEFB}
+  .top{display:flex;gap:14px;align-items:flex-start;width:100%;
+    background:none;border:0;padding:0;text-align:left;cursor:pointer;font:inherit;color:inherit}
+  .top:focus-visible{outline:3px solid var(--gold);outline-offset:4px;border-radius:10px}
+  .box{flex:0 0 auto;width:30px;height:30px;border:2.5px solid var(--ink);border-radius:9px;
+    display:grid;place-items:center;margin-top:2px;transition:background .2s,border-color .2s}
+  .box svg{width:18px;height:18px;opacity:0;transform:scale(.6);transition:opacity .2s,transform .2s}
+  .item.checked .box{background:var(--green);border-color:var(--green)}
+  .item.checked .box svg{opacity:1;transform:scale(1)}
+  .name{font-size:19px;font-weight:800;letter-spacing:-.02em;margin:0}
+  .where{font-size:14px;color:var(--mute);margin:3px 0 0}
+  .detail{margin:14px 0 0;padding:14px 0 0;border-top:1px dashed var(--line);font-size:15px}
+  .detail p{margin:0 0 8px}
+  .detail b{color:#D97A12}
+  .url{display:inline-block;margin-top:4px;font-size:14px;font-weight:800;
+    color:var(--ink);background:#F6F0DE;border:1px solid #E7DCB8;
+    padding:8px 12px;border-radius:10px;text-decoration:none;word-break:break-all}
+  .url:active{background:#EFE6CB}
+
+  .mini{font-size:14px;color:var(--mute);background:#F7F3E8;border-radius:12px;padding:12px 14px;margin-top:10px}
+  .tbl{width:100%;border-collapse:collapse;margin:12px 0 4px;font-size:15px}
+  .tbl th{background:var(--ink);color:var(--gold);font-weight:800;padding:10px 8px;text-align:left}
+  .tbl th:first-child{border-radius:10px 0 0 10px}
+  .tbl th:last-child{border-radius:0 10px 10px 0}
+  .tbl td{padding:11px 8px;border-bottom:1px solid var(--line)}
+  .sum{margin:30px 0 0;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px}
+  .sum h2{font-size:20px;margin:0 0 6px;letter-spacing:-.02em}
+  .warn{margin:22px 0 0;background:#FDE3E6;border-radius:16px;padding:16px 18px;font-size:15px}
+  .warn b{color:var(--red)}
+  .foot{margin-top:30px;border-top:1px solid var(--line);padding-top:18px;
+    font-size:13px;color:var(--mute)}
+  .foot a{color:var(--ink);font-weight:800;text-decoration:none;border-bottom:2px solid var(--gold)}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="chip">챙길 돈</span>
+    <h1>ISA 만들 때<br><em>정할 건 3가지</em></h1>
+    <p class="lede">특정 금융사는 추천하지 않아요. 고르는 기준과 순서만 담았습니다.</p>
+  </header>
+
+  <div class="tally">
+    <div class="tally-row">
+      <div class="coins" id="coins" aria-hidden="true">
+        <span class="coin"></span><span class="coin"></span><span class="coin"></span>
+      </div>
+      <span class="tally-num" id="tally">0 / 3 단계</span>
+    </div>
+  </div>
+
+  <ol id="list">
+    <li class="item">
+      <button class="top" aria-expanded="false">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+        <span><span class="name">1. 일반형 vs 서민형</span><span class="where">소득 기준으로 갈립니다</span></span>
+      </button>
+      <div class="detail" hidden>
+        <p>같은 ISA라도 <b>비과세 한도가 2배</b> 차이 납니다.</p>
+        <table class="tbl">
+          <tr><th>구분</th><th>비과세 한도</th><th>초과분</th></tr>
+          <tr><td>일반형</td><td>200만 원</td><td>9.9%</td></tr>
+          <tr><td>서민형</td><td>400만 원</td><td>9.9%</td></tr>
+        </table>
+        <p class="mini">서민형은 소득 요건이 있고, 홈택스나 정부24에서 <b>소득확인증명서(ISA 가입용)</b>를 무료로 발급받아 제출하면 됩니다. 해당되면 무조건 서민형으로 만드세요.</p>
+      </div>
+    </li>
+    <li class="item">
+      <button class="top" aria-expanded="false">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+        <span><span class="name">2. 중개형 · 신탁형 · 일임형</span><span class="where">운용 방식이 다릅니다</span></span>
+      </button>
+      <div class="detail" hidden>
+        <p><b>중개형</b> — 내가 직접 국내 주식·ETF를 사고팝니다. 수수료가 가장 낮고 가장 많이 선택하는 유형이에요. 단, 예금은 담을 수 없습니다.</p>
+        <p><b>신탁형</b> — 예·적금을 담고 싶을 때 고릅니다. 신탁보수가 별도로 붙어요.</p>
+        <p><b>일임형</b> — 금융사에 운용을 맡깁니다. 편한 대신 수수료가 가장 높습니다.</p>
+        <p class="mini">수수료는 금융사·상품마다 다릅니다. 가입 전에 상품설명서에서 확인하세요.</p>
+      </div>
+    </li>
+    <li class="item">
+      <button class="top" aria-expanded="false">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+        <span><span class="name">3. 어디서 만들까</span><span class="where">증권사냐 은행이냐</span></span>
+      </button>
+      <div class="detail" hidden>
+        <p>직접 투자할 생각이면 <b>증권사 중개형</b>, 예금을 담고 싶으면 은행·신탁형 쪽입니다.</p>
+        <p>한 가지 함정이 있어요. <b>은행은 자기네 예금을 자사 ISA에 담을 수 없습니다.</b> 특정 은행 예금을 넣고 싶다면 다른 금융사에서 ISA를 열어야 해요.</p>
+        <p class="mini">모든 금융사를 통틀어 1인 1계좌만 가능합니다.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="sum">
+    <h2>개설 순서</h2>
+    <table class="tbl">
+      <tr><th>단계</th><th>할 일</th></tr>
+      <tr><td>1</td><td>서민형 대상인지 확인</td></tr>
+      <tr><td>2</td><td>소득확인증명서 발급 (무료)</td></tr>
+      <tr><td>3</td><td>증권사 앱에서 ISA 개설</td></tr>
+      <tr><td>4</td><td>유형 선택하고 입금</td></tr>
+    </table>
+    <p class="mini">비대면이면 10분이면 끝납니다.</p>
+  </div>
+
+  <div class="warn">
+    <b>⚠ 만들기 전에 알아둘 것</b><br>
+    의무 유지 3년(개설일부터) · 1인 1계좌 · 해외 주식 직접 매수 불가(국내 상장 해외 ETF는 가능) · 중개형 ISA는 예금자보호 대상이 아닙니다.<br>
+    한도·비과세 확대는 논의 단계이며 확정된 내용이 아닙니다. 원금 손실이 발생할 수 있어요.
+  </div>
+
+  <p class="foot">
+    2026년 8월 기준 · 금융위원회·국세청·각 금융사 공식 안내 확인 후 작성<br>
+    매일 아침 돈 소식을 물어다 드려요 — <a href="https://www.instagram.com/donkkachi/">인스타그램 @donkkachi</a>
+  </p>
+</div>
+
+<script>
+  const items = [...document.querySelectorAll('.item')];
+  const coins = [...document.querySelectorAll('.coin')];
+  const tally = document.getElementById('tally');
+
+  function refresh(){
+    const n = items.filter(i => i.classList.contains('checked')).length;
+    coins.forEach((c,i) => c.classList.toggle('on', i < n));
+    tally.textContent = n === items.length ? '3단계 다 확인 완료' : n + ' / 3 단계';
+    tally.classList.toggle('tally-done', n === items.length);
+  }
+
+  items.forEach(item => {
+    const btn = item.querySelector('.top');
+    const detail = item.querySelector('.detail');
+    btn.addEventListener('click', () => {
+      const open = detail.hidden;
+      detail.hidden = !open;
+      btn.setAttribute('aria-expanded', String(open));
+      item.classList.toggle('checked', open);
+      refresh();
+    });
+  });
+  refresh();
+</script>
+
+
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a>
+</div>
+
+<a href="https://www.instagram.com/donkkachi/"
+style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;
+background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;
+text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">🪙 돈까치 팔로우하기</a>
+</body>
+</html>

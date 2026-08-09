@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>돈까치 자료실</title>
+<meta name="description" content="몰라서 손해 보는 돈, 물어다 주는 까치. 돈까치가 만든 무료 자료집 모음.">
+<meta property="og:title" content="돈까치 자료실">
+<meta property="og:description" content="몰라서 손해 보는 돈, 물어다 주는 까치">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--cream:#F2EDE3;--paper:#FFFCF6;--ink:#23252B;--sub:#6B6357;--gold:#E0B93F;--orange:#C8603C;--green:#2E8C5A;--blue:#5674C8;--red:#E1464B;--line:#E4DCCB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,'Apple SD Gothic Neo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto}
+.hero{background:var(--ink);color:var(--cream);padding:44px 22px 38px;text-align:center}
+.hero .mark{font-size:42px;line-height:1}
+.hero h1{font-size:30px;font-weight:800;margin-top:10px;letter-spacing:-.7px}
+.hero p{font-size:14.5px;color:#A8A29A;margin-top:10px;line-height:1.6}
+.hero .ig{display:inline-block;margin-top:20px;background:var(--gold);color:var(--ink);font-size:14.5px;font-weight:800;padding:12px 24px;border-radius:99px;text-decoration:none}
+.sec{padding:30px 18px 8px}
+.sec h2{font-size:19px;font-weight:800;letter-spacing:-.4px;margin-bottom:6px}
+.sec .l{font-size:13.5px;color:var(--sub);margin-bottom:16px}
+a.card{display:block;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px;margin-bottom:11px;text-decoration:none;color:inherit}
+a.card:active{background:#F7F1E4}
+.tag{display:inline-block;font-size:11.5px;font-weight:800;color:#fff;padding:4px 11px;border-radius:99px}
+.t-chaeng{background:var(--green)} .t-jik{background:var(--orange)} .t-al{background:var(--blue)}
+.new{background:var(--red);margin-left:5px}
+a.card h3{font-size:17.5px;font-weight:800;margin-top:10px;letter-spacing:-.3px;line-height:1.4}
+a.card p{font-size:13.5px;color:var(--sub);margin-top:5px;line-height:1.6}
+a.card .go{font-size:13px;font-weight:800;color:var(--orange);margin-top:11px}
+.notice{background:#FDF3DD;border:1px solid #EBD9A4;border-radius:14px;padding:15px 16px;font-size:13.5px;color:var(--sub);line-height:1.75}
+.notice b{color:#9A7212}
+footer{background:var(--ink);color:#A8A29A;text-align:center;padding:30px 20px 40px;font-size:13px;line-height:1.85;margin-top:26px}
+footer .b{color:var(--gold);font-weight:800;font-size:15px}
+footer a{color:var(--gold);text-decoration:none}
+footer .mail{display:block;margin-top:16px;font-size:12.5px;color:#8A857D}
+</style>
+</head>
+<body><div class="wrap">
+
+<div class="hero">
+  <div class="mark">◆</div>
+  <h1>돈까치 자료실</h1>
+  <p>몰라서 손해 보는 돈, 물어다 주는 까치</p>
+  <a class="ig" id="igTop" href="#">인스타그램에서 보기</a>
+</div>
+
+<div class="sec">
+  <h2>자료집</h2>
+  <div class="l">전부 무료예요. 저장해두고 필요할 때 꺼내 보세요.</div>
+  <div id="cards"></div>
+</div>
+
+<div class="sec">
+  <div class="notice">
+    <b>읽기 전에</b><br>
+    돈까치는 특정 종목·금융상품·금융사를 추천하지 않습니다. 판단에 필요한 <b>기준</b>만 정리해요.<br>
+    모든 수치는 정부·협회·금융사 공식 자료로 확인했고, 각 자료집 하단에 출처와 기준일이 있습니다.
+    제도는 바뀌니 <b>기준일을 꼭 확인</b>하세요.
+  </div>
+</div>
+
+<footer>
+  <span class="b">돈까치</span><br>
+  몰라서 손해 보는 돈, 물어다 주는 까치<br><br>
+  <a id="igBottom" href="#"></a>
+  <span class="mail">협업 문의 <a id="mailLink" href="#"></a></span>
+</footer>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   여기만 고치면 됩니다. CONFIG 밖은 건드릴 필요 없어요.
+   ═══════════════════════════════════════════════════════ */
+var CONFIG = {
+
+  // (1) 인스타 아이디 — @ 빼고, 주소창에 보이는 그대로
+  handle: "donkkachi",
+
+  // (2) 협업 문의 이메일
+  email: "donkkachi@gmail.com",
+
+  // (3) 자료집 목록 — 새 회차는 이 배열 맨 위에 한 덩어리 추가
+  //     file = 올린 html 파일 이름 / cat = chaeng(챙길) jik(지킬) al(알)
+  cards: [
+    {
+      file: "jeonse.html", cat: "chaeng", label: "챙길 돈", isNew: true,
+      title: "전세대출 공제, 나는 받을 수 있나",
+      desc: "조건 4개 자가진단 · 절세액 계산기 · 월세 공제와 비교"
+    },
+    {
+      file: "isa-reform.html", cat: "al", label: "알 돈", isNew: true,
+      title: "ISA 개편, 내 계좌는 어떻게 되나",
+      desc: "팩트체크 O/X · 케이스별 대응표 · 이월 한도 계산기"
+    },
+    {
+      file: "isa-start.html", cat: "chaeng", label: "챙길 돈", isNew: false,
+      title: "ISA 개설 3분 가이드",
+      desc: "어떤 유형을 고를지, 개설할 때 뭘 확인해야 하는지"
+    },
+    {
+      file: "money.html", cat: "chaeng", label: "챙길 돈", isNew: false,
+      title: "숨은 내 돈 찾기 체크리스트",
+      desc: "보험금·휴면예금·미환급금까지 조회처 5곳을 한 번에"
+    },
+    {
+      file: "accounts.html", cat: "chaeng", label: "챙길 돈", isNew: false,
+      title: "1억 가는 계좌 3개",
+      desc: "목적이 다른 세 계좌를 어떤 순서로 채울지"
+    },
+    {
+      file: "stock.html", cat: "al", label: "알 돈", isNew: false,
+      title: "주식 사기 전 5초 체크리스트",
+      desc: "사기 전에 딱 다섯 가지만 확인하기"
+    },
+    {
+      file: "parents.html", cat: "jik", label: "지킬 돈", isNew: false,
+      title: "부모님께 보내는 사기 문자 5가지",
+      desc: "그대로 캡처해서 보내드리면 되는 정리본"
+    }
+  ]
+};
+/* ════════ CONFIG 끝 — 아래는 수정할 필요 없습니다 ════════ */
+
+(function () {
+  var ig = "https://www.instagram.com/" + CONFIG.handle + "/";
+
+  var top = document.getElementById("igTop");
+  top.href = ig;
+  top.textContent = "인스타그램 @" + CONFIG.handle;
+
+  var bot = document.getElementById("igBottom");
+  bot.href = ig;
+  bot.textContent = "instagram.com/" + CONFIG.handle;
+
+  var ml = document.getElementById("mailLink");
+  ml.href = "mailto:" + CONFIG.email;
+  ml.textContent = CONFIG.email;
+
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+
+  document.getElementById("cards").innerHTML = CONFIG.cards.map(function (c) {
+    return '<a class="card" href="' + esc(c.file) + '">' +
+      '<span class="tag t-' + esc(c.cat) + '">' + esc(c.label) + '</span>' +
+      (c.isNew ? '<span class="tag new">NEW</span>' : '') +
+      '<h3>' + esc(c.title) + '</h3>' +
+      '<p>' + esc(c.desc) + '</p>' +
+      '<div class="go">열어보기 →</div>' +
+      '</a>';
+  }).join("");
+})();
+</script>
+</body></html>

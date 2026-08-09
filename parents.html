@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>부모님께 보내는 사기 문자 5가지 | 돈까치</title>
+<meta name="description" content="자녀 사칭·기관 사칭·대출 빙자·AI 음성·스미싱. 이 문자 받으면 100% 사기입니다.">
+<style>
+  :root{
+    --cream:#F2EDE3; --paper:#FFFDFA; --ink:#23252B; --gold:#E0B93F;
+    --red:#E1464B; --green:#2E8C5A; --mute:#827C69; --line:#E3DCCB;
+  }
+  *{box-sizing:border-box}
+  html,body{padding-bottom:78px;margin:0}
+  body{
+    background:var(--cream); color:var(--ink);
+    font-family:'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.55;
+  }
+  .wrap{max-width:520px;margin:0 auto;padding:0 20px 96px}
+
+  /* header */
+  header{padding:28px 0 8px}
+  .chip{display:inline-block;background:var(--green);color:#fff;font-size:13px;font-weight:800;
+    letter-spacing:.02em;padding:7px 14px;border-radius:999px}
+  h1{font-size:34px;line-height:1.2;letter-spacing:-.03em;margin:16px 0 8px;font-weight:900}
+  h1 em{font-style:normal;color:#D97A12}
+  .lede{color:var(--mute);font-size:15px;margin:0 0 4px}
+
+  /* signature: coin bar */
+  .tally{position:sticky;top:0;z-index:5;background:var(--cream);
+    padding:14px 0 12px;border-bottom:1px solid var(--line);margin-bottom:22px}
+  .tally-row{display:flex;align-items:center;gap:10px}
+  .coins{display:flex;gap:6px;flex:1}
+  .coin{flex:1;height:14px;border-radius:999px;background:#E6DFCC;
+    border:2px solid #D9D1BB;transition:background .25s,border-color .25s,transform .25s}
+  .coin.on{background:var(--gold);border-color:#B8952C;transform:translateY(-2px)}
+  .tally-num{font-size:13px;font-weight:800;color:var(--mute);white-space:nowrap}
+  .tally-done{color:var(--green)}
+
+  /* items */
+  ol{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+  .item{background:var(--paper);border-radius:18px;padding:18px 18px 16px;
+    border:1px solid var(--line)}
+  .item.checked{border-color:#CFE3D6;background:#FBFEFB}
+  .top{display:flex;gap:14px;align-items:flex-start;width:100%;
+    background:none;border:0;padding:0;text-align:left;cursor:pointer;font:inherit;color:inherit}
+  .top:focus-visible{outline:3px solid var(--gold);outline-offset:4px;border-radius:10px}
+  .box{flex:0 0 auto;width:30px;height:30px;border:2.5px solid var(--ink);border-radius:9px;
+    display:grid;place-items:center;margin-top:2px;transition:background .2s,border-color .2s}
+  .box svg{width:18px;height:18px;opacity:0;transform:scale(.6);transition:opacity .2s,transform .2s}
+  .item.checked .box{background:var(--green);border-color:var(--green)}
+  .item.checked .box svg{opacity:1;transform:scale(1)}
+  .name{font-size:19px;font-weight:800;letter-spacing:-.02em;margin:0}
+  .where{font-size:14px;color:var(--mute);margin:3px 0 0}
+  .detail{margin:14px 0 0;padding:14px 0 0;border-top:1px dashed var(--line);font-size:15px}
+  .detail p{margin:0 0 8px}
+  .detail b{color:#D97A12}
+  .url{display:inline-block;margin-top:4px;font-size:14px;font-weight:800;
+    color:var(--ink);background:#F6F0DE;border:1px solid #E7DCB8;
+    padding:8px 12px;border-radius:10px;text-decoration:none;word-break:break-all}
+  .url:active{background:#EFE6CB}
+
+  .warn{margin:26px 0 0;background:#FDE3E6;border-radius:16px;padding:16px 18px;font-size:15px}
+  .warn b{color:var(--red)}
+  .foot{margin-top:30px;border-top:1px solid var(--line);padding-top:18px;
+    font-size:13px;color:var(--mute)}
+  .foot a{color:var(--ink);font-weight:800;text-decoration:none;border-bottom:2px solid var(--gold)}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="chip" style="background:#C8603C">지킬 돈</span>
+    <h1>부모님께 보내는<br><em>사기 문자 5가지</em></h1>
+    <p class="lede">금융위원회·금융감독원이 안내한 최신 수법입니다. 이 페이지를 그대로 보내드려도 됩니다.</p>
+  </header>
+
+  <div class="tally">
+    <div class="tally-row">
+      <div class="coins" id="coins" aria-hidden="true">
+        <span class="coin"></span><span class="coin"></span><span class="coin"></span>
+        <span class="coin"></span><span class="coin"></span>
+      </div>
+      <span class="tally-num" id="tally">0 / 5 읽음</span>
+    </div>
+  </div>
+
+  <ol id="list">
+    <li class="item">
+      <button class="top" aria-expanded="false">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+        <span><span class="name">자녀 사칭</span><span class="where">"엄마 나 폰 깨졌어, 이 번호로 톡해"</span></span>
+      </button>
+      <div class="detail" hidden>
+<p>가족을 사칭해 문자로 접근한 뒤 신분증 사진이나 계좌를 요구합니다.</p><p><b>반드시 전화를 걸어 목소리를 확인하세요.</b> 문자로만 대화가 이어지면 의심해야 합니다.</p>
+      </div>
+    </li>
+    <li class="item">
+      <button class="top" aria-expanded="false">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+        <span><span class="name">기관 사칭</span><span class="where">"검찰입니다. 계좌가 범죄에 연루됐습니다"</span></span>
+      </button>
+      <div class="detail" hidden>
+<p>검찰·경찰·금감원을 사칭해 겁을 준 뒤 '안전계좌'로 돈을 옮기라고 합니다.</p><p><b>정부기관은 절대 돈을 옮기라고 하지 않습니다.</b> 그 말이 나오면 100% 사기예요.</p>
+      </div>
+    </li>
+    <li class="item">
+      <button class="top" aria-expanded="false">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+        <span><span class="name">대출 빙자</span><span class="where">"저금리 대환대출, 수수료 먼저 입금하세요"</span></span>
+      </button>
+      <div class="detail" hidden>
+<p>낮은 금리로 갈아타게 해주겠다며 보증금·수수료를 먼저 요구합니다.</p><p><b>돈을 먼저 달라는 대출은 전부 사기입니다.</b></p>
+      </div>
+    </li>
+    <li class="item">
+      <button class="top" aria-expanded="false">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+        <span><span class="name">AI 음성 사칭</span><span class="where">가족 목소리인데 어딘가 어색하다면</span></span>
+      </button>
+      <div class="detail" hidden>
+<p>짧은 음성만 있어도 목소리를 복제할 수 있습니다. 울먹이거나 급하게 말해 판단을 흐립니다.</p><p><b>일단 끊고, 내가 아는 번호로 직접 걸어보세요.</b></p>
+      </div>
+    </li>
+    <li class="item">
+      <button class="top" aria-expanded="false">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+        <span><span class="name">스미싱 링크</span><span class="where">"택배 주소 오류" "모바일 청첩장"</span></span>
+      </button>
+      <div class="detail" hidden>
+<p>링크를 누르면 악성 앱이 설치되어 연락처와 인증번호가 빠져나갑니다.</p><p><b>모르는 번호의 링크는 누르지 말고 삭제하세요.</b></p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="warn">
+    <b>⚠ 당했다 싶으면 즉시 112 또는 1332</b><br>
+    보이스피싱 피해는 신고가 빠를수록 지급정지 가능성이 높아집니다. 은행 콜센터에도 바로 연락하세요.
+  </div>
+
+  <p class="foot">
+    2026년 8월 기준 · 금융위원회·금융감독원 안내 확인 후 작성<br>
+    매일 아침 돈 소식을 물어다 드려요 — <a href="https://www.instagram.com/donkkachi/">인스타그램 @donkkachi</a>
+  </p>
+</div>
+
+<script>
+  const items = [...document.querySelectorAll('.item')];
+  const coins = [...document.querySelectorAll('.coin')];
+  const tally = document.getElementById('tally');
+
+  function refresh(){
+    const n = items.filter(i => i.classList.contains('checked')).length;
+    coins.forEach((c,i) => c.classList.toggle('on', i < n));
+    tally.textContent = n === items.length ? '5가지 다 읽음' : n + ' / 5 읽음';
+    tally.classList.toggle('tally-done', n === items.length);
+  }
+
+  items.forEach(item => {
+    const btn = item.querySelector('.top');
+    const detail = item.querySelector('.detail');
+    btn.addEventListener('click', () => {
+      const open = detail.hidden;
+      detail.hidden = !open;
+      btn.setAttribute('aria-expanded', String(open));
+      item.classList.toggle('checked', open);
+      refresh();
+    });
+  });
+  refresh();
+</script>
+
+
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a>
+</div>
+
+<a href="https://www.instagram.com/donkkachi/"
+style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;
+background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;
+text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">🪙 돈까치 팔로우하기</a>
+</body>
+</html>

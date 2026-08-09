@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>주식 사기 전 5초 체크리스트 | 돈까치</title>
+<meta name="description" content="여윳돈·이해·팔 기준·분산·세금. 주식 주문 버튼 누르기 전에 확인하는 5가지.">
+<style>
+  :root{
+    --cream:#F2EDE3; --paper:#FFFDFA; --ink:#23252B; --gold:#E0B93F;
+    --red:#E1464B; --green:#2E8C5A; --mute:#827C69; --line:#E3DCCB;
+  }
+  *{box-sizing:border-box}
+  html,body{padding-bottom:78px;margin:0}
+  body{
+    background:var(--cream); color:var(--ink);
+    font-family:'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.55;
+  }
+  .wrap{max-width:520px;margin:0 auto;padding:0 20px 96px}
+
+  /* header */
+  header{padding:28px 0 8px}
+  .chip{display:inline-block;background:var(--green);color:#fff;font-size:13px;font-weight:800;
+    letter-spacing:.02em;padding:7px 14px;border-radius:999px}
+  h1{font-size:34px;line-height:1.2;letter-spacing:-.03em;margin:16px 0 8px;font-weight:900}
+  h1 em{font-style:normal;color:#D97A12}
+  .lede{color:var(--mute);font-size:15px;margin:0 0 4px}
+
+  /* signature: coin bar */
+  .tally{position:sticky;top:0;z-index:5;background:var(--cream);
+    padding:14px 0 12px;border-bottom:1px solid var(--line);margin-bottom:22px}
+  .tally-row{display:flex;align-items:center;gap:10px}
+  .coins{display:flex;gap:6px;flex:1}
+  .coin{flex:1;height:14px;border-radius:999px;background:#E6DFCC;
+    border:2px solid #D9D1BB;transition:background .25s,border-color .25s,transform .25s}
+  .coin.on{background:var(--gold);border-color:#B8952C;transform:translateY(-2px)}
+  .tally-num{font-size:13px;font-weight:800;color:var(--mute);white-space:nowrap}
+  .tally-done{color:var(--green)}
+
+  /* items */
+  ol{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+  .item{background:var(--paper);border-radius:18px;padding:18px 18px 16px;
+    border:1px solid var(--line)}
+  .item.checked{border-color:#CFE3D6;background:#FBFEFB}
+  .top{display:flex;gap:14px;align-items:flex-start;width:100%;
+    background:none;border:0;padding:0;text-align:left;cursor:pointer;font:inherit;color:inherit}
+  .top:focus-visible{outline:3px solid var(--gold);outline-offset:4px;border-radius:10px}
+  .box{flex:0 0 auto;width:30px;height:30px;border:2.5px solid var(--ink);border-radius:9px;
+    display:grid;place-items:center;margin-top:2px;transition:background .2s,border-color .2s}
+  .box svg{width:18px;height:18px;opacity:0;transform:scale(.6);transition:opacity .2s,transform .2s}
+  .item.checked .box{background:var(--green);border-color:var(--green)}
+  .item.checked .box svg{opacity:1;transform:scale(1)}
+  .name{font-size:19px;font-weight:800;letter-spacing:-.02em;margin:0}
+  .where{font-size:14px;color:var(--mute);margin:3px 0 0}
+  .detail{margin:14px 0 0;padding:14px 0 0;border-top:1px dashed var(--line);font-size:15px}
+  .detail p{margin:0 0 8px}
+  .detail b{color:#D97A12}
+  .url{display:inline-block;margin-top:4px;font-size:14px;font-weight:800;
+    color:var(--ink);background:#F6F0DE;border:1px solid #E7DCB8;
+    padding:8px 12px;border-radius:10px;text-decoration:none;word-break:break-all}
+  .url:active{background:#EFE6CB}
+
+  .warn{margin:26px 0 0;background:#FDE3E6;border-radius:16px;padding:16px 18px;font-size:15px}
+  .warn b{color:var(--red)}
+  .foot{margin-top:30px;border-top:1px solid var(--line);padding-top:18px;
+    font-size:13px;color:var(--mute)}
+  .foot a{color:var(--ink);font-weight:800;text-decoration:none;border-bottom:2px solid var(--gold)}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="chip" style="background:#5674C8">알 돈</span>
+    <h1>주식 사기 전<br><em>5초 체크리스트</em></h1>
+    <p class="lede">특정 종목은 추천하지 않습니다. 주문 버튼을 누르기 전에 스스로 묻는 기준만 담았어요.</p>
+  </header>
+
+  <div class="tally">
+    <div class="tally-row">
+      <div class="coins" id="coins" aria-hidden="true">
+        <span class="coin"></span><span class="coin"></span><span class="coin"></span>
+        <span class="coin"></span><span class="coin"></span>
+      </div>
+      <span class="tally-num" id="tally">0 / 5 통과</span>
+    </div>
+  </div>
+
+  <ol id="list">
+    <li class="item">
+      <button class="top" aria-expanded="false">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+        <span><span class="name">여윳돈으로 하는가</span><span class="where">없어도 6개월 버틸 수 있는 돈</span></span>
+      </button>
+      <div class="detail" hidden>
+<p>빚이나 생활비로 시작하면 가격이 떨어질 때 <b>버틸 수가 없습니다.</b> 팔지 말아야 할 때 팔게 되는 이유가 대부분 여기예요.</p><p>없어져도 당장 생활이 흔들리지 않는 돈인지 먼저 확인하세요.</p>
+      </div>
+    </li>
+    <li class="item">
+      <button class="top" aria-expanded="false">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+        <span><span class="name">내가 이해한 것인가</span><span class="where">리딩방·지인 추천으로 산 것 아닌지</span></span>
+      </button>
+      <div class="detail" hidden>
+<p>왜 오르는지 모르면 왜 떨어지는지도 모릅니다. 그래서 <b>못 버팁니다.</b></p><p>남이 사라고 해서 산 종목은 그 사람이 팔라고 말해주지 않으면 나올 수도 없어요.</p>
+      </div>
+    </li>
+    <li class="item">
+      <button class="top" aria-expanded="false">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+        <span><span class="name">팔 기준을 정했는가</span><span class="where">얼마 떨어지면 나올지 미리</span></span>
+      </button>
+      <div class="detail" hidden>
+<p>사기 전에 파는 기준부터 정하는 게 순서입니다. <b>손절 기준이 진짜 실력이에요.</b></p><p>오르면 조급하고 떨어지면 공포가 옵니다. 그때 정하면 늦어요.</p>
+      </div>
+    </li>
+    <li class="item">
+      <button class="top" aria-expanded="false">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+        <span><span class="name">나눠 담았는가</span><span class="where">한 종목에 몰빵하지 않았는지</span></span>
+      </button>
+      <div class="detail" hidden>
+<p>계란을 한 바구니에 담지 말라는 말이 여기서 나왔습니다. 한 곳이 흔들려도 충격이 나뉘게 하세요.</p><p>ETF는 그 분산을 상품 하나로 해주는 방식입니다. 단, <b>ETF도 원금 손실이 가능한 투자 상품</b>이에요.</p>
+      </div>
+    </li>
+    <li class="item">
+      <button class="top" aria-expanded="false">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+        <span><span class="name">세금을 계산했는가</span><span class="where">수익률 표시에는 빠져 있음</span></span>
+      </button>
+      <div class="detail" hidden>
+<p>국내 주식은 팔 때 <b>증권거래세 0.20%</b>, 배당에는 <b>15.4%</b>가 붙습니다. 해외 주식은 연 250만 원 넘는 수익에 22%, 다음 해 5월에 직접 신고해야 해요.</p><p>앱에 뜨는 수익률에는 이게 반영돼 있지 않습니다.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="warn">
+    <b>⚠ 투자 판단과 책임은 본인에게 있습니다.</b><br>
+    이 체크리스트는 특정 상품·종목을 추천하지 않습니다. 원금 손실이 발생할 수 있어요.
+  </div>
+
+  <p class="foot">
+    2026년 8월 기준 · 세법과 제도는 바뀔 수 있어요<br>
+    매일 아침 돈 소식을 물어다 드려요 — <a href="https://www.instagram.com/donkkachi/">인스타그램 @donkkachi</a>
+  </p>
+</div>
+
+<script>
+  const items = [...document.querySelectorAll('.item')];
+  const coins = [...document.querySelectorAll('.coin')];
+  const tally = document.getElementById('tally');
+
+  function refresh(){
+    const n = items.filter(i => i.classList.contains('checked')).length;
+    coins.forEach((c,i) => c.classList.toggle('on', i < n));
+    tally.textContent = n === items.length ? '5개 다 통과' : n + ' / 5 통과';
+    tally.classList.toggle('tally-done', n === items.length);
+  }
+
+  items.forEach(item => {
+    const btn = item.querySelector('.top');
+    const detail = item.querySelector('.detail');
+    btn.addEventListener('click', () => {
+      const open = detail.hidden;
+      detail.hidden = !open;
+      btn.setAttribute('aria-expanded', String(open));
+      item.classList.toggle('checked', open);
+      refresh();
+    });
+  });
+  refresh();
+</script>
+
+
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a>
+</div>
+
+<a href="https://www.instagram.com/donkkachi/"
+style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;
+background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;
+text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">🪙 돈까치 팔로우하기</a>
+</body>
+</html>

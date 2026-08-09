@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1억 가는 계좌 3개 | 돈까치</title>
+<meta name="description" content="파킹통장·ISA·연금저축. 순서까지 정리한 계좌 가이드.">
+<style>
+  :root{
+    --cream:#F2EDE3; --paper:#FFFDFA; --ink:#23252B; --gold:#E0B93F;
+    --red:#E1464B; --green:#2E8C5A; --mute:#827C69; --line:#E3DCCB;
+  }
+  *{box-sizing:border-box}
+  html,body{padding-bottom:78px;margin:0}
+  body{
+    background:var(--cream); color:var(--ink);
+    font-family:'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.55;
+  }
+  .wrap{max-width:520px;margin:0 auto;padding:0 20px 96px}
+
+  /* header */
+  header{padding:28px 0 8px}
+  .chip{display:inline-block;background:var(--green);color:#fff;font-size:13px;font-weight:800;
+    letter-spacing:.02em;padding:7px 14px;border-radius:999px}
+  h1{font-size:34px;line-height:1.2;letter-spacing:-.03em;margin:16px 0 8px;font-weight:900}
+  h1 em{font-style:normal;color:#D97A12}
+  .lede{color:var(--mute);font-size:15px;margin:0 0 4px}
+
+  /* signature: coin bar */
+  .tally{position:sticky;top:0;z-index:5;background:var(--cream);
+    padding:14px 0 12px;border-bottom:1px solid var(--line);margin-bottom:22px}
+  .tally-row{display:flex;align-items:center;gap:10px}
+  .coins{display:flex;gap:6px;flex:1}
+  .coin{flex:1;height:14px;border-radius:999px;background:#E6DFCC;
+    border:2px solid #D9D1BB;transition:background .25s,border-color .25s,transform .25s}
+  .coin.on{background:var(--gold);border-color:#B8952C;transform:translateY(-2px)}
+  .tally-num{font-size:13px;font-weight:800;color:var(--mute);white-space:nowrap}
+  .tally-done{color:var(--green)}
+
+  /* items */
+  ol{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+  .item{background:var(--paper);border-radius:18px;padding:18px 18px 16px;
+    border:1px solid var(--line)}
+  .item.checked{border-color:#CFE3D6;background:#FBFEFB}
+  .top{display:flex;gap:14px;align-items:flex-start;width:100%;
+    background:none;border:0;padding:0;text-align:left;cursor:pointer;font:inherit;color:inherit}
+  .top:focus-visible{outline:3px solid var(--gold);outline-offset:4px;border-radius:10px}
+  .box{flex:0 0 auto;width:30px;height:30px;border:2.5px solid var(--ink);border-radius:9px;
+    display:grid;place-items:center;margin-top:2px;transition:background .2s,border-color .2s}
+  .box svg{width:18px;height:18px;opacity:0;transform:scale(.6);transition:opacity .2s,transform .2s}
+  .item.checked .box{background:var(--green);border-color:var(--green)}
+  .item.checked .box svg{opacity:1;transform:scale(1)}
+  .name{font-size:19px;font-weight:800;letter-spacing:-.02em;margin:0}
+  .where{font-size:14px;color:var(--mute);margin:3px 0 0}
+  .detail{margin:14px 0 0;padding:14px 0 0;border-top:1px dashed var(--line);font-size:15px}
+  .detail p{margin:0 0 8px}
+  .detail b{color:#D97A12}
+  .url{display:inline-block;margin-top:4px;font-size:14px;font-weight:800;
+    color:var(--ink);background:#F6F0DE;border:1px solid #E7DCB8;
+    padding:8px 12px;border-radius:10px;text-decoration:none;word-break:break-all}
+  .url:active{background:#EFE6CB}
+
+  .mini{font-size:14px;color:var(--mute);background:#F7F3E8;border-radius:12px;padding:12px 14px;margin-top:10px}
+  .tbl{width:100%;border-collapse:collapse;margin:12px 0 4px;font-size:15px}
+  .tbl th{background:var(--ink);color:var(--gold);font-weight:800;padding:10px 8px;text-align:left}
+  .tbl th:first-child{border-radius:10px 0 0 10px}
+  .tbl th:last-child{border-radius:0 10px 10px 0}
+  .tbl td{padding:11px 8px;border-bottom:1px solid var(--line)}
+  .sum{margin:30px 0 0;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px}
+  .sum h2{font-size:20px;margin:0 0 6px;letter-spacing:-.02em}
+  .warn{margin:22px 0 0;background:#FDE3E6;border-radius:16px;padding:16px 18px;font-size:15px}
+  .warn b{color:var(--red)}
+  .foot{margin-top:30px;border-top:1px solid var(--line);padding-top:18px;
+    font-size:13px;color:var(--mute)}
+  .foot a{color:var(--ink);font-weight:800;text-decoration:none;border-bottom:2px solid var(--gold)}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="chip">챙길 돈</span>
+    <h1>1억 가는 동안<br><em>열어둘 계좌 3개</em></h1>
+    <p class="lede">특정 상품·금융사는 추천하지 않아요. 순서와 기준만 담았습니다.</p>
+  </header>
+
+  <div class="tally">
+    <div class="tally-row">
+      <div class="coins" id="coins" aria-hidden="true">
+        <span class="coin"></span><span class="coin"></span><span class="coin"></span>
+      </div>
+      <span class="tally-num" id="tally">0 / 3 단계</span>
+    </div>
+  </div>
+
+  <ol id="list">
+    <li class="item">
+      <button class="top" aria-expanded="false">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+        <span><span class="name">1. 비상금 — 파킹통장</span><span class="where">가장 먼저 만드는 계좌</span></span>
+      </button>
+      <div class="detail" hidden>
+        <p>하루만 맡겨도 이자가 붙고, 언제든 넣고 뺄 수 있는 입출금 통장이에요.</p>
+        <p><b>왜 이게 먼저냐면</b> — 비상금 없이 돈을 묶으면 급할 때 결국 깨게 됩니다. 깨면 혜택이 날아가니 순서상 이게 첫 번째예요.</p>
+        <p class="mini">고를 때 볼 것<br>· 우대조건 없이도 금리를 주는지<br>· 이자를 매일 주는지 매월 주는지<br>· 고금리가 적용되는 한도가 얼마인지</p>
+        <p class="mini">은행 상품은 예금자보호 1억 원. 증권사 CMA는 보호 대상이 아니에요.</p>
+      </div>
+    </li>
+    <li class="item">
+      <button class="top" aria-expanded="false">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+        <span><span class="name">2. 투자 — ISA</span><span class="where">3년만 유지하면 혜택 확정</span></span>
+      </button>
+      <div class="detail" hidden>
+        <p>예금·펀드·ETF·국내주식을 한 계좌에 담고, 그 안에서 번 돈에 세금 혜택을 주는 계좌입니다.</p>
+        <p>수익 <b>200만 원까지 세금 0원</b> (서민형 400만), 넘는 금액도 <b>9.9%</b>예요. 일반 계좌는 15.4%입니다.</p>
+        <p>손익통산도 됩니다. A에서 500만 벌고 B에서 200만 잃었다면 300만 원 기준으로 계산해요.</p>
+        <p class="mini">의무 유지 3년(개설일부터) · 1인 1계좌 · 미국 주식 직접 매수 불가(국내 상장 해외 ETF는 가능) · 납입 한도는 증권사 확인</p>
+      </div>
+    </li>
+    <li class="item">
+      <button class="top" aria-expanded="false">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+        <span><span class="name">3. 노후 — 연금저축</span><span class="where">저축만 해도 세금을 돌려받음</span></span>
+      </button>
+      <div class="detail" hidden>
+        <p>연 <b>600만 원</b>까지 세액공제를 받습니다. IRP를 합치면 900만 원까지예요.</p>
+        <table class="tbl">
+          <tr><th>총급여</th><th>공제율</th><th>900만 납입 시</th></tr>
+          <tr><td>5,500만 이하</td><td>16.5%</td><td>148만 5천 원</td></tr>
+          <tr><td>5,500만 초과</td><td>13.2%</td><td>118만 8천 원</td></tr>
+        </table>
+        <p class="mini">12월 31일까지 실제로 입금해야 그해 공제에 반영돼요.<br>중도 해지하면 세액공제 받은 금액에 기타소득세 16.5%가 붙습니다.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="sum">
+    <h2>한 장 요약</h2>
+    <table class="tbl">
+      <tr><th>순서</th><th>계좌</th><th>핵심</th></tr>
+      <tr><td>1</td><td>파킹통장</td><td>예금자보호 1억</td></tr>
+      <tr><td>2</td><td>ISA</td><td>200만 비과세 · 3년</td></tr>
+      <tr><td>3</td><td>연금저축</td><td>600만 한도 · 16.5%</td></tr>
+    </table>
+  </div>
+
+  <div class="warn">
+    <b>⚠ 세 개를 한 번에 다 만들 필요는 없어요.</b><br>
+    오늘 하나만 열어둬도 내년이 달라집니다. 투자 판단과 책임은 본인에게 있고, 원금 손실이 발생할 수 있어요.
+  </div>
+
+  <p class="foot">
+    2026년 8월 기준 · 금융위원회·국세청·각 금융사 공식 안내 확인 후 작성<br>
+    매일 아침 돈 소식을 물어다 드려요 — <a href="https://www.instagram.com/donkkachi/">인스타그램 @donkkachi</a>
+  </p>
+</div>
+
+<script>
+  const items = [...document.querySelectorAll('.item')];
+  const coins = [...document.querySelectorAll('.coin')];
+  const tally = document.getElementById('tally');
+
+  function refresh(){
+    const n = items.filter(i => i.classList.contains('checked')).length;
+    coins.forEach((c,i) => c.classList.toggle('on', i < n));
+    tally.textContent = n === items.length ? '3단계 다 확인 완료' : n + ' / 3 단계';
+    tally.classList.toggle('tally-done', n === items.length);
+  }
+
+  items.forEach(item => {
+    const btn = item.querySelector('.top');
+    const detail = item.querySelector('.detail');
+    btn.addEventListener('click', () => {
+      const open = detail.hidden;
+      detail.hidden = !open;
+      btn.setAttribute('aria-expanded', String(open));
+      item.classList.toggle('checked', open);
+      refresh();
+    });
+  });
+  refresh();
+</script>
+
+
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a>
+</div>
+
+<a href="https://www.instagram.com/donkkachi/"
+style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;
+background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;
+text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">🪙 돈까치 팔로우하기</a>
+</body>
+</html>

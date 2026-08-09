@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISA 개편, 내 계좌는 어떻게 되나 | 돈까치</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --cream:#F2EDE3; --paper:#FFFCF6; --ink:#23252B; --sub:#6B6357;
+  --gold:#E0B93F; --orange:#E67E30; --red:#D6473E;
+  --green:#2E8C5A; --blue:#3A6FB0; --line:#E4DCCB;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-bottom:78px;
+  font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,system-ui,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  background:var(--cream); color:var(--ink); line-height:1.65;
+  -webkit-text-size-adjust:100%;
+}
+.wrap{max-width:640px;margin:0 auto;background:var(--cream)}
+
+/* ── hero ── */
+.hero{background:var(--ink);color:var(--cream);padding:38px 22px 30px}
+.chip{display:inline-block;background:var(--gold);color:var(--ink);font-size:13px;font-weight:800;
+  padding:6px 13px;border-radius:999px;letter-spacing:-.2px}
+.hero h1{font-size:29px;line-height:1.32;font-weight:800;margin-top:16px;letter-spacing:-.7px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .by{margin-top:14px;font-size:13px;color:#A8A29A}
+.hero .stamp{margin-top:18px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);
+  border-radius:12px;padding:12px 14px;font-size:13.5px;color:#E8E2D6;line-height:1.55}
+.hero .stamp b{color:var(--gold)}
+
+/* ── nav ── */
+nav{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);
+  padding:11px 0;overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap}
+nav .navbtn{display:inline-block;font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;margin-left:10px;padding:8px 15px;background:var(--paper);
+  border:1px solid var(--line);border-radius:999px;font-size:13.5px;font-weight:700;
+  color:var(--ink);text-decoration:none}
+nav .navbtn:last-child{margin-right:10px}
+
+section{scroll-margin-top:76px;padding:34px 20px 6px}
+.sec-no{font-size:12px;font-weight:800;color:var(--sub);letter-spacing:1.2px}
+.sec-t{font-size:23px;font-weight:800;margin:6px 0 18px;letter-spacing:-.5px;line-height:1.35}
+.sec-lead{font-size:14.5px;color:var(--sub);margin:-10px 0 18px;line-height:1.6}
+
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px 16px;margin-bottom:11px}
+
+/* ── summary ── */
+.sum{display:flex;gap:13px;align-items:flex-start}
+.sum .n{flex:none;width:27px;height:27px;border-radius:50%;background:var(--ink);color:var(--gold);
+  font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sum .tx{font-size:15.5px;font-weight:600;line-height:1.55}
+.sum .tx b{color:var(--red);font-weight:800}
+.sum .tx span{display:block;font-size:13px;color:var(--sub);font-weight:500;margin-top:3px}
+
+/* ── fact check ── */
+.fc{border-left:5px solid var(--line)}
+.fc.x{border-left-color:var(--red)}
+.fc.o{border-left-color:var(--green)}
+.fc .q{font-size:15.5px;font-weight:800;line-height:1.5}
+.fc .verdict{display:inline-block;font-size:12px;font-weight:800;padding:3px 10px;border-radius:6px;margin-bottom:8px}
+.fc.x .verdict{background:#FBE6E4;color:var(--red)}
+.fc.o .verdict{background:#E3F1E9;color:var(--green)}
+.fc .a{font-size:14px;color:var(--sub);margin-top:9px;line-height:1.7}
+.fc .a b{color:var(--ink)}
+
+/* ── case ── */
+.case-tag{display:inline-block;padding:6px 15px;border-radius:999px;font-size:13.5px;font-weight:800;color:#fff;margin-bottom:9px}
+.tag-a{background:var(--orange)} .tag-b{background:var(--red)}
+.tag-c{background:var(--blue)} .tag-d{background:var(--green)}
+.case-h{font-size:18.5px;font-weight:800;line-height:1.45;margin-bottom:12px;letter-spacing:-.4px}
+.verdict-box{background:#FBE9DE;border-radius:13px;padding:14px 15px;margin-bottom:12px}
+.verdict-box .v{font-size:16px;font-weight:800;color:var(--red)}
+.verdict-box .v2{font-size:13.5px;color:var(--sub);margin-top:4px}
+table{width:100%;border-collapse:collapse;margin:4px 0 12px;font-size:14px}
+th{background:#EDE7DA;text-align:left;padding:10px 12px;font-weight:800;font-size:13px;color:var(--sub)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+td:first-child{font-weight:700;width:36%}
+.act{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:15px 16px;margin-bottom:22px}
+.act h4{font-size:14.5px;font-weight:800;color:var(--green);margin-bottom:9px}
+.act li{list-style:none;font-size:14px;padding-left:15px;position:relative;margin-bottom:7px;line-height:1.6}
+.act li::before{content:'';position:absolute;left:0;top:10px;width:8px;height:2px;background:var(--orange)}
+
+/* ── worksheet ── */
+.ws label{display:block;font-size:13.5px;font-weight:700;margin-bottom:5px}
+.ws input{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;font-size:16px;
+  background:#fff;font-family:inherit;margin-bottom:13px;color:var(--ink)}
+.ws-out{background:var(--ink);color:var(--cream);border-radius:14px;padding:17px;text-align:center}
+.ws-out .big{font-size:31px;font-weight:800;color:var(--gold);letter-spacing:-1px}
+.ws-out .cap{font-size:13px;color:#A8A29A;margin-top:6px;line-height:1.55}
+
+/* ── checklist + coin ── */
+.coinbar{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:13px}
+.coinbar .top{display:flex;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:9px}
+.track{height:11px;background:#E7E0D1;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--orange));
+  border-radius:99px;transition:width .35s ease}
+.chk{display:flex;gap:13px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);
+  border-radius:14px;padding:14px 15px;margin-bottom:9px;cursor:pointer;user-select:none}
+.chk.on{background:#FDF6E6;border-color:var(--gold)}
+.box{flex:none;width:23px;height:23px;border:2px solid var(--orange);border-radius:7px;margin-top:1px;
+  display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;font-weight:800}
+.chk.on .box{background:var(--orange)}
+.chk .t{font-size:15px;font-weight:800}
+.chk .d{font-size:13px;color:var(--sub);margin-top:3px;line-height:1.55}
+
+/* ── faq ── */
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}
+summary{padding:15px 16px;font-size:15px;font-weight:800;cursor:pointer;list-style:none;line-height:1.5}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'Q. ';color:var(--red);font-weight:800}
+details[open] summary{border-bottom:1px solid var(--line)}
+details p{padding:14px 16px;font-size:14px;color:var(--sub);line-height:1.75}
+details p::before{content:'A. ';color:var(--blue);font-weight:800}
+
+/* ── prompt ── */
+.pbox{background:#1C1E24;border-radius:15px;padding:17px;margin-bottom:11px}
+.pbox .ph{font-size:14px;font-weight:800;color:#67D6A6;margin-bottom:10px}
+.pbox pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:#E4E0D8;
+  line-height:1.85;white-space:pre-wrap;word-break:break-word}
+.pbox .fill-in{color:#6FC5F0;font-weight:700}
+.copy{margin-top:12px;width:100%;padding:11px;background:#2F323B;border:none;border-radius:9px;
+  color:#E4E0D8;font-size:13.5px;font-weight:700;font-family:inherit;cursor:pointer}
+.copy:active{background:#41454F}
+
+/* ── misc ── */
+.warn{background:#FDF3DD;border:1px solid #EBD9A4;border-radius:14px;padding:15px 16px;margin-bottom:11px}
+.warn h4{font-size:14.5px;font-weight:800;color:#9A7212;margin-bottom:8px}
+.warn p{font-size:13.5px;color:var(--sub);line-height:1.7}
+.src{padding:26px 20px 16px;font-size:12.5px;color:var(--sub);line-height:1.85}
+.src b{color:var(--ink)}
+footer{background:var(--ink);color:#A8A29A;text-align:center;padding:30px 20px 38px;font-size:13px;line-height:1.8}
+footer .fb{color:var(--gold);font-weight:800;font-size:15px}
+hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+  <span class="chip">🪙 ISA 개편 대응 자료집</span>
+  <h1>내 ISA는<br><em>지금 뭘 해야 할까</em></h1>
+  <div class="by">@donkkachi · 몰라서 손해 보는 돈, 물어다 주는 까치</div>
+  <div class="stamp">
+    이 자료는 <b>2026년 8월 3일 기획재정부 세제개편안</b> 기준입니다.<br>
+    <b>아직 국회 통과 전이라 확정된 법이 아닙니다.</b> 정기국회에서 내용이 바뀌거나 빠질 수 있어요.
+  </div>
+</div>
+
+<nav>
+  <button type="button" class="navbtn" data-go="s1">① 3줄 요약</button>
+  <button type="button" class="navbtn" data-go="s2">② 팩트체크</button>
+  <button type="button" class="navbtn" data-go="s3">③ 내 케이스</button>
+  <button type="button" class="navbtn" data-go="s4">④ 계산기</button>
+  <button type="button" class="navbtn" data-go="s5">⑤ 체크리스트</button>
+  <button type="button" class="navbtn" data-go="s6">⑥ FAQ</button>
+  <button type="button" class="navbtn" data-go="s7">⑦ 질문 틀</button>
+</nav>
+
+<!-- ① -->
+<section id="s1">
+  <div class="sec-no">SECTION ①</div>
+  <div class="sec-t">30초 요약</div>
+
+  <div class="card sum">
+    <div class="n">1</div>
+    <div class="tx">쌓아둔 <b>이월 한도는 2026년 12월 31일까지만</b> 쓸 수 있어요
+      <span>2027년 1월 1일 이후 납입분부터 이월 폐지 · 기존 가입자도 포함</span></div>
+  </div>
+  <div class="card sum">
+    <div class="n">2</div>
+    <div class="tx">일반 ISA 총 계약기간이 <b>최대 5년</b>으로 제한돼요
+      <span>2027년 이후 신규 가입·연장분부터 적용</span></div>
+  </div>
+  <div class="card sum">
+    <div class="n">3</div>
+    <div class="tx">국내자산 전용 <b>생산적금융 ISA</b>가 새로 생겨요
+      <span>이자·배당 전액 비과세 · 총한도 2억 원 · 최대 10년</span></div>
+  </div>
+
+  <div class="warn" style="margin-top:14px">
+    <h4>⚠️ 안 바뀌는 것도 확인하세요</h4>
+    <p>일반 ISA의 연 납입한도 2,000만 원, 총 납입한도 1억 원, 비과세 한도 200만 원(서민·농어민형 400만 원),
+    초과분 9% 분리과세는 <b>그대로입니다.</b> 의무가입 3년도 그대로예요.<br>
+    "혜택이 다 사라진다"는 말은 사실이 아닙니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<!-- ② -->
+<section id="s2">
+  <div class="sec-no">SECTION ②</div>
+  <div class="sec-t">돌아다니는 말, 팩트체크</div>
+  <div class="sec-lead">지금 인터넷에 제일 많이 퍼진 네 문장을 하나씩 확인했어요. 여기만 봐도 절반은 정리됩니다.</div>
+
+  <div class="card fc x">
+    <div class="verdict">사실 아님</div>
+    <div class="q">"지금 연장하면 5년 제한을 영영 피할 수 있다"</div>
+    <div class="a">2026년 안에 연장하면 <b>그 연장분까지는</b> 현행 규정이 맞습니다. 그런데 연장은 한 번으로 끝나는 게 아니에요.
+    그 기간이 끝나면 또 만기가 오고, <b>그다음 연장은 2027년 이후라 새 규정을 만납니다.</b>
+    "영구 회피"가 아니라 "현행 조건으로 한 번 더 굴리기"에 가까워요.</div>
+  </div>
+
+  <div class="card fc x">
+    <div class="verdict">사실 아님</div>
+    <div class="q">"ISA 있는 사람은 지금 당장 연장해야 한다"</div>
+    <div class="a">하고 싶어도 못 하는 사람이 더 많습니다. ISA는 <b>만기 3개월 전부터만 연장 신청이 가능</b>해요.
+    만기가 2027년 3월 이후라면 2026년 안에 연장하는 것 자체가 물리적으로 불가능합니다.
+    이 경우엔 서두를 이유가 없고, <b>국회 통과 여부를 보고 판단하는 게 맞아요.</b></div>
+  </div>
+
+  <div class="card fc o">
+    <div class="verdict">사실</div>
+    <div class="q">"이월 한도 폐지는 기존 가입자한테도 적용된다"</div>
+    <div class="a">맞습니다. 신규 가입자만의 이야기가 아니에요.
+    <b>2027년 1월 1일 이후 납입분부터</b>, 기존 계좌를 포함해 미사용 한도 이월이 없어집니다.
+    그래서 <b>이 자료집에서 유일하게 날짜가 확정적인 항목</b>이고, 행동이 명확한 것도 이것뿐입니다.</div>
+  </div>
+
+  <div class="card fc x">
+    <div class="verdict">사실 아님</div>
+    <div class="q">"이제 ISA에서 해외 ETF를 못 산다"</div>
+    <div class="a">일반 ISA의 <b>투자 대상은 이번 개편안에서 바뀌지 않았습니다.</b> 국내 상장 해외 ETF 등 기존에 담던 건 그대로 담을 수 있어요.
+    "국내 자산만"이라는 조건은 <b>새로 생기는 생산적금융 ISA</b>의 조건이고, 그건 별개의 새 계좌입니다.
+    두 이야기가 섞여서 퍼진 경우예요.</div>
+  </div>
+  <hr class="d">
+</section>
+
+<!-- ③ -->
+<section id="s3">
+  <div class="sec-no">SECTION ③</div>
+  <div class="sec-t">그래서 나는 뭘 해야 하나</div>
+  <div class="sec-lead">네 가지 중 하나예요. 본인 것만 읽으면 됩니다.</div>
+
+  <span class="case-tag tag-a">CASE A</span>
+  <div class="case-h">아직 ISA 계좌가 없다</div>
+  <div class="verdict-box">
+    <div class="v">📌 계좌는 여는 게 유리, 다만 "무조건 급하게"는 아님</div>
+    <div class="v2">개설 자체에 비용이 없고, 3년 시계를 미리 돌리는 값어치는 분명합니다</div>
+  </div>
+  <table>
+    <tr><th>구분</th><th>내용</th></tr>
+    <tr><td>지금 열면</td><td>2026년 가입분이라 현행 규정 적용. 이후 연장 시점에 따라 새 규정을 만날 수는 있음</td></tr>
+    <tr><td>서둘러야 하는 진짜 이유</td><td>제도보다 <b>의무가입 3년</b>. 계좌를 열어둬야 3년 시계가 돌기 시작함</td></tr>
+    <tr><td>생산적금융 ISA는?</td><td>2027년 신설 예정. 국내 자산만 담고 싶다면 그때 비교해도 늦지 않음</td></tr>
+  </table>
+  <div class="act">
+    <h4>✅ 오늘 할 일</h4>
+    <ul>
+      <li>계약기간은 선택 가능한 최대치로 설정</li>
+      <li>초기 납입액은 적어도 됨 — 계좌를 여는 것 자체가 핵심</li>
+      <li>일반형 / 서민·농어민형 중 본인 해당 유형 확인 (총급여 5천만 이하 등)</li>
+    </ul>
+  </div>
+
+  <span class="case-tag tag-b">CASE B</span>
+  <div class="case-h">계좌 있고, 올해 납입 여력이 남아 있다</div>
+  <div class="verdict-box">
+    <div class="v">📌 이 자료집에서 제일 급한 사람입니다</div>
+    <div class="v2">쌓아둔 이월 한도를 쓸 수 있는 건 2026년 12월 31일까지</div>
+  </div>
+  <table>
+    <tr><th>구분</th><th>내용</th></tr>
+    <tr><td>지금 상태</td><td>연 2,000만 원 중 안 채운 금액이 매년 이월돼 쌓여 있음</td></tr>
+    <tr><td>2027년부터</td><td>쌓인 이월분 소멸. 그 해에 넣을 수 있는 건 연 2,000만 원뿐</td></tr>
+    <tr><td>예시</td><td>2년간 한 푼도 안 넣었다면 지금은 최대 6,000만 원을 몰아넣을 수 있지만, 2027년엔 2,000만 원이 끝</td></tr>
+  </table>
+  <div class="act">
+    <h4>✅ 올해 안에 할 일</h4>
+    <ul>
+      <li>증권사 앱에서 <b>"납입 가능 금액"</b> 숫자부터 확인 (④ 계산기 참고)</li>
+      <li>여유자금이 있다면 이월분부터 우선 소진</li>
+      <li>단, 총 납입한도 1억 원은 그대로이므로 그 안에서만</li>
+      <li>⚠️ 없는 돈을 빌려서 채우는 건 아닙니다 — 여유자금 범위에서만</li>
+    </ul>
+  </div>
+
+  <span class="case-tag tag-c">CASE C</span>
+  <div class="case-h">계좌 있고, 만기가 2027년 2월 이전이다</div>
+  <div class="verdict-box">
+    <div class="v">📌 연장 신청 가능 구간 — 지금부터 고민 시작</div>
+    <div class="v2">만기 3개월 전부터 신청 가능하므로 실제로 선택권이 있는 유일한 그룹</div>
+  </div>
+  <table>
+    <tr><th>선택지</th><th>유리한 상황</th></tr>
+    <tr><td>2026년 안에 연장</td><td>투자금을 계속 굴릴 계획이고, 현행 조건으로 한 사이클 더 가고 싶을 때</td></tr>
+    <tr><td>만기 후 신규 가입</td><td>누적 수익이 비과세 한도(200/400만 원)에 근접·초과했거나, 결혼·주택자금으로 뺄 계획일 때</td></tr>
+  </table>
+  <div class="warn">
+    <h4>⚠️ 연장 전에 반드시</h4>
+    <p><b>의무가입 3년</b>을 채웠는지 확인하세요. 3년 미만에 해지하면 그동안 받은 비과세·분리과세 혜택을 반환해야 합니다.
+    가입일부터 먼저 확인하는 게 순서예요.<br>
+    또 해지 후 재가입하면 <b>납입한도가 연 2,000만 원부터 다시 시작</b>합니다. 기존 이월분은 넘어오지 않아요.</p>
+  </div>
+
+  <span class="case-tag tag-d">CASE D</span>
+  <div class="case-h">계좌 있고, 만기가 2027년 3월 이후다</div>
+  <div class="verdict-box">
+    <div class="v">📌 지금은 대기가 정답입니다</div>
+    <div class="v2">연장 신청 자체가 불가능한 구간 — 불안해할 이유가 없어요</div>
+  </div>
+  <div class="act">
+    <h4>✅ 지금 할 일은 딱 두 개</h4>
+    <ul>
+      <li>올해 이월 한도만 확인해서 소진 여부 판단 (CASE B와 동일)</li>
+      <li>만기일을 캘린더에 저장 + <b>3개월 전 알림</b> 설정</li>
+      <li>개편안 국회 통과 여부는 12월 정기국회 즈음 다시 확인</li>
+    </ul>
+  </div>
+  <hr class="d">
+</section>
+
+<!-- ④ -->
+<section id="s4">
+  <div class="sec-no">SECTION ④</div>
+  <div class="sec-t">내 이월 한도 계산기</div>
+  <div class="sec-lead">증권사 앱에 "납입 가능 금액"이 바로 나오면 그 숫자를 쓰세요. 안 나올 때 대략 확인용입니다.</div>
+
+  <div class="card ws">
+    <label>가입한 지 몇 년 됐나요? (해가 바뀐 횟수, 최대 4)</label>
+    <input type="number" id="yrs" inputmode="numeric" placeholder="예: 2" min="0" max="4">
+    <label>지금까지 총 납입한 금액 (만원)</label>
+    <input type="number" id="paid" inputmode="numeric" placeholder="예: 1500">
+    <div class="ws-out">
+      <div class="big" id="res">— 만원</div>
+      <div class="cap" id="cap">올해 안에 추가로 넣을 수 있는 대략적인 금액</div>
+    </div>
+  </div>
+  <div class="warn">
+    <h4>⚠️ 이 숫자는 참고용입니다</h4>
+    <p>실제 한도는 가입일과 증권사 산정 방식에 따라 달라집니다. 총 납입한도 1억 원도 함께 적용돼요.
+    <b>반드시 증권사 앱의 실제 숫자로 확인하세요.</b></p>
+  </div>
+  <hr class="d">
+</section>
+
+<!-- ⑤ -->
+<section id="s5">
+  <div class="sec-no">SECTION ⑤</div>
+  <div class="sec-t">증권사 앱에서 확인할 6가지</div>
+  <div class="sec-lead">5분이면 끝납니다. 하나씩 눌러서 채워보세요.</div>
+
+  <div class="coinbar">
+    <div class="top"><span>🪙 까치 주머니</span><span id="cnt">0 / 6</span></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+
+  <div class="chk"><div class="box">✓</div><div><div class="t">만기일</div><div class="d">정확한 연·월·일 — 3개월 전부터 연장 신청 가능</div></div></div>
+  <div class="chk"><div class="box">✓</div><div><div class="t">가입일 / 3년 경과 여부</div><div class="d">3년 미만이면 해지 시 세제혜택 반환 대상</div></div></div>
+  <div class="chk"><div class="box">✓</div><div><div class="t">올해 납입 가능 금액</div><div class="d">이월분 포함된 실제 숫자 — 제일 중요</div></div></div>
+  <div class="chk"><div class="box">✓</div><div><div class="t">누적 수익</div><div class="d">비과세 한도 200만 / 400만 원에 얼마나 가까운지</div></div></div>
+  <div class="chk"><div class="box">✓</div><div><div class="t">내 계좌 유형</div><div class="d">일반형인지 서민·농어민형인지 (비과세 한도가 2배 차이)</div></div></div>
+  <div class="chk"><div class="box">✓</div><div><div class="t">만기 후 처리 방식</div><div class="d">자동 연장인지, 별도 신청이 필요한지 — 증권사마다 다름</div></div></div>
+  <hr class="d">
+</section>
+
+<!-- ⑥ -->
+<section id="s6">
+  <div class="sec-no">SECTION ⑥</div>
+  <div class="sec-t">자주 묻는 질문</div>
+
+  <details><summary>지금 해지해야 하나요?</summary>
+    <p>아직 국회 통과 전이라 성급한 해지는 권하지 않습니다. 특히 가입 3년 미만이면 받은 세제혜택을 반환해야 하고,
+    해지하면 납입한도가 연 2,000만 원부터 다시 시작해서 쌓아둔 이월분도 사라집니다.</p></details>
+
+  <details><summary>기존 ISA를 그대로 두면 어떻게 되나요?</summary>
+    <p>비과세·분리과세 혜택은 그대로입니다. 다만 이월 폐지는 2027년 납입분부터 기존 계좌에도 적용되고,
+    5년 제한은 2027년 이후 연장하는 시점부터 걸립니다.</p></details>
+
+  <details><summary>생산적금융 ISA로 갈아타는 게 나은가요?</summary>
+    <p>이자·배당이 전액 비과세이고 총한도가 2억 원, 계약기간도 최대 10년이라 조건 자체는 좋습니다.
+    다만 <b>국내 자산 전용</b>이라 해외 지수에 투자하던 분에겐 맞지 않을 수 있어요.
+    2027년 신설 예정이고 세부 요건이 아직 안 나왔으니, 지금 결정할 사안은 아닙니다.</p></details>
+
+  <details><summary>ETF는 계속 살 수 있나요?</summary>
+    <p>네. 일반 ISA의 투자 대상은 이번 개편안에서 바뀌지 않았습니다. 국내 상장 해외 ETF 등 기존 대상은 그대로예요.</p></details>
+
+  <details><summary>3년 안 됐는데 해지하면?</summary>
+    <p>그동안 받은 비과세·분리과세 혜택을 반환해야 합니다. 가입일부터 꼭 확인하세요.
+    다만 사망·해외이주 등 법에서 정한 부득이한 사유는 예외로 인정됩니다.</p></details>
+  <hr class="d">
+</section>
+
+<!-- ⑦ -->
+<section id="s7">
+  <div class="sec-no">SECTION ⑦</div>
+  <div class="sec-t">🤖 AI에게 물어볼 때 쓰는 질문 틀</div>
+  <div class="sec-lead">이 자료집을 같이 올리고 아래처럼 물어보세요. <b>파란 부분만</b> 내 숫자로 바꾸면 됩니다.</div>
+
+  <div class="pbox">
+    <div class="ph">① 유지 vs 해지 판단</div>
+    <pre id="p1">첨부한 자료집(2026년 8월 3일 세제개편안 기준)을 바탕으로
+내 상황에 맞는 선택을 알려줘.
+
+내 ISA 만기는 <span class="fill-in">○○년 ○월</span>이고,
+가입일은 <span class="fill-in">○○년 ○월</span>이야.
+현재 투자원금은 <span class="fill-in">○○만원</span>, 누적 수익은 <span class="fill-in">○○만원</span>.
+올해 추가로 넣을 수 있는 여유자금은 <span class="fill-in">○○만원</span>이야.
+
+기존 ISA를 유지·연장하는 게 나은지, 만기 후 신규 가입이 나은지
+이유까지 설명해줘. 자료집에 없는 내용은 추측하지 말고
+"모른다"고 말해줘.</pre>
+    <button class="copy" data-t="p1">📋 복사하기</button>
+  </div>
+
+  <div class="pbox">
+    <div class="ph">② 올해 이월 한도 소진 판단</div>
+    <pre id="p2">첨부한 자료집 기준으로 계산 좀 도와줘.
+
+내 ISA는 <span class="fill-in">○○년 ○월</span>에 가입했고,
+지금까지 총 <span class="fill-in">○○만원</span>을 납입했어.
+올해 안에 추가로 쓸 수 있는 여유자금은 <span class="fill-in">○○만원</span>이야.
+
+2026년 12월 31일까지 이월 한도를 소진하는 게 나한테
+실익이 있는지, 있다면 얼마를 넣는 게 적정한지 판단해줘.
+정확한 한도는 증권사 앱 숫자가 우선이라는 점도 같이 짚어줘.</pre>
+    <button class="copy" data-t="p2">📋 복사하기</button>
+  </div>
+
+</section>
+
+<div class="src">
+  <b>출처</b><br>
+  · 기획재정부 「2026년 세제개편안」 (2026.8.3 세제발전심의위원회 발표)<br>
+  · 조세특례제한법 상 ISA 과세특례 현행 규정<br><br>
+  <b>기준일</b> 2026년 8월 8일<br>
+  <b>주의</b> 본 자료는 <b>정부 발표안</b>을 정리한 것으로 국회 통과 전입니다. 심의 과정에서 내용이 변경·삭제될 수 있습니다.<br>
+  <b>고지</b> 특정 금융상품·증권사·종목에 대한 추천이 아니며, 투자 판단과 그 결과는 본인에게 귀속됩니다.
+</div>
+
+<footer>
+  저장해두고 <span style="color:var(--gold);font-weight:700">내 만기일부터</span> 확인해보세요<br><br>
+  <span class="fb">🪙 돈까치 @donkkachi</span><br>
+  몰라서 손해 보는 돈, 물어다 주는 까치
+</footer>
+</div>
+
+<script>
+function flash(b, msg){
+  if(b._t) clearTimeout(b._t);
+  if(!b._o) b._o = b.textContent;
+  b.textContent = msg;
+  b._t = setTimeout(function(){ b.textContent = b._o; }, 1800);
+}
+function selectNode(el){
+  var r = document.createRange();
+  r.selectNodeContents(el);
+  var s = window.getSelection();
+  s.removeAllRanges();
+  s.addRange(r);
+}
+function legacyCopy(text){
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.setAttribute('readonly','');
+  ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;font-size:16px';
+  document.body.appendChild(ta);
+  var ok = false;
+  try{
+    ta.focus();
+    ta.select();
+    ta.setSelectionRange(0, text.length);
+    ok = document.execCommand('copy');
+  }catch(e){ ok = false; }
+  document.body.removeChild(ta);
+  return ok;
+}
+function doCopy(b){
+  var el = document.getElementById(b.dataset.t);
+  if(!el) return;
+  var text = el.innerText;
+  var fail = function(){
+    if(legacyCopy(text)){ flash(b,'\u2705 \ubcf5\uc0ac\ub410\uc5b4\uc694'); }
+    else { selectNode(el); flash(b,'\ud83d\udc46 \uae00\uc790\ub97c \uae38\uac8c \ub20c\ub7ec \ubcf5\uc0ac\ud558\uc138\uc694'); }
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text)
+      .then(function(){ flash(b,'\u2705 \ubcf5\uc0ac\ub410\uc5b4\uc694'); })
+      .catch(fail);
+  } else { fail(); }
+}
+document.querySelectorAll('.cp,.copy').forEach(function(b){
+  b.addEventListener('click', function(){ doCopy(b); });
+});
+
+document.querySelectorAll('.navbtn').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.go);
+    if(!el) return;
+    var nav=document.querySelector('nav');
+    var off=(nav?nav.offsetHeight:0)+12;
+    var y=el.getBoundingClientRect().top+window.pageYOffset-off;
+    window.scrollTo({top:y,behavior:'smooth'});
+  });
+});
+
+// checklist + coin progress
+var chks = document.querySelectorAll('.chk');
+var fill = document.getElementById('fill'), cnt = document.getElementById('cnt');
+function sync(){
+  var n = document.querySelectorAll('.chk.on').length;
+  fill.style.width = (n/chks.length*100) + '%';
+  cnt.textContent = n + ' / ' + chks.length;
+}
+chks.forEach(function(c){ c.addEventListener('click', function(){ c.classList.toggle('on'); sync(); }); });
+sync();
+
+// worksheet
+var yrs = document.getElementById('yrs'), paid = document.getElementById('paid');
+var res = document.getElementById('res'), cap = document.getElementById('cap');
+function calc(){
+  var y = parseInt(yrs.value, 10), p = parseInt(paid.value, 10);
+  if (isNaN(y) || isNaN(p) || y < 0 || p < 0) {
+    res.textContent = '— 만원';
+    cap.textContent = '올해 안에 추가로 넣을 수 있는 대략적인 금액';
+    return;
+  }
+  if (y > 4) y = 4;                       // carry-forward caps at 4 elapsed years
+  var total = 2000 * (1 + y);             // annual 20M x (1 + elapsed years)
+  if (total > 10000) total = 10000;       // lifetime cap 100M
+  var left = total - p;
+  if (left < 0) left = 0;
+  res.textContent = left.toLocaleString() + ' 만원';
+  cap.textContent = left > 0
+    ? '2026년 12월 31일까지 넣을 수 있는 대략적인 금액이에요'
+    : '이미 한도를 채우셨어요 — 증권사 앱에서 한 번 더 확인해보세요';
+}
+yrs.addEventListener('input', calc);
+paid.addEventListener('input', calc);
+
+// copy buttons
+</script>
+
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a>
+</div>
+
+<a href="https://www.instagram.com/donkkachi/" style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">🪙 돈까치 팔로우하기</a>
+</body>
+</html>
