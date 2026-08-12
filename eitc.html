@@ -98,6 +98,14 @@ hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
     <span>단, 지급액의 95%만 받고 8월 27일 일괄지급엔 포함되지 않아요</span></div></div>
 
   <div class="warn" style="margin-top:14px">
+    <h4>이 자료집은 3편짜리 시리즈예요</h4>
+    <p><b>1편(오늘)</b> 8월 27일에 들어옵니다 · 누가 받는지<br>
+    <b>2편(내일)</b> 통장에 적게 들어온 이유<br>
+    <b>3편</b> 못 받았다면, 12월 1일까지<br><br>
+    급하신 분을 위해 ④번에 <b>2편 내용을 미리</b> 넣어뒀어요.</p>
+  </div>
+
+  <div class="warn" style="margin-top:14px">
     <h4>이건 대출이 아닙니다</h4>
     <p>일하지만 소득이 적은 가구에 국가가 지급하는 돈이에요. 갚지 않아도 되고,
     받았다고 해서 다른 복지 혜택이 자동으로 줄어들지도 않습니다.</p>
@@ -151,17 +159,50 @@ hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
 <section id="s4">
   <div class="sec-no">SECTION ④</div>
   <div class="sec-t">생각보다 적게 들어왔다면</div>
-  <div class="sec-lead">잘못 들어온 게 아니라, 정해진 사유로 깎인 경우가 대부분입니다.</div>
+  <div class="sec-lead">잘못 들어온 게 아니라 정해진 사유로 깎인 경우가 대부분입니다.</div>
+
   <table>
     <tr><th>사유</th><th>어떻게 되나</th></tr>
-    <tr><td>가구 재산 1억 7천만 원 이상</td><td>지급액의 <b>50% 감액</b></td></tr>
-    <tr><td>체납된 국세가 있음</td><td>지급액의 <b>최대 30%</b>까지 먼저 충당</td></tr>
+    <tr><td>가구 재산 1억 7천만 원 이상<br>~ 2억 4천만 원 미만</td><td>산정액의 <b>50%만 지급</b><br>330만 원이면 165만 원</td></tr>
     <tr><td>가구 재산 2억 4천만 원 이상</td><td>아예 <b>지급 대상 제외</b></td></tr>
-    <tr><td>기한후신청</td><td>지급액의 <b>95%</b>만 지급</td></tr>
+    <tr><td>체납된 국세가 있음</td><td>지급액의 <b>최대 30%</b>까지 먼저 충당</td></tr>
+    <tr><td>기한후신청</td><td>산정액의 <b>95%</b>만 지급</td></tr>
   </table>
+
   <div class="warn">
-    <h4>재산 기준일은 2025년 6월 1일</h4>
-    <p>지금 재산이 아니라 그 시점 기준입니다. 그 뒤에 집을 팔았거나 예금이 줄었어도 반영되지 않아요.</p>
+    <h4>여기서 다들 놀랍니다 — 빚은 안 빼줍니다</h4>
+    <p>5억짜리 집에 대출이 4억이면 내 돈은 1억이지만, <b>국세청은 5억 전부를 재산으로 봅니다.</b><br>
+    주택담보대출·전세자금대출·신용대출 <b>모두 차감되지 않아요.</b> 순자산이 아니라 가진 자산 전체를 보는 구조입니다.</p>
+  </div>
+
+  <div class="warn">
+    <h4>재산에 들어가는 것</h4>
+    <p>주택 · 토지 · 건축물 · 전세보증금(임차보증금) · 자동차(시가표준액) · 예금과 주식 등 금융자산<br><br>
+    기준일은 지금이 아니라 <b>2025년 6월 1일</b>입니다. 그 뒤에 집을 팔았거나 예금이 줄었어도 반영되지 않아요.</p>
+  </div>
+
+  <div class="warn">
+    <h4>같이 사는 사람의 재산도 합쳐집니다</h4>
+    <p>부모·자녀 같은 직계존비속과 함께 살면 그 집·차·예금까지 <b>모두 합산</b>됩니다.<br>
+    다만 <b>형제·자매는 같이 살아도 합산되지 않습니다.</b> 별도 가구로 봐요.</p>
+  </div>
+
+  <div class="card ws" style="margin-top:14px">
+    <label style="display:block;font-size:13.5px;font-weight:700;margin-bottom:5px">가구원 재산 합계 (만원, 대출 빼지 말고)</label>
+    <input type="number" id="asset" inputmode="numeric" placeholder="예: 15000"
+      style="width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;font-size:16px;background:#fff;font-family:inherit;margin-bottom:13px;color:var(--ink)">
+    <label style="display:block;font-size:13.5px;font-weight:700;margin-bottom:5px">산정된 장려금 (만원, 모르면 비워두세요)</label>
+    <input type="number" id="amt" inputmode="numeric" placeholder="예: 330"
+      style="width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;font-size:16px;background:#fff;font-family:inherit;margin-bottom:13px;color:var(--ink)">
+    <div class="ws-out" style="background:var(--ink);color:var(--cream);border-radius:14px;padding:17px;text-align:center">
+      <div class="big" id="ares" style="font-size:26px;font-weight:800;color:var(--gold);letter-spacing:-.5px">— </div>
+      <div class="cap" id="acap" style="font-size:13px;color:#A8A29A;margin-top:6px;line-height:1.55">재산 구간에 따른 지급 비율이 나옵니다</div>
+    </div>
+  </div>
+  <div class="warn">
+    <h4>참고용입니다</h4>
+    <p>실제 재산 평가액은 국세청 기준(공시가격·시가표준액 등)으로 계산되며, 체납 여부에 따라 또 달라집니다.
+    정확한 금액은 <b>홈택스 결정 금액</b>으로 확인하세요.</p>
   </div>
   <hr class="d">
 </section>
@@ -249,5 +290,23 @@ function sync(){
 }
 qs.forEach(function(q){q.addEventListener('click',function(){q.classList.toggle('on');sync();});});
 sync();
+
+var asset=document.getElementById('asset'),amt=document.getElementById('amt'),
+    ares=document.getElementById('ares'),acap=document.getElementById('acap');
+function acalc(){
+  var a=parseFloat(asset.value), m=parseFloat(amt.value);
+  if(isNaN(a)||a<0){ares.textContent='—';acap.textContent='재산 구간에 따른 지급 비율이 나옵니다';return;}
+  var rate, label;
+  if(a>=24000){rate=0;label='재산 2억 4천만 원 이상 — 지급 대상 제외';}
+  else if(a>=17000){rate=0.5;label='재산 1억 7천만 원 이상 — 50% 감액 구간';}
+  else {rate=1;label='재산 1억 7천만 원 미만 — 전액 지급 구간';}
+  if(!isNaN(m)&&m>0){
+    ares.textContent = rate===0 ? '지급 대상 아님' : ('약 '+Math.round(m*rate).toLocaleString()+' 만원');
+  } else {
+    ares.textContent = rate===0 ? '지급 대상 아님' : (Math.round(rate*100)+'% 지급');
+  }
+  acap.textContent = label + ' · 체납이 있으면 여기서 추가로 차감됩니다';
+}
+[asset,amt].forEach(function(el){el.addEventListener('input',acalc);});
 </script>
 </body></html>
