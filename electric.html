@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>전기요금 할인, 우리 집도 될까 | 돈까치</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--cream:#F2EDE3;--paper:#FFFCF6;--ink:#23252B;--sub:#6B6357;--gold:#E0B93F;--orange:#C8603C;--red:#E1464B;--green:#2E8C5A;--blue:#5674C8;--line:#E4DCCB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-bottom:78px;font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,'Apple SD Gothic Neo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto}
+.hero{background:var(--ink);color:var(--cream);padding:38px 22px 30px}
+.chip{display:inline-block;background:var(--gold);color:var(--ink);font-size:13px;font-weight:800;padding:6px 13px;border-radius:999px}
+.hero h1{font-size:29px;line-height:1.32;font-weight:800;margin-top:16px;letter-spacing:-.7px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .by{margin-top:14px;font-size:13px;color:#A8A29A}
+.hero .stamp{margin-top:18px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 14px;font-size:13.5px;color:#E8E2D6;line-height:1.55}
+.hero .stamp b{color:var(--gold)}
+nav{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);padding:11px 0;overflow-x:auto;white-space:nowrap}
+nav .navbtn{display:inline-block;font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;margin-left:10px;padding:8px 15px;background:var(--paper);border:1px solid var(--line);border-radius:999px;font-size:13.5px;font-weight:700;color:var(--ink)}
+section{scroll-margin-top:76px;padding:34px 20px 6px}
+.sec-no{font-size:12px;font-weight:800;color:var(--sub);letter-spacing:1.2px}
+.sec-t{font-size:23px;font-weight:800;margin:6px 0 18px;letter-spacing:-.5px;line-height:1.35}
+.sec-lead{font-size:14.5px;color:var(--sub);margin:-10px 0 18px;line-height:1.6}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px 16px;margin-bottom:11px}
+.sum{display:flex;gap:13px;align-items:flex-start}
+.sum .n{flex:none;width:27px;height:27px;border-radius:50%;background:var(--ink);color:var(--gold);font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sum .tx{font-size:15.5px;font-weight:600;line-height:1.55}
+.sum .tx b{color:var(--red);font-weight:800}
+.sum .tx span{display:block;font-size:13px;color:var(--sub);font-weight:500;margin-top:3px}
+.q{display:flex;gap:13px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:15px 16px;margin-bottom:9px;cursor:pointer;user-select:none}
+.q.on{background:#FDF6E6;border-color:var(--gold)}
+.q .bx{flex:none;width:24px;height:24px;border:2px solid var(--orange);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;margin-top:2px}
+.q.on .bx{background:var(--orange)}
+.q .t{font-size:15.5px;font-weight:800;line-height:1.45}
+.q .d{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.6}
+.coinbar{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:13px}
+.coinbar .top{display:flex;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:9px}
+.track{height:11px;background:#E7E0D1;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:99px;transition:width .35s ease}
+.verdict{border-radius:15px;padding:17px;text-align:center;margin-top:4px;background:#EDE7DA}
+.verdict .v{font-size:18px;font-weight:800}
+.verdict .s{font-size:13.5px;color:var(--sub);margin-top:6px;line-height:1.6}
+.ws label{display:block;font-size:13.5px;font-weight:700;margin-bottom:5px}
+.ws input,.ws select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;font-size:16px;background:#fff;font-family:inherit;margin-bottom:13px;color:var(--ink)}
+.ws-out{background:var(--ink);color:var(--cream);border-radius:14px;padding:17px;text-align:center}
+.ws-out .big{font-size:31px;font-weight:800;color:var(--gold);letter-spacing:-1px}
+.ws-out .cap{font-size:13px;color:#A8A29A;margin-top:6px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:4px 0 12px;font-size:14px}
+th{background:#EDE7DA;text-align:left;padding:10px 12px;font-weight:800;font-size:13px;color:var(--sub)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+td:first-child{font-weight:700;width:38%}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}
+summary{padding:15px 16px;font-size:15px;font-weight:800;cursor:pointer;list-style:none;line-height:1.5}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'Q. ';color:var(--red);font-weight:800}
+details[open] summary{border-bottom:1px solid var(--line)}
+details p{padding:14px 16px;font-size:14px;color:var(--sub);line-height:1.75}
+details p::before{content:'A. ';color:var(--blue);font-weight:800}
+.warn{background:#FDF3DD;border:1px solid #EBD9A4;border-radius:14px;padding:15px 16px;margin-bottom:11px}
+.warn h4{font-size:14.5px;font-weight:800;color:#9A7212;margin-bottom:8px}
+.warn p{font-size:13.5px;color:var(--sub);line-height:1.7}
+.src{padding:26px 20px 16px;font-size:12.5px;color:var(--sub);line-height:1.85}
+.src b{color:var(--ink)}
+footer{background:var(--ink);color:#A8A29A;text-align:center;padding:30px 20px 38px;font-size:13px;line-height:1.8}
+footer .fb{color:var(--gold);font-weight:800;font-size:15px}
+hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
+</style>
+</head>
+<body><div class="wrap">
+
+<div class="hero">
+  <span class="chip">전기요금 복지할인</span>
+  <h1>전기요금 할인,<br><em>우리 집도 될까</em></h1>
+  <div class="by">@donkkachi · 몰라서 손해 보는 돈, 물어다 주는 까치</div>
+  <div class="stamp">
+    한전 복지할인은 <b>신청해야만 적용됩니다.</b><br>
+    대상이어도 자동으로 깎아주지 않고, <b>지난 요금은 소급되지 않아요.</b>
+  </div>
+</div>
+
+<nav>
+  <button type="button" class="navbtn" data-go="s1">① 요약</button>
+  <button type="button" class="navbtn" data-go="s2">② 자가진단</button>
+  <button type="button" class="navbtn" data-go="s3">③ 할인율</button>
+  <button type="button" class="navbtn" data-go="s4">④ 신청 순서</button>
+  <button type="button" class="navbtn" data-go="s5">⑤ 놓치기 쉬운 것</button>
+  <button type="button" class="navbtn" data-go="s6">⑥ FAQ</button>
+</nav>
+
+<section id="s1">
+  <div class="sec-no">SECTION ①</div>
+  <div class="sec-t">30초 요약</div>
+  <div class="card sum"><div class="n">1</div><div class="tx">복지할인은 <b>신청해야만</b> 적용돼요
+    <span>대상이어도 자동으로 깎이지 않습니다</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">매달 요금의 <b>30%, 최대 16,000원</b>
+    <span>다자녀·대가족·출산가구 기준</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx">지난 요금은 <b>소급되지 않아요</b>
+    <span>신청한 달부터만 깎이기 시작합니다</span></div></div>
+
+  <div class="warn" style="margin-top:14px">
+    <h4>여름에 특히 아까운 이유</h4>
+    <p>누진제 때문에 여름 요금이 가장 높은데, 할인은 <b>요금이 높을수록 금액이 커집니다.</b>
+    다만 월 16,000원 한도가 있어서 요금이 약 53,000원을 넘으면 할인액은 고정돼요.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s2">
+  <div class="sec-no">SECTION ②</div>
+  <div class="sec-t">우리 집이 대상일까</div>
+  <div class="sec-lead">해당하는 것만 눌러보세요. 하나라도 켜지면 신청 대상일 가능성이 있습니다.</div>
+
+  <div class="coinbar">
+    <div class="top"><span>까치 주머니</span><span id="cnt">0 / 4</span></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+
+  <div class="q"><div class="bx">V</div><div><div class="t">자녀가 3명 이상이다</div>
+    <div class="d">다자녀 가구 할인 대상입니다. 만 18세 미만 자녀 기준이에요</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">주민등록상 가구원이 5명 이상이다</div>
+    <div class="d">대가족 할인 대상입니다. 함께 사는 부모님도 포함돼요</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">최근에 출산했다</div>
+    <div class="d">출산가구 할인 대상입니다. 출생신고와 동시에 신청할 수 있어요</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">고지서 계약종별이 '주택용'이다</div>
+    <div class="d">이건 공통 조건이에요. 산업용·일반용은 대상이 아닙니다</div></div></div>
+
+  <div class="verdict" id="vd"><div class="v">항목을 눌러보세요</div><div class="s">해당하는 것을 골라주세요</div></div>
+  <hr class="d">
+</section>
+
+<section id="s3">
+  <div class="sec-no">SECTION ③</div>
+  <div class="sec-t">얼마나 깎이나</div>
+  <table>
+    <tr><th>유형</th><th>할인</th></tr>
+    <tr><td>다자녀 (자녀 3명 이상)</td><td>월 요금의 <b>30%</b><br>최대 16,000원</td></tr>
+    <tr><td>대가족 (가구원 5명 이상)</td><td>월 요금의 <b>30%</b><br>최대 16,000원</td></tr>
+    <tr><td>출산가구</td><td>월 요금의 <b>30%</b><br>최대 16,000원</td></tr>
+    <tr><td>기초생활수급자·차상위<br>장애인·유공자</td><td>별도의 복지할인 제도가<br>따로 있습니다</td></tr>
+  </table>
+  <div class="warn">
+    <h4>한도가 있습니다</h4>
+    <p>월 전기요금이 약 53,000원을 넘으면 30%를 계산해도 16,000원까지만 깎입니다.
+    여름에 누진제로 요금이 크게 올라도 할인 한도는 그대로예요.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s4">
+  <div class="sec-no">SECTION ④</div>
+  <div class="sec-t">신청 순서</div>
+  <div class="sec-lead">3분이면 끝납니다. 한전ON이 가장 빠릅니다.</div>
+  <table>
+    <tr><th>순서</th><th>할 일</th></tr>
+    <tr><td>1</td><td>고지서에서 <b>계약종별이 '주택용'</b>인지 확인</td></tr>
+    <tr><td>2</td><td><b>한전ON</b> 앱 또는 홈페이지 접속 (고객센터 123도 가능)</td></tr>
+    <tr><td>3</td><td>복지할인 신청 메뉴에서 해당 유형 선택</td></tr>
+    <tr><td>4</td><td>가족관계증명서 등 요구 서류 제출</td></tr>
+    <tr><td>5</td><td>다음 달 고지서에서 할인 적용 여부 확인</td></tr>
+  </table>
+  <div class="warn">
+    <h4>출산가구는 더 간단합니다</h4>
+    <p>주민센터에서 출생신고할 때 <b>행복출산 원스톱서비스</b>로 전기요금 감면을 함께 신청할 수 있어요.
+    이미 출생신고를 하셨다면 한전ON에서 따로 신청하시면 됩니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s5">
+  <div class="sec-no">SECTION ⑤</div>
+  <div class="sec-t">놓치기 쉬운 것 3가지</div>
+
+  <div class="warn">
+    <h4>1. 소급이 안 됩니다</h4>
+    <p>작년에도 대상이었더라도 지난 요금은 돌려받을 수 없습니다.
+    <b>신청한 달부터만</b> 할인이 시작돼요. 하루라도 빨리 신청하는 게 유일한 방법입니다.</p>
+  </div>
+
+  <div class="warn">
+    <h4>2. 이사하면 끊깁니다</h4>
+    <p>주소나 전기사용 계약이 바뀌면 기존 할인이 자동으로 따라오지 않습니다.
+    이사 후에는 <b>새 주소에서 다시 신청</b>했는지 꼭 확인하세요.</p>
+  </div>
+
+  <div class="warn">
+    <h4>3. 중복 적용이 안 됩니다</h4>
+    <p>다자녀와 대가족처럼 여러 조건에 해당해도 <b>하나만 적용</b>됩니다.
+    기초수급자·장애인 할인을 이미 받고 있다면 어느 쪽이 유리한지 비교해보세요.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s6">
+  <div class="sec-no">SECTION ⑥</div>
+  <div class="sec-t">자주 묻는 질문</div>
+  <details><summary>전세나 월세도 되나요?</summary>
+    <p>됩니다. 소유 여부가 아니라 <b>실제 거주하며 전기요금을 내는 사람</b>이 기준이에요.
+    다만 고지서가 본인 명의여야 신청이 수월하니, 명의가 집주인으로 되어 있다면 확인이 필요합니다.</p></details>
+  <details><summary>아파트 관리비에 포함돼 있는데요?</summary>
+    <p>아파트는 단지가 한전과 일괄 계약한 경우가 많습니다. 이때는 한전이 아니라 <b>관리사무소를 통해</b> 신청해야 할 수 있어요. 관리사무소에 먼저 문의해보세요.</p></details>
+  <details><summary>자녀가 크면 할인이 끊기나요?</summary>
+    <p>다자녀 할인은 자녀 연령 기준이 있어 조건에서 벗어나면 종료됩니다. 다만 가구원이 5명 이상이면 대가족 할인으로 이어질 수 있어요.</p></details>
+  <details><summary>신청하면 언제부터 적용되나요?</summary>
+    <p>보통 다음 달 고지서부터 반영됩니다. 신청 후 다음 고지서에서 할인 항목이 있는지 확인해보세요.</p></details>
+</section>
+
+<div class="src">
+  <b>출처</b><br>
+  · 한국전력공사 전기요금 복지할인 안내<br>
+  · 찾기쉬운 생활법령정보 「다자녀가구 전기료 감면」<br><br>
+  <b>기준일</b> 2026년 8월<br>
+  <b>주의</b> 할인 금액과 조건은 가구 자격, 전기사용 계약, 신청 시점에 따라 달라집니다.
+  신청 전 <b>한전ON에서 최종 확인</b>하세요.<br>
+  <b>고지</b> 특정 상품·업체에 대한 추천이 아닙니다.
+</div>
+
+<footer>
+  저장해두고 <span style="color:var(--gold);font-weight:700">다음 고지서 올 때</span> 확인해보세요<br><br>
+  <span class="fb">돈까치 @donkkachi</span><br>
+  몰라서 손해 보는 돈, 물어다 주는 까치
+</footer>
+</div>
+
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a>
+</div>
+<a href="https://www.instagram.com/donkkachi/" style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">돈까치 팔로우하기</a>
+
+<script>
+document.querySelectorAll('.navbtn').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.go); if(!el) return;
+    var nav=document.querySelector('nav');
+    var off=(nav?nav.offsetHeight:0)+12;
+    window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});
+  });
+});
+var qs=document.querySelectorAll('.q'),fill=document.getElementById('fill'),
+    cnt=document.getElementById('cnt'),vd=document.getElementById('vd');
+function sync(){
+  var n=document.querySelectorAll('.q.on').length;
+  var hasType=false, hasHome=false, els=document.querySelectorAll('.q');
+  for(var i=0;i<3;i++){ if(els[i].classList.contains('on')) hasType=true; }
+  if(els[3].classList.contains('on')) hasHome=true;
+  fill.style.width=(n/qs.length*100)+'%';
+  cnt.textContent=n+' / '+qs.length;
+  if(hasType&&hasHome){
+    vd.innerHTML='<div class="v" style="color:#2E8C5A">신청 대상일 가능성이 높아요</div>'+
+      '<div class="s">④번 순서대로 한전ON에서 신청해보세요. 소급이 안 되니 빠를수록 좋습니다</div>';
+  }else if(hasType&&!hasHome){
+    vd.innerHTML='<div class="v" style="color:#E1464B">고지서부터 확인해보세요</div>'+
+      '<div class="s">계약종별이 주택용이어야 합니다. 아파트라면 관리사무소에 문의해보세요</div>';
+  }else if(n===0){
+    vd.innerHTML='<div class="v">항목을 눌러보세요</div><div class="s">해당하는 것을 골라주세요</div>';
+  }else{
+    vd.innerHTML='<div class="v">유형이 하나는 있어야 해요</div>'+
+      '<div class="s">다자녀·대가족·출산가구 중 해당하는 게 없다면 기초수급·장애인 할인을 확인해보세요</div>';
+  }
+}
+qs.forEach(function(q){q.addEventListener('click',function(){q.classList.toggle('on');sync();});});
+sync();
+</script>
+</body></html>
