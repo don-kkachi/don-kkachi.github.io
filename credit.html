@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>신용점수, 조회하면 떨어질까 | 돈까치</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--cream:#F2EDE3;--paper:#FFFCF6;--ink:#23252B;--sub:#6B6357;--gold:#E0B93F;--orange:#C8603C;--red:#E1464B;--green:#2E8C5A;--blue:#5674C8;--line:#E4DCCB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-bottom:78px;font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,'Apple SD Gothic Neo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto}
+.hero{background:var(--ink);color:var(--cream);padding:38px 22px 30px}
+.chip{display:inline-block;background:var(--gold);color:var(--ink);font-size:13px;font-weight:800;padding:6px 13px;border-radius:999px}
+.hero h1{font-size:29px;line-height:1.32;font-weight:800;margin-top:16px;letter-spacing:-.7px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .by{margin-top:14px;font-size:13px;color:#A8A29A}
+.hero .stamp{margin-top:18px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 14px;font-size:13.5px;color:#E8E2D6;line-height:1.55}
+.hero .stamp b{color:var(--gold)}
+nav{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);padding:11px 0;overflow-x:auto;white-space:nowrap}
+nav .navbtn{display:inline-block;font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;margin-left:10px;padding:8px 15px;background:var(--paper);border:1px solid var(--line);border-radius:999px;font-size:13.5px;font-weight:700;color:var(--ink)}
+section{scroll-margin-top:76px;padding:34px 20px 6px}
+.sec-no{font-size:12px;font-weight:800;color:var(--sub);letter-spacing:1.2px}
+.sec-t{font-size:23px;font-weight:800;margin:6px 0 18px;letter-spacing:-.5px;line-height:1.35}
+.sec-lead{font-size:14.5px;color:var(--sub);margin:-10px 0 18px;line-height:1.6}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px 16px;margin-bottom:11px}
+.sum{display:flex;gap:13px;align-items:flex-start}
+.sum .n{flex:none;width:27px;height:27px;border-radius:50%;background:var(--ink);color:var(--gold);font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sum .tx{font-size:15.5px;font-weight:600;line-height:1.55}
+.sum .tx b{color:var(--red);font-weight:800}
+.sum .tx span{display:block;font-size:13px;color:var(--sub);font-weight:500;margin-top:3px}
+.q{display:flex;gap:13px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:15px 16px;margin-bottom:9px;cursor:pointer;user-select:none}
+.q.on{background:#FDF6E6;border-color:var(--gold)}
+.q .bx{flex:none;width:24px;height:24px;border:2px solid var(--orange);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;margin-top:2px}
+.q.on .bx{background:var(--orange)}
+.q .t{font-size:15.5px;font-weight:800;line-height:1.45}
+.q .d{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.6}
+.coinbar{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:13px}
+.coinbar .top{display:flex;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:9px}
+.track{height:11px;background:#E7E0D1;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:99px;transition:width .35s ease}
+.verdict{border-radius:15px;padding:17px;text-align:center;margin-top:4px;background:#EDE7DA}
+.verdict .v{font-size:18px;font-weight:800}
+.verdict .s{font-size:13.5px;color:var(--sub);margin-top:6px;line-height:1.6}
+.ws label{display:block;font-size:13.5px;font-weight:700;margin-bottom:5px}
+.ws input,.ws select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;font-size:16px;background:#fff;font-family:inherit;margin-bottom:13px;color:var(--ink)}
+.ws-out{background:var(--ink);color:var(--cream);border-radius:14px;padding:17px;text-align:center}
+.ws-out .big{font-size:31px;font-weight:800;color:var(--gold);letter-spacing:-1px}
+.ws-out .cap{font-size:13px;color:#A8A29A;margin-top:6px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:4px 0 12px;font-size:14px}
+th{background:#EDE7DA;text-align:left;padding:10px 12px;font-weight:800;font-size:13px;color:var(--sub)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+td:first-child{font-weight:700;width:38%}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}
+summary{padding:15px 16px;font-size:15px;font-weight:800;cursor:pointer;list-style:none;line-height:1.5}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'Q. ';color:var(--red);font-weight:800}
+details[open] summary{border-bottom:1px solid var(--line)}
+details p{padding:14px 16px;font-size:14px;color:var(--sub);line-height:1.75}
+details p::before{content:'A. ';color:var(--blue);font-weight:800}
+.warn{background:#FDF3DD;border:1px solid #EBD9A4;border-radius:14px;padding:15px 16px;margin-bottom:11px}
+.warn h4{font-size:14.5px;font-weight:800;color:#9A7212;margin-bottom:8px}
+.warn p{font-size:13.5px;color:var(--sub);line-height:1.7}
+.src{padding:26px 20px 16px;font-size:12.5px;color:var(--sub);line-height:1.85}
+.src b{color:var(--ink)}
+footer{background:var(--ink);color:#A8A29A;text-align:center;padding:30px 20px 38px;font-size:13px;line-height:1.8}
+footer .fb{color:var(--gold);font-weight:800;font-size:15px}
+hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
+</style>
+</head>
+<body><div class="wrap">
+
+<div class="hero">
+  <span class="chip">1분 확인</span>
+  <h1>신용점수,<br><em>조회하면 떨어질까?</em></h1>
+  <div class="by">@donkkachi · 몰라서 손해 보는 돈, 물어다 주는 까치</div>
+  <div class="stamp">
+    <b>아닙니다. 2011년 10월에 없어진 규칙이에요.</b><br>
+    본인 조회든 금융사 조회든 점수에 영향을 주지 않습니다. 매일 봐도 괜찮아요.
+  </div>
+</div>
+
+<nav>
+  <button type="button" class="navbtn" data-go="s1">① 요약</button>
+  <button type="button" class="navbtn" data-go="s2">② 무료 조회</button>
+  <button type="button" class="navbtn" data-go="s3">③ 오해 5가지</button>
+  <button type="button" class="navbtn" data-go="s4">④ 올리는 법</button>
+  <button type="button" class="navbtn" data-go="s5">⑤ 체크리스트</button>
+  <button type="button" class="navbtn" data-go="s6">⑥ FAQ</button>
+</nav>
+
+<section id="s1">
+  <div class="sec-no">SECTION ①</div>
+  <div class="sec-t">30초 요약</div>
+  <div class="card sum"><div class="n">1</div><div class="tx">조회는 <b>점수에 영향이 없습니다</b>
+    <span>2011년 10월부터 조회 이력이 평가에서 빠졌어요</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">점수는 <b>1점 ~ 1000점</b>, 등급제는 폐지됐어요
+    <span>2021년 1월부터 점수제로 바뀌었습니다</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx">평가사가 <b>두 곳</b>이라 점수가 다릅니다
+    <span>NICE평가정보와 KCB. 같은 사람도 수십 점씩 차이 나요</span></div></div>
+
+  <div class="warn" style="margin-top:14px">
+    <h4>신용점수가 뭘 나타내나</h4>
+    <p>앞으로 1년 안에 <b>90일 이상 장기 연체가 생길 가능성</b>을 통계로 나타낸 수치입니다.
+    1000점에 가까울수록 연체 위험이 낮다고 평가돼요.<br><br>
+    은행과 카드사는 이 점수를 <b>참고 지표 중 하나로</b> 쓸 뿐, 자체 심사 모형으로 최종 판단합니다.
+    점수가 높다고 무조건 유리한 조건이 나오는 건 아니에요.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s2">
+  <div class="sec-no">SECTION ②</div>
+  <div class="sec-t">무료로 보는 곳</div>
+  <div class="sec-lead">돈 낼 필요 없습니다. 공식 앱에서만 확인하세요.</div>
+  <table>
+    <tr><th>구분</th><th>어디서</th></tr>
+    <tr><td>금융 앱</td><td>토스 · 카카오뱅크 · 네이버페이 · 뱅크샐러드</td></tr>
+    <tr><td>평가사 직접</td><td>나이스지키미(NICE) · 올크레딧(KCB)</td></tr>
+    <tr><td>은행 앱</td><td>대부분의 시중은행 앱에서도 조회 가능</td></tr>
+  </table>
+  <div class="warn">
+    <h4>두 곳 다 봐야 정확합니다</h4>
+    <p>NICE와 KCB는 산정 방식이 달라 <b>같은 사람도 점수가 크게 차이</b> 납니다.
+    어느 회사 점수인지 빼고 "몇 점이면 안전"이라고 말하는 정보는 그 자체로 부정확해요.</p>
+  </div>
+  <div class="danger">
+    <h4>문자로 온 링크는 누르지 마세요</h4>
+    <p>"무료 신용조회" 문자를 가장한 피싱이 많습니다.
+    반드시 <b>앱을 직접 실행</b>해서 확인하세요.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s3">
+  <div class="sec-no">SECTION ③</div>
+  <div class="sec-t">흔한 오해 5가지</div>
+
+  <div class="warn">
+    <h4>1. "조회하면 점수가 떨어진다"</h4>
+    <p>사실이 아닙니다. 2011년 10월 금융위원회가 규칙을 바꿔 <b>조회 이력이 평가에서 제외</b>됐어요.
+    본인 조회든 금융사 조회든 마찬가지입니다.<br><br>
+    다만 <b>짧은 기간에 여러 금융사에서 실제로 대출을 실행</b>하면 부채 항목이 나빠집니다.
+    조회와 실행은 다른 이야기예요.</p>
+  </div>
+
+  <div class="warn">
+    <h4>2. "카드가 많으면 점수가 낮다"</h4>
+    <p>카드 개수 자체는 관련이 없습니다. 중요한 건 <b>한도 대비 얼마나 썼는지</b>예요.</p>
+  </div>
+
+  <div class="warn">
+    <h4>3. "대출이 있으면 무조건 마이너스"</h4>
+    <p>아닙니다. 기한 내에 잘 갚으면 <b>오히려 좋은 이력</b>이 됩니다.
+    문제는 대출 자체가 아니라 연체와 과도한 건수예요.</p>
+  </div>
+
+  <div class="warn">
+    <h4>4. "거래 이력이 없으면 만점이다"</h4>
+    <p>반대입니다. 판단할 자료가 없으면 <b>중간 점수부터 시작</b>해요.
+    사회초년생이나 대학생 점수가 낮게 나오는 이유가 이겁니다.</p>
+  </div>
+
+  <div class="warn">
+    <h4>5. "900점 넘으면 특별하다"</h4>
+    <p>이제는 아닙니다. NICE 기준 <b>국민의 절반 가까이가 900점 이상</b>이에요.
+    점수 자체보다 연체 없는 이력이 실질적으로 중요합니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s4">
+  <div class="sec-no">SECTION ④</div>
+  <div class="sec-t">점수를 올리는 법</div>
+  <div class="sec-lead">단기 기술이 아니라 습관입니다.</div>
+  <table>
+    <tr><th>할 일</th><th>왜</th></tr>
+    <tr><td><b>소액도 연체하지 않기</b></td><td>가장 큰 하락 요인. 통신비·공과금도 포함</td></tr>
+    <tr><td><b>대출 건수 줄이기</b></td><td>금액보다 여러 곳에서 빌린 게 더 나쁘게 봄</td></tr>
+    <tr><td><b>카드 한도 대비 사용률 관리</b></td><td>한도를 꽉 채워 쓰면 위험 신호로 읽힘</td></tr>
+    <tr><td><b>현금서비스·리볼빙·카드론 자제</b></td><td>급전이 필요하다는 신호로 해석됨</td></tr>
+    <tr><td><b>비금융 납부실적 제출</b></td><td>통신비·건강보험료 성실납부 이력을 더할 수 있음</td></tr>
+  </table>
+  <div class="warn">
+    <h4>비금융 납부실적이 뭔가요</h4>
+    <p>통신비, 건강보험료, 국민연금, 아파트 관리비 등을 성실히 냈다는 기록입니다.
+    평가사 앱(나이스지키미·올크레딧)에서 직접 제출할 수 있고,
+    금융 거래 이력이 적은 사회초년생에게 특히 도움이 됩니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s5">
+  <div class="sec-no">SECTION ⑤</div>
+  <div class="sec-t">지금 확인할 것</div>
+  <div class="sec-lead">눌러서 하나씩 채워보세요.</div>
+
+  <div class="coinbar">
+    <div class="top"><span>까치 주머니</span><span id="cnt">0 / 4</span></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+  <div class="q"><div class="bx">V</div><div><div class="t">NICE 점수를 확인했다</div>
+    <div class="d">토스·나이스지키미 등에서 조회</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">KCB 점수도 확인했다</div>
+    <div class="d">카카오뱅크·올크레딧 등. 두 점수가 다른 게 정상이에요</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">연체 기록이 없는지 봤다</div>
+    <div class="d">본인도 모르는 소액 연체가 남아 있는 경우가 있어요</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">잘못된 정보가 없는지 확인했다</div>
+    <div class="d">이의가 있으면 평가사 고객센터로 산출근거를 요청할 수 있어요</div></div></div>
+  <div class="verdict" id="vd"><div class="v">항목을 눌러보세요</div><div class="s">네 개를 채우면 점검이 끝납니다</div></div>
+  <hr class="d">
+</section>
+
+<section id="s6">
+  <div class="sec-no">SECTION ⑥</div>
+  <div class="sec-t">자주 묻는 질문</div>
+  <details><summary>대출 비교 플랫폼에서 여러 곳을 알아보면요?</summary>
+    <p>여러 금융사 상품을 한 번에 조회해도 조회 기록은 보통 1건으로 남고, 점수에는 영향이 없습니다.
+    다만 실제로 여러 곳에서 <b>대출을 실행하면</b> 이야기가 달라집니다.</p></details>
+  <details><summary>대출 상담사가 조회 많이 하면 안 좋다던데요?</summary>
+    <p>과거 규칙에 근거한 오래된 안내입니다. 2011년 10월 이후로는 조회 이력이 평가에 반영되지 않아요.</p></details>
+  <details><summary>점수가 갑자기 떨어졌어요</summary>
+    <p>연체, 신규 대출 실행, 카드 사용률 급증 등이 흔한 원인입니다.
+    평가사 앱에서 <b>변동 사유</b>를 확인할 수 있어요.</p></details>
+  <details><summary>점수에 이의가 있으면?</summary>
+    <p>NICE 또는 KCB 고객센터에 <b>산출근거 확인과 이의제기</b>를 요청할 수 있습니다.
+    잘못된 정보가 반영됐다면 정정을 요구하세요.</p></details>
+  <details><summary>몇 점이면 대출이 되나요?</summary>
+    <p>공식적인 승인 기준선은 없습니다. 금융사마다 자체 심사 모형이 있고,
+    신용점수는 참고 지표 중 하나일 뿐이에요. 직장, 소득, 거래 기여도 등도 함께 봅니다.</p></details>
+</section>
+
+<div class="src">
+  <b>출처</b><br>
+  · 금융위원회 신용조회 이력 반영 제외 (2011.10)<br>
+  · NICE평가정보 · KCB 공시 자료<br><br>
+  <b>기준일</b> 2026년 8월<br>
+  <b>주의</b> 평가 기준과 점수 구간은 매년 갱신됩니다. 최신 정보는 각 평가사에서 확인하세요.<br>
+  <b>고지</b> 특정 금융상품·플랫폼에 대한 추천이 아닙니다.
+</div>
+
+<footer>
+  저장해두고 <span style="color:var(--gold);font-weight:700">가끔 한 번씩</span> 확인하세요<br><br>
+  <span class="fb">돈까치 @donkkachi</span><br>
+  몰라서 손해 보는 돈, 물어다 주는 까치
+</footer>
+</div>
+
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a>
+</div>
+<a href="https://www.instagram.com/donkkachi/" style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">돈까치 팔로우하기</a>
+
+<script>
+document.querySelectorAll('.navbtn').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.go); if(!el) return;
+    var nav=document.querySelector('nav');
+    var off=(nav?nav.offsetHeight:0)+12;
+    window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});
+  });
+});
+var qs=document.querySelectorAll('.q'),fill=document.getElementById('fill'),
+    cnt=document.getElementById('cnt'),vd=document.getElementById('vd');
+function sync(){
+  var n=document.querySelectorAll('.q.on').length;
+  fill.style.width=(n/qs.length*100)+'%';
+  cnt.textContent=n+' / '+qs.length;
+  if(n===qs.length){
+    vd.innerHTML='<div class="v" style="color:#2E8C5A">점검 완료예요</div>'+
+      '<div class="s">④번 습관 다섯 가지만 지키면 점수는 알아서 따라옵니다</div>';
+  }else if(n===0){
+    vd.innerHTML='<div class="v">항목을 눌러보세요</div><div class="s">네 개를 채우면 점검이 끝납니다</div>';
+  }else{
+    vd.innerHTML='<div class="v" style="color:#C8603C">아직 '+(qs.length-n)+'개 남았어요</div>'+
+      '<div class="s">조회는 점수에 영향이 없으니 편하게 확인하세요</div>';
+  }
+}
+qs.forEach(function(q){q.addEventListener('click',function(){q.classList.toggle('on');sync();});});
+sync();
+</script>
+</body></html>
