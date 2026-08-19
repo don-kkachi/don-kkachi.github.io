@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>통장에 남은 그 돈, 8월 31일에 사라져요 | 돈까치</title>
+<meta name="description" content="고유가 피해지원금 사용기한 2026년 8월 31일. 잔액 확인 경로, 되는 곳과 안 되는 곳, 마지막 주 함정까지.">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--cream:#F2EDE3;--paper:#FFFCF6;--ink:#23252B;--sub:#6B6357;--gold:#E0B93F;--orange:#C8603C;--red:#E1464B;--green:#2E8C5A;--blue:#5674C8;--line:#E4DCCB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-bottom:78px;font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,'Apple SD Gothic Neo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto}
+.hero{background:var(--ink);color:var(--cream);padding:38px 22px 30px}
+.chip{display:inline-block;background:var(--gold);color:var(--ink);font-size:13px;font-weight:800;padding:6px 13px;border-radius:999px}
+.hero h1{font-size:29px;line-height:1.32;font-weight:800;margin-top:16px;letter-spacing:-.7px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .by{margin-top:14px;font-size:13px;color:#A8A29A}
+.hero .stamp{margin-top:18px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 14px;font-size:13.5px;color:#E8E2D6;line-height:1.55}
+.hero .stamp b{color:var(--gold)}
+nav{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);padding:11px 0;overflow-x:auto;white-space:nowrap}
+nav .navbtn{display:inline-block;font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;margin-left:10px;padding:8px 15px;background:var(--paper);border:1px solid var(--line);border-radius:999px;font-size:13.5px;font-weight:700;color:var(--ink)}
+section{scroll-margin-top:76px;padding:34px 20px 6px}
+.sec-no{font-size:12px;font-weight:800;color:var(--sub);letter-spacing:1.2px}
+.sec-t{font-size:23px;font-weight:800;margin:6px 0 18px;letter-spacing:-.5px;line-height:1.35}
+.sec-lead{font-size:14.5px;color:var(--sub);margin:-10px 0 18px;line-height:1.6}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px 16px;margin-bottom:11px}
+.sum{display:flex;gap:13px;align-items:flex-start}
+.sum .n{flex:none;width:27px;height:27px;border-radius:50%;background:var(--ink);color:var(--gold);font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sum .tx{font-size:15.5px;font-weight:600;line-height:1.55}
+.sum .tx b{color:var(--red);font-weight:800}
+.sum .tx span{display:block;font-size:13px;color:var(--sub);font-weight:500;margin-top:3px}
+.q{display:flex;gap:13px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:15px 16px;margin-bottom:9px;cursor:pointer;user-select:none}
+.q.on{background:#FDF6E6;border-color:var(--gold)}
+.q .bx{flex:none;width:24px;height:24px;border:2px solid var(--orange);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;margin-top:2px}
+.q.on .bx{background:var(--orange)}
+.q .t{font-size:15.5px;font-weight:800;line-height:1.45}
+.q .d{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.6}
+.coinbar{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:13px}
+.coinbar .top{display:flex;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:9px}
+.track{height:11px;background:#E7E0D1;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:99px;transition:width .35s ease}
+.verdict{border-radius:15px;padding:17px;text-align:center;margin-top:4px;background:#EDE7DA}
+.verdict .v{font-size:18px;font-weight:800}
+.verdict .s{font-size:13.5px;color:var(--sub);margin-top:6px;line-height:1.6}
+.ws label{display:block;font-size:13.5px;font-weight:700;margin-bottom:5px}
+.ws input,.ws select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;font-size:16px;background:#fff;font-family:inherit;margin-bottom:13px;color:var(--ink)}
+.ws-out{background:var(--ink);color:var(--cream);border-radius:14px;padding:17px;text-align:center}
+.ws-out .big{font-size:31px;font-weight:800;color:var(--gold);letter-spacing:-1px}
+.ws-out .cap{font-size:13px;color:#A8A29A;margin-top:6px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:4px 0 12px;font-size:14px}
+th{background:#EDE7DA;text-align:left;padding:10px 12px;font-weight:800;font-size:13px;color:var(--sub)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+td:first-child{font-weight:700;width:38%}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}
+summary{padding:15px 16px;font-size:15px;font-weight:800;cursor:pointer;list-style:none;line-height:1.5}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'Q. ';color:var(--red);font-weight:800}
+details[open] summary{border-bottom:1px solid var(--line)}
+details p{padding:14px 16px;font-size:14px;color:var(--sub);line-height:1.75}
+details p::before{content:'A. ';color:var(--blue);font-weight:800}
+.warn{background:#FDF3DD;border:1px solid #EBD9A4;border-radius:14px;padding:15px 16px;margin-bottom:11px}
+.warn h4{font-size:14.5px;font-weight:800;color:#9A7212;margin-bottom:8px}
+.warn p{font-size:13.5px;color:var(--sub);line-height:1.7}
+.src{padding:26px 20px 16px;font-size:12.5px;color:var(--sub);line-height:1.85}
+.src b{color:var(--ink)}
+footer{background:var(--ink);color:#A8A29A;text-align:center;padding:30px 20px 38px;font-size:13px;line-height:1.8}
+footer .fb{color:var(--gold);font-weight:800;font-size:15px}
+hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
+</style></head>
+<body><div class="wrap">
+
+<div class="hero">
+  <span class="chip">고유가 피해지원금</span>
+  <h1>통장에 남은 그 돈,<br><em>8월 31일에 사라져요</em></h1>
+  <div class="by">@donkkachi · 몰라서 손해 보는 돈, 물어다 주는 까치</div>
+  <div class="stamp">
+    사용기한은 <b>2026년 8월 31일 24시</b>입니다.<br>
+    남은 금액은 <b>현금 환불도, 다음 달 이월도 되지 않고</b> 국가와 지자체로 환수돼요.
+  </div>
+</div>
+
+<nav>
+  <button type="button" class="navbtn" data-go="s1">① 요약</button>
+  <button type="button" class="navbtn" data-go="s2">② 잔액 찾기</button>
+  <button type="button" class="navbtn" data-go="s3">③ 되는 곳·안 되는 곳</button>
+  <button type="button" class="navbtn" data-go="s4">④ 소진 계획</button>
+  <button type="button" class="navbtn" data-go="s5">⑤ 마지막 주 함정</button>
+  <button type="button" class="navbtn" data-go="s6">⑥ FAQ</button>
+</nav>
+
+<section id="s1">
+  <div class="sec-no">SECTION ①</div>
+  <div class="sec-t">30초 요약</div>
+  <div class="card sum"><div class="n">1</div><div class="tx">마감은 <b>8월 31일 24시</b>
+    <span>신청은 7월 3일에 이미 끝났고, 지금 남은 일은 '쓰는 것' 하나입니다</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">남은 금액은 <b>자동 소멸</b>
+    <span>현금 환불·이월 없이 국가와 지방정부로 환수됩니다</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx">쓸 수 있는 곳은 <b>연매출 30억 이하 소상공인 매장</b>
+    <span>대형마트·백화점·온라인 결제는 되지 않아요</span></div></div>
+
+  <div class="warn" style="margin-top:14px">
+    <h4>가장 많이 놓치는 지점</h4>
+    <p>지원금을 <b>받았다는 사실은 알지만 잔액은 모르는</b> 경우가 대부분입니다.
+    카드에 충전된 형태라 평소 결제와 섞여서, 몇 천 원에서 몇 만 원이 남아 있어도 눈에 띄지 않아요.
+    오늘 해야 할 일은 신청이 아니라 <b>잔액 조회</b>입니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s2">
+  <div class="sec-no">SECTION ②</div>
+  <div class="sec-t">내 지원금, 어디서 확인하지</div>
+  <div class="sec-lead">받을 때 고른 수단에 따라 확인하는 곳이 다릅니다. 해당하는 것을 눌러보세요.</div>
+
+  <div class="coinbar">
+    <div class="top"><span>확인한 곳</span><span id="cnt">0 / 4</span></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+
+  <div class="q"><div class="bx">V</div><div><div class="t">신용카드 · 체크카드로 받았다</div>
+    <div class="d">해당 카드사 앱, 홈페이지, 고객센터, ARS에서 조회할 수 있어요</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">선불카드로 받았다</div>
+    <div class="d">카드사 앱에서 조회하거나 잔액 알림 서비스를 신청해두면 편해요</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">지역사랑상품권으로 받았다</div>
+    <div class="d">우리 지역 지역화폐 앱에서 잔액과 가맹점을 함께 볼 수 있어요</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">네이버페이 · 카카오페이로 받았다</div>
+    <div class="d">각 앱 안의 지원금(포인트·머니) 잔액 메뉴에서 확인합니다</div></div></div>
+
+  <div class="verdict" id="vd"><div class="v">해당하는 것을 눌러보세요</div><div class="s">지급 수단에 따라 확인 경로가 다릅니다</div></div>
+
+  <div class="warn" style="margin-top:14px">
+    <h4>어디로 받았는지 기억이 안 난다면</h4>
+    <p>고유가 지원금 콜센터 <b>1670-2626</b> 또는 국민콜 <b>110</b>으로 문의하면 안내받을 수 있습니다.
+    카드를 잃어버렸거나 재발급받은 경우에는 잔액이 바로 옮겨지지 않을 수 있으니 카드사에 먼저 확인하세요.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s3">
+  <div class="sec-no">SECTION ③</div>
+  <div class="sec-t">되는 곳과 안 되는 곳</div>
+  <div class="sec-lead">기준은 하나입니다. 우리 동네의, 연매출 30억 원 이하 소상공인 매장.</div>
+
+  <table>
+    <tr><th>되는 곳</th><th>안 되는 곳</th></tr>
+    <tr><td>동네 식당·카페·분식집</td><td>대형마트·백화점·창고형 매장</td></tr>
+    <tr><td>전통시장·정육점·과일가게</td><td>온라인 쇼핑몰·배달앱 결제</td></tr>
+    <tr><td>미용실·약국·안경점</td><td>유흥·사행업종</td></tr>
+    <tr><td>학원·병원·의원</td><td>연매출 30억 원 초과 매장</td></tr>
+    <tr><td>프랜차이즈 <b>가맹점</b></td><td>프랜차이즈 <b>직영점</b></td></tr>
+  </table>
+
+  <div class="warn">
+    <h4>같은 간판이어도 갈립니다</h4>
+    <p>가맹점은 되고 직영점은 안 됩니다. 겉으로는 구분이 안 되니 결제 전에
+    카드사 앱이나 지역화폐 앱의 <b>가맹점 찾기</b>로 한 번 확인하는 편이 안전해요.
+    사용 지역은 <b>2026년 3월 30일 기준 주소지</b>입니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s4">
+  <div class="sec-no">SECTION ④</div>
+  <div class="sec-t">남은 날로 나눠보기</div>
+  <div class="sec-lead">잔액을 넣으면 마감까지 하루에 얼마씩 써야 하는지 계산해드려요.</div>
+
+  <div class="card ws">
+    <label>남은 잔액 (원)</label>
+    <input type="number" id="bal" inputmode="numeric" placeholder="예: 42000">
+    <div class="ws-out">
+      <div class="big" id="perday">-</div>
+      <div class="cap" id="cap">잔액을 넣어보세요</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <h4>계산은 참고용입니다</h4>
+    <p>실제로는 마지막 며칠에 몰아 쓰기보다 <b>평소 장보는 곳에서 결제 수단만 바꾸는</b> 방식이 확실합니다.
+    일부러 안 쓰던 물건을 사면 지원금을 지키려다 오히려 돈을 더 쓰게 돼요.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s5">
+  <div class="sec-no">SECTION ⑤</div>
+  <div class="sec-t">마지막 주에 조심할 세 가지</div>
+
+  <div class="card sum"><div class="n">1</div><div class="tx">결제 취소는 <b>미루지 마세요</b>
+    <span>당일 취소는 한도가 바로 복원되지만, 다음 날부터는 카드사 처리에 1~3일이 걸릴 수 있습니다. 30일에 취소하면 복원 전에 마감이 옵니다</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">링크가 담긴 문자는 <b>사기입니다</b>
+    <span>정부와 카드사는 URL이 포함된 문자메시지로 지원금을 안내하지 않습니다. 잔액은 카드사 앱에서만 확인하세요</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx">잔액이 모자라면 <b>복합 결제</b>
+    <span>지원금으로 먼저 차감하고 남는 금액만 일반 결제로 넘어가는 매장이 많습니다. 결제 전에 "지원금 먼저 써주세요"라고 말하면 확실해요</span></div></div>
+  <hr class="d">
+</section>
+
+<section id="s6">
+  <div class="sec-no">SECTION ⑥</div>
+  <div class="sec-t">자주 묻는 것</div>
+
+  <details><summary>지금이라도 신청할 수 있나요?</summary>
+    <p>아니요. 1차(4월 27일~5월 8일)와 2차(5월 18일~7월 3일) 신청은 모두 끝났습니다. 이의신청 기간도 마감됐어요.</p></details>
+  <details><summary>8월 31일이 지나면 정말 방법이 없나요?</summary>
+    <p>네. 기한을 넘긴 잔액은 환불이나 이월 없이 자동 소멸되고 국고로 환수됩니다.</p></details>
+  <details><summary>이사를 했는데 어디서 쓰나요?</summary>
+    <p>사용 지역은 2026년 3월 30일 기준 주소지입니다. 다만 신용·체크카드로 받은 경우에는 사용 기간 중 주소를 옮기면 지역 변경이 가능합니다.</p></details>
+  <details><summary>지원금으로 결제해도 카드 혜택을 받나요?</summary>
+    <p>카드로 받은 경우 포인트 적립·할인 같은 혜택과 실적 인정이 일반 결제와 동일하게 적용되는 것이 원칙입니다. 다만 상품별로 실적 기준이 달라서 카드 약관을 확인하는 편이 정확합니다.</p></details>
+  <details><summary>잔액이 몇 백 원 남았는데 그냥 둘까요?</summary>
+    <p>편의점이나 동네 가게에서 복합 결제로 소진할 수 있습니다. 금액이 작아도 남기면 그대로 사라집니다.</p></details>
+</section>
+
+<div class="src">
+  <b>출처</b><br>
+  · 행정안전부 「고유가 피해지원금」 안내 페이지<br>
+  · 카드사 고유가 피해지원금 이용안내<br>
+  · 지방자치단체 사용기한 안내 보도자료 (2026년 7~8월)<br><br>
+  <b>기준일</b> 2026년 8월<br>
+  <b>주의</b> 지급 금액과 사용처 기준은 지역·지급 수단에 따라 다릅니다.
+  결제 전 <b>카드사 앱 또는 지역화폐 앱에서 최종 확인</b>하세요.<br>
+  <b>고지</b> 특정 상품·업체에 대한 추천이 아닙니다.
+</div>
+
+<footer>
+  저장해두고 <span style="color:var(--gold);font-weight:700">8월 31일 전에</span> 한 번 더 열어보세요<br><br>
+  <span class="fb">돈까치 @donkkachi</span><br>
+  몰라서 손해 보는 돈, 물어다 주는 까치
+</footer>
+</div>
+
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a>
+</div>
+<a href="https://www.instagram.com/donkkachi/" style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">돈까치 팔로우하기</a>
+
+<script>
+document.querySelectorAll('.navbtn').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.go); if(!el) return;
+    var nav=document.querySelector('nav');
+    var off=(nav?nav.offsetHeight:0)+12;
+    window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});
+  });
+});
+
+var qs=document.querySelectorAll('.q'),fill=document.getElementById('fill'),
+    cnt=document.getElementById('cnt'),vd=document.getElementById('vd');
+function sync(){
+  var n=document.querySelectorAll('.q.on').length;
+  fill.style.width=(n/qs.length*100)+'%';
+  cnt.textContent=n+' / '+qs.length;
+  if(n===0){
+    vd.innerHTML='<div class="v">해당하는 것을 눌러보세요</div><div class="s">지급 수단에 따라 확인 경로가 다릅니다</div>';
+  }else if(n===1){
+    vd.innerHTML='<div class="v" style="color:#2E8C5A">거기부터 열어보세요</div>'+
+      '<div class="s">앱에서 잔액을 확인하고 ④번에 넣어보면 하루에 얼마씩 써야 하는지 나옵니다</div>';
+  }else{
+    vd.innerHTML='<div class="v" style="color:#C8603C">나눠서 받았다면 각각 확인</div>'+
+      '<div class="s">한 사람이 한 수단으로만 받는 것이 원칙이지만, 가족 구성원별로 다를 수 있습니다. 각자 확인해보세요</div>';
+  }
+}
+qs.forEach(function(q){q.addEventListener('click',function(){q.classList.toggle('on');sync();});});
+sync();
+
+var bal=document.getElementById('bal'),pd=document.getElementById('perday'),cap=document.getElementById('cap');
+function daysLeft(){
+  var end=new Date(2026,7,31,23,59,59);
+  var now=new Date();
+  var d=Math.ceil((end-now)/86400000);
+  return d;
+}
+function calc(){
+  var v=parseFloat(bal.value);
+  var d=daysLeft();
+  if(!v||v<=0){ pd.textContent='-'; cap.textContent='잔액을 넣어보세요'; return; }
+  if(d<=0){ pd.textContent='마감'; cap.textContent='사용기한이 지났습니다'; return; }
+  var per=Math.ceil(v/d/100)*100;
+  pd.textContent=per.toLocaleString()+'원';
+  cap.textContent='마감까지 '+d+'일 · 하루 이 정도씩 쓰면 다 소진돼요';
+}
+bal.addEventListener('input',calc);
+calc();
+</script>
+</body></html>
