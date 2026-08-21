@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>안 쓰는데 매달 빠져나가는 돈 | 돈까치</title>
+<meta name="description" content="어카운트인포로 자동이체 정리하기. 계좌와 카드 두 메뉴, 해지 순서, 1년 절약액 계산까지.">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--cream:#F2EDE3;--paper:#FFFCF6;--ink:#23252B;--sub:#6B6357;--gold:#E0B93F;--orange:#C8603C;--red:#E1464B;--green:#2E8C5A;--blue:#5674C8;--line:#E4DCCB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-bottom:78px;font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,'Apple SD Gothic Neo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto}
+.hero{background:var(--ink);color:var(--cream);padding:38px 22px 30px}
+.chip{display:inline-block;background:var(--gold);color:var(--ink);font-size:13px;font-weight:800;padding:6px 13px;border-radius:999px}
+.hero h1{font-size:29px;line-height:1.32;font-weight:800;margin-top:16px;letter-spacing:-.7px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .by{margin-top:14px;font-size:13px;color:#A8A29A}
+.hero .stamp{margin-top:18px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 14px;font-size:13.5px;color:#E8E2D6;line-height:1.55}
+.hero .stamp b{color:var(--gold)}
+nav{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);padding:11px 0;overflow-x:auto;white-space:nowrap}
+nav .navbtn{display:inline-block;font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;margin-left:10px;padding:8px 15px;background:var(--paper);border:1px solid var(--line);border-radius:999px;font-size:13.5px;font-weight:700;color:var(--ink)}
+section{scroll-margin-top:76px;padding:34px 20px 6px}
+.sec-no{font-size:12px;font-weight:800;color:var(--sub);letter-spacing:1.2px}
+.sec-t{font-size:23px;font-weight:800;margin:6px 0 18px;letter-spacing:-.5px;line-height:1.35}
+.sec-lead{font-size:14.5px;color:var(--sub);margin:-10px 0 18px;line-height:1.6}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px 16px;margin-bottom:11px}
+.sum{display:flex;gap:13px;align-items:flex-start}
+.sum .n{flex:none;width:27px;height:27px;border-radius:50%;background:var(--ink);color:var(--gold);font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sum .tx{font-size:15.5px;font-weight:600;line-height:1.55}
+.sum .tx b{color:var(--red);font-weight:800}
+.sum .tx span{display:block;font-size:13px;color:var(--sub);font-weight:500;margin-top:3px}
+.q{display:flex;gap:13px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:15px 16px;margin-bottom:9px;cursor:pointer;user-select:none}
+.q.on{background:#FDF6E6;border-color:var(--gold)}
+.q .bx{flex:none;width:24px;height:24px;border:2px solid var(--orange);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;margin-top:2px}
+.q.on .bx{background:var(--orange)}
+.q .t{font-size:15.5px;font-weight:800;line-height:1.45}
+.q .d{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.6}
+.coinbar{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:13px}
+.coinbar .top{display:flex;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:9px}
+.track{height:11px;background:#E7E0D1;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:99px;transition:width .35s ease}
+.verdict{border-radius:15px;padding:17px;text-align:center;margin-top:4px;background:#EDE7DA}
+.verdict .v{font-size:18px;font-weight:800}
+.verdict .s{font-size:13.5px;color:var(--sub);margin-top:6px;line-height:1.6}
+.ws label{display:block;font-size:13.5px;font-weight:700;margin-bottom:5px}
+.ws input,.ws select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;font-size:16px;background:#fff;font-family:inherit;margin-bottom:13px;color:var(--ink)}
+.ws-out{background:var(--ink);color:var(--cream);border-radius:14px;padding:17px;text-align:center}
+.ws-out .big{font-size:31px;font-weight:800;color:var(--gold);letter-spacing:-1px}
+.ws-out .cap{font-size:13px;color:#A8A29A;margin-top:6px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:4px 0 12px;font-size:14px}
+th{background:#EDE7DA;text-align:left;padding:10px 12px;font-weight:800;font-size:13px;color:var(--sub)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+td:first-child{font-weight:700;width:38%}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}
+summary{padding:15px 16px;font-size:15px;font-weight:800;cursor:pointer;list-style:none;line-height:1.5}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'Q. ';color:var(--red);font-weight:800}
+details[open] summary{border-bottom:1px solid var(--line)}
+details p{padding:14px 16px;font-size:14px;color:var(--sub);line-height:1.75}
+details p::before{content:'A. ';color:var(--blue);font-weight:800}
+.warn{background:#FDF3DD;border:1px solid #EBD9A4;border-radius:14px;padding:15px 16px;margin-bottom:11px}
+.warn h4{font-size:14.5px;font-weight:800;color:#9A7212;margin-bottom:8px}
+.warn p{font-size:13.5px;color:var(--sub);line-height:1.7}
+.src{padding:26px 20px 16px;font-size:12.5px;color:var(--sub);line-height:1.85}
+.src b{color:var(--ink)}
+footer{background:var(--ink);color:#A8A29A;text-align:center;padding:30px 20px 38px;font-size:13px;line-height:1.8}
+footer .fb{color:var(--gold);font-weight:800;font-size:15px}
+hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
+</style></head>
+<body><div class="wrap">
+
+<div class="hero">
+  <span class="chip">자동이체 정리</span>
+  <h1>안 쓰는데<br><em>매달 빠져나가는 돈</em></h1>
+  <div class="by">@donkkachi · 몰라서 손해 보는 돈, 물어다 주는 까치</div>
+  <div class="stamp">
+    <b>어카운트인포</b> 한 곳에서 은행·카드사에 흩어진 자동이체를 모두 조회하고 해지할 수 있습니다.<br>
+    다만 <b>계좌 자동이체와 카드 자동납부는 메뉴가 따로</b>예요. 한 쪽만 보면 절반은 그대로 남습니다.
+  </div>
+</div>
+
+<nav>
+  <button type="button" class="navbtn" data-go="s1">① 요약</button>
+  <button type="button" class="navbtn" data-go="s2">② 점검표</button>
+  <button type="button" class="navbtn" data-go="s3">③ 해지 순서</button>
+  <button type="button" class="navbtn" data-go="s4">④ 절약액 계산</button>
+  <button type="button" class="navbtn" data-go="s5">⑤ 함정</button>
+  <button type="button" class="navbtn" data-go="s6">⑥ FAQ</button>
+</nav>
+
+<section id="s1">
+  <div class="sec-no">SECTION ①</div>
+  <div class="sec-t">30초 요약</div>
+  <div class="card sum"><div class="n">1</div><div class="tx">한 곳은 <b>어카운트인포</b>
+    <span>금융결제원이 운영하는 계좌정보통합관리서비스입니다. 앱 또는 payinfo.or.kr</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">메뉴는 <b>두 개</b>를 봐야 해요
+    <span>내 자동이체 한눈에(통장에서 나가는 것) + 내 카드 한눈에(카드로 나가는 것)</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx">해지는 <b>두 번 확인</b>
+    <span>앱에서 신청한 뒤 요금청구기관에도 확인하는 편이 안전합니다</span></div></div>
+
+  <div class="warn" style="margin-top:14px">
+    <h4>왜 눈에 안 띌까요</h4>
+    <p>자동이체는 <b>한 번 걸어두면 다시 볼 일이 없습니다.</b>
+    카드 명세서에서도 통신비·보험료 사이에 섞여 있어서, 해지한 줄 알았던 것이
+    몇 년째 나가고 있는 경우가 흔해요. 오늘 할 일은 절약이 아니라 <b>목록을 한 번 보는 것</b>입니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s2">
+  <div class="sec-no">SECTION ②</div>
+  <div class="sec-t">이런 게 남아 있어요</div>
+  <div class="sec-lead">해당하는 것을 눌러보세요. 실제로 자주 발견되는 것들입니다.</div>
+
+  <div class="coinbar">
+    <div class="top"><span>까치 주머니</span><span id="cnt">0 / 5</span></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+
+  <div class="q"><div class="bx">V</div><div><div class="t">안 보는 구독 서비스</div>
+    <div class="d">OTT·음악·클라우드·앱 정기결제. 카드 메뉴에서 보입니다</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">해지한 줄 알았던 렌탈</div>
+    <div class="d">정수기·비데·매트리스. 계약 종료 후에도 남아 있는 경우가 있어요</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">예전 집 관리비·도시가스</div>
+    <div class="d">이사 후 정리하지 않으면 그대로 남습니다</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">안 다니는 곳의 회비</div>
+    <div class="d">헬스장·학원·협회비. 자동송금으로 걸려 있기도 해요</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">중복된 보험료</div>
+    <div class="d">비슷한 보장이 두 개 걸려 있는지 확인해보세요</div></div></div>
+
+  <div class="verdict" id="vd"><div class="v">해당하는 것을 눌러보세요</div><div class="s">하나만 있어도 확인할 가치가 있어요</div></div>
+  <hr class="d">
+</section>
+
+<section id="s3">
+  <div class="sec-no">SECTION ③</div>
+  <div class="sec-t">순서대로 하기</div>
+
+  <div class="card sum"><div class="n">1</div><div class="tx"><b>어카운트인포</b> 앱 설치 또는 payinfo.or.kr 접속
+    <span>만 19세 이상 개인만 됩니다. 금융인증서나 공동인증서를 먼저 준비하세요</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx"><b>내 자동이체 한눈에</b> 열기
+    <span>자동납부(청구기관이 가져가는 것)와 자동송금(내가 보내는 것)이 나뉘어 나옵니다</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx"><b>내 카드 한눈에</b>도 따로 열기
+    <span>여기를 안 보면 구독·렌탈이 그대로 남습니다</span></div></div>
+  <div class="card sum"><div class="n">4</div><div class="tx">필요 없는 것 <b>해지 신청</b>
+    <span>출금 계좌를 바꾸는 것도 여기서 됩니다</span></div></div>
+  <div class="card sum"><div class="n">5</div><div class="tx"><b>청구기관에도 확인</b>
+    <span>앱 해지가 청구기관에 즉시 반영되지 않을 수 있어요. 목록의 기관 연락처로 확인하세요</span></div></div>
+  <div class="card sum"><div class="n">6</div><div class="tx">다음 달 <b>명세서에서 재확인</b>
+    <span>실제로 빠져나갔는지가 최종 확인입니다</span></div></div>
+
+  <div class="warn">
+    <h4>같이 정리하면 좋은 것</h4>
+    <p>잔고 <b>50만원 미만의 비활동성 계좌</b>는 그 자리에서 해지하고 잔고를 다른 계좌로 옮길 수 있습니다.
+    <b>1년 넘게 안 쓴 휴면카드</b>도 함께 확인돼요. 계좌 수가 줄면 명의도용 점검도 훨씬 수월해집니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s4">
+  <div class="sec-no">SECTION ④</div>
+  <div class="sec-t">1년이면 얼마일까</div>
+  <div class="sec-lead">해지한 항목의 월 금액을 넣어보세요.</div>
+
+  <div class="card ws">
+    <label>해지한 월 금액 합계 (원)</label>
+    <input type="number" id="amt" inputmode="numeric" placeholder="예: 24900">
+    <div class="ws-out">
+      <div class="big" id="year">-</div>
+      <div class="cap" id="cap">금액을 넣어보세요</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <h4>작아 보여도</h4>
+    <p>월 1만원이면 1년에 12만원, 3년이면 36만원입니다.
+    자동이체는 <b>가만히 두면 계속 쌓이는 쪽</b>이라 한 번 정리하면 그 효과가 계속 남아요.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s5">
+  <div class="sec-no">SECTION ⑤</div>
+  <div class="sec-t">미리 알아둘 것</div>
+
+  <div class="card sum"><div class="n">1</div><div class="tx">같은 게 <b>두 번 보일 수 있어요</b>
+    <span>카드를 바꾸면서 예전 카드사에 해지를 안 했으면 중복으로 조회됩니다. 예전 것을 해지하면 정리돼요</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">앱 해지가 <b>즉시 반영되지 않을 수 있어요</b>
+    <span>확실히 하려면 요금청구기관이나 계좌 개설 금융회사에 직접 신청하는 편이 안전합니다</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx">이용 조건이 <b>있습니다</b>
+    <span>만 19세 이상 개인, 금융인증서 또는 공동인증서 필요, 한 사람당 기기 한 대</span></div></div>
+  <div class="card sum"><div class="n">4</div><div class="tx"><b>문자 링크로 들어가지 마세요</b>
+    <span>앱스토어에서 직접 받거나 주소를 직접 입력하세요. 금융 앱을 사칭한 문자가 많습니다</span></div></div>
+  <hr class="d">
+</section>
+
+<section id="s6">
+  <div class="sec-no">SECTION ⑥</div>
+  <div class="sec-t">자주 묻는 것</div>
+
+  <details><summary>돈이 드나요?</summary>
+    <p>무료입니다. 금융결제원이 운영하는 공동 서비스예요.</p></details>
+  <details><summary>해지하면 서비스가 바로 끊기나요?</summary>
+    <p>자동이체가 끊기는 것이지 계약이 해지되는 것은 아닙니다. 계약 자체를 끝내려면 해당 업체에 별도로 해지 신청을 해야 해요. 반대로 계약만 남기고 결제 수단만 바꾸고 싶을 때도 여기서 변경할 수 있습니다.</p></details>
+  <details><summary>자동납부와 자동송금이 뭐가 다른가요?</summary>
+    <p>자동납부는 통신사·보험사 같은 청구기관이 내 계좌에서 가져가는 것이고, 자동송금은 내가 정해둔 날짜에 다른 계좌로 보내는 것입니다. 적금 이체나 회비 송금이 여기에 해당해요.</p></details>
+  <details><summary>이용 시간이 정해져 있나요?</summary>
+    <p>서비스와 금융회사에 따라 점검 시간이 있을 수 있습니다. 조회가 안 되면 시간을 두고 다시 시도하거나 고객센터(1577-5500, 평일 09:00~17:45)로 문의하세요.</p></details>
+  <details><summary>가족 것도 볼 수 있나요?</summary>
+    <p>본인 명의만 조회됩니다. 가족은 각자 본인 인증으로 확인해야 해요.</p></details>
+</section>
+
+<div class="src">
+  <b>출처</b><br>
+  · 금융결제원 계좌정보통합관리서비스(어카운트인포) 안내<br>
+  · 금융위원회 카드이동·계좌이동 서비스 보도자료<br><br>
+  <b>기준일</b> 2026년 8월<br>
+  <b>주의</b> 메뉴 이름과 제공 범위는 바뀔 수 있습니다.
+  해지 후에는 <b>다음 달 명세서에서 반드시 재확인</b>하세요.<br>
+  <b>고지</b> 특정 상품·업체에 대한 추천이 아닙니다.
+</div>
+
+<footer>
+  저장해두고 <span style="color:var(--gold);font-weight:700">결제일 전에</span> 한 번 더 열어보세요<br><br>
+  <span class="fb">돈까치 @donkkachi</span><br>
+  몰라서 손해 보는 돈, 물어다 주는 까치
+</footer>
+</div>
+
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a>
+</div>
+<a href="https://www.instagram.com/donkkachi/" style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">돈까치 팔로우하기</a>
+
+<script>
+document.querySelectorAll('.navbtn').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.go); if(!el) return;
+    var nav=document.querySelector('nav');
+    var off=(nav?nav.offsetHeight:0)+12;
+    window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});
+  });
+});
+var qs=document.querySelectorAll('.q'),fill=document.getElementById('fill'),
+    cnt=document.getElementById('cnt'),vd=document.getElementById('vd');
+function sync(){
+  var n=document.querySelectorAll('.q.on').length;
+  fill.style.width=(n/qs.length*100)+'%';
+  cnt.textContent=n+' / '+qs.length;
+  if(n===0){vd.innerHTML='<div class="v">해당하는 것을 눌러보세요</div><div class="s">하나만 있어도 확인할 가치가 있어요</div>';}
+  else if(n<=2){vd.innerHTML='<div class="v" style="color:#2E8C5A">한 번 열어볼 만해요</div><div class="s">③번 순서대로 하면 3분이면 끝납니다</div>';}
+  else{vd.innerHTML='<div class="v" style="color:#C8603C">오늘 바로 보세요</div><div class="s">이 정도면 매달 나가는 금액이 꽤 될 수 있어요. ④번에서 1년치를 계산해보세요</div>';}
+}
+qs.forEach(function(q){q.addEventListener('click',function(){q.classList.toggle('on');sync();});});
+sync();
+
+var amt=document.getElementById('amt'),yr=document.getElementById('year'),cap=document.getElementById('cap');
+function calc(){
+  var v=parseFloat(amt.value);
+  if(!v||v<=0){yr.textContent='-';cap.textContent='금액을 넣어보세요';return;}
+  yr.textContent=(v*12).toLocaleString()+'원';
+  cap.textContent='1년 기준 · 3년이면 '+(v*36).toLocaleString()+'원이에요';
+}
+amt.addEventListener('input',calc);
+calc();
+</script>
+</body></html>
