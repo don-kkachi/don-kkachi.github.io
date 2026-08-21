@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>거절당해도 잃는 건 0 | 돈까치</title>
+<meta name="description" content="금리인하요구권 신청 방법. 자가진단, 은행 앱 신청 순서, 이자 절감액 계산까지.">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--cream:#F2EDE3;--paper:#FFFCF6;--ink:#23252B;--sub:#6B6357;--gold:#E0B93F;--orange:#C8603C;--red:#E1464B;--green:#2E8C5A;--blue:#5674C8;--line:#E4DCCB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-bottom:78px;font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,'Apple SD Gothic Neo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto}
+.hero{background:var(--ink);color:var(--cream);padding:38px 22px 30px}
+.chip{display:inline-block;background:var(--gold);color:var(--ink);font-size:13px;font-weight:800;padding:6px 13px;border-radius:999px}
+.hero h1{font-size:29px;line-height:1.32;font-weight:800;margin-top:16px;letter-spacing:-.7px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .by{margin-top:14px;font-size:13px;color:#A8A29A}
+.hero .stamp{margin-top:18px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 14px;font-size:13.5px;color:#E8E2D6;line-height:1.55}
+.hero .stamp b{color:var(--gold)}
+nav{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);padding:11px 0;overflow-x:auto;white-space:nowrap}
+nav .navbtn{display:inline-block;font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;margin-left:10px;padding:8px 15px;background:var(--paper);border:1px solid var(--line);border-radius:999px;font-size:13.5px;font-weight:700;color:var(--ink)}
+section{scroll-margin-top:76px;padding:34px 20px 6px}
+.sec-no{font-size:12px;font-weight:800;color:var(--sub);letter-spacing:1.2px}
+.sec-t{font-size:23px;font-weight:800;margin:6px 0 18px;letter-spacing:-.5px;line-height:1.35}
+.sec-lead{font-size:14.5px;color:var(--sub);margin:-10px 0 18px;line-height:1.6}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px 16px;margin-bottom:11px}
+.sum{display:flex;gap:13px;align-items:flex-start}
+.sum .n{flex:none;width:27px;height:27px;border-radius:50%;background:var(--ink);color:var(--gold);font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sum .tx{font-size:15.5px;font-weight:600;line-height:1.55}
+.sum .tx b{color:var(--red);font-weight:800}
+.sum .tx span{display:block;font-size:13px;color:var(--sub);font-weight:500;margin-top:3px}
+.q{display:flex;gap:13px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:15px 16px;margin-bottom:9px;cursor:pointer;user-select:none}
+.q.on{background:#FDF6E6;border-color:var(--gold)}
+.q .bx{flex:none;width:24px;height:24px;border:2px solid var(--orange);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;margin-top:2px}
+.q.on .bx{background:var(--orange)}
+.q .t{font-size:15.5px;font-weight:800;line-height:1.45}
+.q .d{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.6}
+.coinbar{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:13px}
+.coinbar .top{display:flex;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:9px}
+.track{height:11px;background:#E7E0D1;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:99px;transition:width .35s ease}
+.verdict{border-radius:15px;padding:17px;text-align:center;margin-top:4px;background:#EDE7DA}
+.verdict .v{font-size:18px;font-weight:800}
+.verdict .s{font-size:13.5px;color:var(--sub);margin-top:6px;line-height:1.6}
+.ws label{display:block;font-size:13.5px;font-weight:700;margin-bottom:5px}
+.ws input,.ws select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;font-size:16px;background:#fff;font-family:inherit;margin-bottom:13px;color:var(--ink)}
+.ws-out{background:var(--ink);color:var(--cream);border-radius:14px;padding:17px;text-align:center}
+.ws-out .big{font-size:31px;font-weight:800;color:var(--gold);letter-spacing:-1px}
+.ws-out .cap{font-size:13px;color:#A8A29A;margin-top:6px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:4px 0 12px;font-size:14px}
+th{background:#EDE7DA;text-align:left;padding:10px 12px;font-weight:800;font-size:13px;color:var(--sub)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+td:first-child{font-weight:700;width:38%}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}
+summary{padding:15px 16px;font-size:15px;font-weight:800;cursor:pointer;list-style:none;line-height:1.5}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'Q. ';color:var(--red);font-weight:800}
+details[open] summary{border-bottom:1px solid var(--line)}
+details p{padding:14px 16px;font-size:14px;color:var(--sub);line-height:1.75}
+details p::before{content:'A. ';color:var(--blue);font-weight:800}
+.warn{background:#FDF3DD;border:1px solid #EBD9A4;border-radius:14px;padding:15px 16px;margin-bottom:11px}
+.warn h4{font-size:14.5px;font-weight:800;color:#9A7212;margin-bottom:8px}
+.warn p{font-size:13.5px;color:var(--sub);line-height:1.7}
+.src{padding:26px 20px 16px;font-size:12.5px;color:var(--sub);line-height:1.85}
+.src b{color:var(--ink)}
+footer{background:var(--ink);color:#A8A29A;text-align:center;padding:30px 20px 38px;font-size:13px;line-height:1.8}
+footer .fb{color:var(--gold);font-weight:800;font-size:15px}
+hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
+</style></head>
+<body><div class="wrap">
+
+<div class="hero">
+  <span class="chip">금리인하요구권</span>
+  <h1>거절당해도<br><em>잃는 건 0</em></h1>
+  <div class="by">@donkkachi · 몰라서 손해 보는 돈, 물어다 주는 까치</div>
+  <div class="stamp">
+    대출받을 때보다 형편이 나아졌다면 <b>금리를 내려달라고 요구할 수 있는 법상 권리</b>입니다.<br>
+    거절당해도 <b>신용점수와 현재 금리에는 아무 영향이 없습니다.</b> 횟수 제한도 없어요.
+  </div>
+</div>
+
+<nav>
+  <button type="button" class="navbtn" data-go="s1">① 요약</button>
+  <button type="button" class="navbtn" data-go="s2">② 자가진단</button>
+  <button type="button" class="navbtn" data-go="s3">③ 신청 순서</button>
+  <button type="button" class="navbtn" data-go="s4">④ 이자 계산</button>
+  <button type="button" class="navbtn" data-go="s5">⑤ 알아둘 것</button>
+  <button type="button" class="navbtn" data-go="s6">⑥ FAQ</button>
+</nav>
+
+<section id="s1">
+  <div class="sec-no">SECTION ①</div>
+  <div class="sec-t">30초 요약</div>
+  <div class="card sum"><div class="n">1</div><div class="tx">2019년부터 <b>법으로 보장된 권리</b>
+    <span>은행법에 들어가 있고 은행·저축은행·카드사·보험사 모두 해당됩니다</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">거절당해도 <b>불이익이 없어요</b>
+    <span>신청 자체는 신용점수에 영향을 주지 않고, 지금 금리가 올라가지도 않습니다</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx">앱에서 <b>3분</b>이면 됩니다
+    <span>비대면 신청이 가능하고 결과는 10영업일 안에 통지됩니다</span></div></div>
+
+  <div class="warn" style="margin-top:14px">
+    <h4>안 하는 이유가 대부분 하나입니다</h4>
+    <p>"어차피 안 될 텐데"라는 생각이요. 실제 수용률은 최근 <b>25~35% 수준</b>입니다.
+    네 명 중 한 명에서 세 명 중 한 명 정도예요.
+    낮아 보이지만 <b>신청하지 않으면 0%</b>이고, 떨어져도 나중에 다시 신청할 수 있습니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s2">
+  <div class="sec-no">SECTION ②</div>
+  <div class="sec-t">나는 해당될까</div>
+  <div class="sec-lead">대출을 받은 <b>그날과 비교해서</b> 달라진 것을 눌러보세요.</div>
+
+  <div class="coinbar">
+    <div class="top"><span>까치 주머니</span><span id="cnt">0 / 5</span></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+
+  <div class="q"><div class="bx">V</div><div><div class="t">취업하거나 이직했다</div>
+    <div class="d">소득이 생기거나 늘어난 경우입니다</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">승진했거나 연봉이 올랐다</div>
+    <div class="d">재직증명서·원천징수영수증으로 증명됩니다</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">다른 빚을 갚아서 부채가 줄었다</div>
+    <div class="d">부채 감소도 상환능력 개선으로 봅니다</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">신용점수가 올랐다</div>
+    <div class="d">은행 내부등급에 긍정적으로 반영될 수 있어요</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">자산이 늘었다</div>
+    <div class="d">예금·적금 같은 금융자산 증가도 포함됩니다</div></div></div>
+
+  <div class="verdict" id="vd"><div class="v">해당하는 것을 눌러보세요</div><div class="s">하나만 있어도 신청할 수 있습니다</div></div>
+  <hr class="d">
+</section>
+
+<section id="s3">
+  <div class="sec-no">SECTION ③</div>
+  <div class="sec-t">신청 순서</div>
+  <div class="sec-lead">영업점에 가지 않아도 됩니다. 앱에서 끝나요.</div>
+
+  <div class="card sum"><div class="n">1</div><div class="tx">대출받은 <b>금융회사 앱</b> 열기
+    <span>여러 곳에 대출이 있으면 각각 따로 신청해야 합니다</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx"><b>대출관리</b> 메뉴에서 금리인하요구권 찾기
+    <span>은행마다 위치가 조금씩 다릅니다. 검색창에 '금리인하'를 쳐도 나와요</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx"><b>변경 사유</b> 고르기
+    <span>취업·승진·소득증가·부채감소 중 해당하는 것을 선택합니다</span></div></div>
+  <div class="card sum"><div class="n">4</div><div class="tx"><b>서류는 대부분 자동</b>
+    <span>비대면 신청은 스크래핑으로 소득자료가 붙습니다. 영업점 신청이면 재직증명서·원천징수영수증을 챙기세요</span></div></div>
+  <div class="card sum"><div class="n">5</div><div class="tx"><b>10영업일 안에</b> 결과 통지
+    <span>문자·전화·이메일 중 한 가지로 옵니다. 수용되면 재약정 절차가 이어집니다</span></div></div>
+
+  <div class="warn">
+    <h4>여러 곳에 대출이 있다면</h4>
+    <p>가장 <b>금리가 높은 대출부터</b> 신청하세요. 같은 인하 폭이어도 이자 감소액이 큽니다.
+    카드론·저축은행 대출이 있다면 거기가 먼저입니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s4">
+  <div class="sec-no">SECTION ④</div>
+  <div class="sec-t">얼마나 줄어들까</div>
+  <div class="sec-lead">대출 잔액과 인하 폭을 넣어보세요. 1년 이자 절감액이 나옵니다.</div>
+
+  <div class="card ws">
+    <label>대출 잔액 (만원)</label>
+    <input type="number" id="bal" inputmode="numeric" placeholder="예: 3000">
+    <label style="margin-top:10px">인하 폭 (%p)</label>
+    <input type="number" id="cut" inputmode="decimal" step="0.1" placeholder="예: 0.5">
+    <div class="ws-out">
+      <div class="big" id="save">-</div>
+      <div class="cap" id="cap">두 칸을 채워보세요</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <h4>인하 폭은 미리 알 수 없어요</h4>
+    <p>은행 내부 신용등급 재평가 결과에 따라 정해집니다.
+    <b>0.1%p에서 1%p 안팎</b>이 흔하지만 사례마다 달라요.
+    이 계산은 "이 정도면 신청할 가치가 있나"를 가늠하는 용도입니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s5">
+  <div class="sec-no">SECTION ⑤</div>
+  <div class="sec-t">미리 알아둘 것</div>
+
+  <div class="card sum"><div class="n">1</div><div class="tx"><b>대상이 아닌 대출</b>도 있어요
+    <span>정책자금대출·집단대출처럼 신용도가 금리에 반영되지 않는 상품은 제외됩니다</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">이미 <b>최저금리</b>를 받고 있으면 어려워요
+    <span>프로모션 금리 등으로 이미 낮게 쓰고 있으면 인하 여지가 없을 수 있습니다</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx"><b>연체 중이면</b> 먼저 정리
+    <span>원금이나 이자가 밀려 있으면 해소한 뒤에 신청할 수 있어요</span></div></div>
+  <div class="card sum"><div class="n">4</div><div class="tx">은행별 <b>수용률이 공시</b>됩니다
+    <span>은행연합회 소비자포털에서 은행별 수용률과 이자감면액을 비교할 수 있어요</span></div></div>
+  <div class="card sum"><div class="n">5</div><div class="tx">은행은 <b>알려줄 의무</b>가 있어요
+    <span>대출 계약 시 이 권리를 안내하지 않으면 과태료 대상입니다. 몰랐다면 은행 잘못이에요</span></div></div>
+  <hr class="d">
+</section>
+
+<section id="s6">
+  <div class="sec-no">SECTION ⑥</div>
+  <div class="sec-t">자주 묻는 것</div>
+
+  <details><summary>거절당하면 불이익이 있나요?</summary>
+    <p>없습니다. 신청 자체는 신용점수에 반영되지 않고, 현재 적용받는 금리가 올라가지도 않습니다. 거절 사유를 안내받고 나중에 다시 신청할 수 있어요.</p></details>
+  <details><summary>얼마나 자주 할 수 있나요?</summary>
+    <p>시기와 횟수에 제한이 없습니다. 다만 직전 신청과 비교해 신용상태가 더 나아진 게 없으면 결과는 같을 가능성이 높습니다.</p></details>
+  <details><summary>주택담보대출도 되나요?</summary>
+    <p>신용도가 금리에 반영되는 상품이면 가능합니다. 다만 담보 비중이 큰 상품은 인하 폭이 작을 수 있어요.</p></details>
+  <details><summary>대환대출과 뭐가 다른가요?</summary>
+    <p>대환은 다른 곳으로 대출을 옮기는 것이고, 금리인하요구권은 지금 은행에서 금리만 낮추는 것입니다. 은행을 바꾸지 않아도 되니 먼저 시도해볼 만합니다.</p></details>
+  <details><summary>수용되면 언제부터 적용되나요?</summary>
+    <p>재약정 절차를 거친 뒤 적용됩니다. 소급되지는 않으니 미루지 말고 신청하는 편이 낫습니다.</p></details>
+</section>
+
+<div class="src">
+  <b>출처</b><br>
+  · 「은행법」 제30조의2 및 같은 법 시행령 제18조의4<br>
+  · 은행연합회 소비자포털 금리인하요구권 운영실적 공시<br>
+  · 각 금융회사 금리인하요구권 안내 페이지<br><br>
+  <b>기준일</b> 2026년 8월<br>
+  <b>주의</b> 인정 요건과 필요 서류는 금융회사마다 다릅니다.
+  신청 전 <b>거래 중인 금융회사 안내를 확인</b>하세요.<br>
+  <b>고지</b> 특정 상품·업체에 대한 추천이 아닙니다.
+</div>
+
+<footer>
+  저장해두고 <span style="color:var(--gold);font-weight:700">주말에</span> 앱 한 번 열어보세요<br><br>
+  <span class="fb">돈까치 @donkkachi</span><br>
+  몰라서 손해 보는 돈, 물어다 주는 까치
+</footer>
+</div>
+
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a>
+</div>
+<a href="https://www.instagram.com/donkkachi/" style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">돈까치 팔로우하기</a>
+
+<script>
+document.querySelectorAll('.navbtn').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.go); if(!el) return;
+    var nav=document.querySelector('nav');
+    var off=(nav?nav.offsetHeight:0)+12;
+    window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});
+  });
+});
+var qs=document.querySelectorAll('.q'),fill=document.getElementById('fill'),
+    cnt=document.getElementById('cnt'),vd=document.getElementById('vd');
+function sync(){
+  var n=document.querySelectorAll('.q.on').length;
+  fill.style.width=(n/qs.length*100)+'%';
+  cnt.textContent=n+' / '+qs.length;
+  if(n===0){vd.innerHTML='<div class="v">해당하는 것을 눌러보세요</div><div class="s">하나만 있어도 신청할 수 있습니다</div>';}
+  else if(n===1){vd.innerHTML='<div class="v" style="color:#2E8C5A">신청 대상이에요</div><div class="s">③번 순서대로 하면 3분이면 끝납니다</div>';}
+  else{vd.innerHTML='<div class="v" style="color:#2E8C5A">여러 개면 가능성이 더 올라가요</div><div class="s">사유를 한 번에 여러 개 고를 수 있습니다. 금리 높은 대출부터 신청하세요</div>';}
+}
+qs.forEach(function(q){q.addEventListener('click',function(){q.classList.toggle('on');sync();});});
+sync();
+
+var bal=document.getElementById('bal'),cut=document.getElementById('cut'),
+    sv=document.getElementById('save'),cap=document.getElementById('cap');
+function calc(){
+  var b=parseFloat(bal.value),c=parseFloat(cut.value);
+  if(!b||!c||b<=0||c<=0){sv.textContent='-';cap.textContent='두 칸을 채워보세요';return;}
+  var yearly=b*10000*(c/100);
+  sv.textContent=Math.round(yearly).toLocaleString()+'원';
+  cap.textContent='1년 기준 · 월 '+Math.round(yearly/12).toLocaleString()+'원씩 줄어요';
+}
+bal.addEventListener('input',calc);cut.addEventListener('input',calc);
+calc();
+</script>
+</body></html>
