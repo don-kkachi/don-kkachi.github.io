@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>약정 끝났는데 매달 25% 손해 보는 중 | 돈까치</title>
+<meta name="description" content="선택약정 요금할인 25%. 대상 자가진단, 조회와 신청 방법, 절감액 계산까지.">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--cream:#F2EDE3;--paper:#FFFCF6;--ink:#23252B;--sub:#6B6357;--gold:#E0B93F;--orange:#C8603C;--red:#E1464B;--green:#2E8C5A;--blue:#5674C8;--line:#E4DCCB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-bottom:78px;font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,'Apple SD Gothic Neo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto}
+.hero{background:var(--ink);color:var(--cream);padding:38px 22px 30px}
+.chip{display:inline-block;background:var(--gold);color:var(--ink);font-size:13px;font-weight:800;padding:6px 13px;border-radius:999px}
+.hero h1{font-size:29px;line-height:1.32;font-weight:800;margin-top:16px;letter-spacing:-.7px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .by{margin-top:14px;font-size:13px;color:#A8A29A}
+.hero .stamp{margin-top:18px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 14px;font-size:13.5px;color:#E8E2D6;line-height:1.55}
+.hero .stamp b{color:var(--gold)}
+nav{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);padding:11px 0;overflow-x:auto;white-space:nowrap}
+nav .navbtn{display:inline-block;font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;margin-left:10px;padding:8px 15px;background:var(--paper);border:1px solid var(--line);border-radius:999px;font-size:13.5px;font-weight:700;color:var(--ink)}
+section{scroll-margin-top:76px;padding:34px 20px 6px}
+.sec-no{font-size:12px;font-weight:800;color:var(--sub);letter-spacing:1.2px}
+.sec-t{font-size:23px;font-weight:800;margin:6px 0 18px;letter-spacing:-.5px;line-height:1.35}
+.sec-lead{font-size:14.5px;color:var(--sub);margin:-10px 0 18px;line-height:1.6}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px 16px;margin-bottom:11px}
+.sum{display:flex;gap:13px;align-items:flex-start}
+.sum .n{flex:none;width:27px;height:27px;border-radius:50%;background:var(--ink);color:var(--gold);font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sum .tx{font-size:15.5px;font-weight:600;line-height:1.55}
+.sum .tx b{color:var(--red);font-weight:800}
+.sum .tx span{display:block;font-size:13px;color:var(--sub);font-weight:500;margin-top:3px}
+.q{display:flex;gap:13px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:15px 16px;margin-bottom:9px;cursor:pointer;user-select:none}
+.q.on{background:#FDF6E6;border-color:var(--gold)}
+.q .bx{flex:none;width:24px;height:24px;border:2px solid var(--orange);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;margin-top:2px}
+.q.on .bx{background:var(--orange)}
+.q .t{font-size:15.5px;font-weight:800;line-height:1.45}
+.q .d{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.6}
+.coinbar{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:13px}
+.coinbar .top{display:flex;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:9px}
+.track{height:11px;background:#E7E0D1;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:99px;transition:width .35s ease}
+.verdict{border-radius:15px;padding:17px;text-align:center;margin-top:4px;background:#EDE7DA}
+.verdict .v{font-size:18px;font-weight:800}
+.verdict .s{font-size:13.5px;color:var(--sub);margin-top:6px;line-height:1.6}
+.ws label{display:block;font-size:13.5px;font-weight:700;margin-bottom:5px}
+.ws input,.ws select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;font-size:16px;background:#fff;font-family:inherit;margin-bottom:13px;color:var(--ink)}
+.ws-out{background:var(--ink);color:var(--cream);border-radius:14px;padding:17px;text-align:center}
+.ws-out .big{font-size:31px;font-weight:800;color:var(--gold);letter-spacing:-1px}
+.ws-out .cap{font-size:13px;color:#A8A29A;margin-top:6px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:4px 0 12px;font-size:14px}
+th{background:#EDE7DA;text-align:left;padding:10px 12px;font-weight:800;font-size:13px;color:var(--sub)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+td:first-child{font-weight:700;width:38%}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}
+summary{padding:15px 16px;font-size:15px;font-weight:800;cursor:pointer;list-style:none;line-height:1.5}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'Q. ';color:var(--red);font-weight:800}
+details[open] summary{border-bottom:1px solid var(--line)}
+details p{padding:14px 16px;font-size:14px;color:var(--sub);line-height:1.75}
+details p::before{content:'A. ';color:var(--blue);font-weight:800}
+.warn{background:#FDF3DD;border:1px solid #EBD9A4;border-radius:14px;padding:15px 16px;margin-bottom:11px}
+.warn h4{font-size:14.5px;font-weight:800;color:#9A7212;margin-bottom:8px}
+.warn p{font-size:13.5px;color:var(--sub);line-height:1.7}
+.src{padding:26px 20px 16px;font-size:12.5px;color:var(--sub);line-height:1.85}
+.src b{color:var(--ink)}
+footer{background:var(--ink);color:#A8A29A;text-align:center;padding:30px 20px 38px;font-size:13px;line-height:1.8}
+footer .fb{color:var(--gold);font-weight:800;font-size:15px}
+hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
+</style></head>
+<body><div class="wrap">
+
+<div class="hero">
+  <span class="chip">통신비</span>
+  <h1>약정 끝났는데<br><em>매달 25% 손해 보는 중</em></h1>
+  <div class="by">@donkkachi · 몰라서 손해 보는 돈, 물어다 주는 까치</div>
+  <div class="stamp">
+    <b>선택약정 요금할인</b>은 요금제 월정액의 25%를 매달 깎아주는 제도입니다.<br>
+    <b>신청한 날부터만 적용</b>되고 지난 요금은 돌려받을 수 없어요. 아는 날 바로 하는 게 유일한 방법입니다.
+  </div>
+</div>
+
+<nav>
+  <button type="button" class="navbtn" data-go="s1">① 요약</button>
+  <button type="button" class="navbtn" data-go="s2">② 자가진단</button>
+  <button type="button" class="navbtn" data-go="s3">③ 조회·신청</button>
+  <button type="button" class="navbtn" data-go="s4">④ 절감액 계산</button>
+  <button type="button" class="navbtn" data-go="s5">⑤ 같이 볼 것</button>
+  <button type="button" class="navbtn" data-go="s6">⑥ FAQ</button>
+</nav>
+
+<section id="s1">
+  <div class="sec-no">SECTION ①</div>
+  <div class="sec-t">30초 요약</div>
+  <div class="card sum"><div class="n">1</div><div class="tx">요금제 월정액의 <b>25%</b>
+    <span>단말기 지원금을 받지 않는 대신 통신비를 깎아주는 방식입니다</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">대상은 <b>둘 중 하나</b>
+    <span>자급제·중고폰으로 개통했거나, 24개월 약정이 끝났거나</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx">조회 <b>1분</b>, 신청 <b>5분</b>
+    <span>스마트초이스나 통신사 앱, 또는 114로 바로 됩니다</span></div></div>
+
+  <div class="warn" style="margin-top:14px">
+    <h4>가장 흔한 손해</h4>
+    <p>2년 약정이 끝났는데 <b>아무도 알려주지 않아서</b> 그대로 제값을 내는 경우입니다.
+    할인은 자동으로 이어지지 않아요. 만료되면 끊기고, 재약정은 본인이 신청해야 합니다.
+    월 7만원 요금제라면 매달 17,500원, 1년이면 21만원입니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s2">
+  <div class="sec-no">SECTION ②</div>
+  <div class="sec-t">나는 대상일까</div>
+  <div class="sec-lead">해당하는 것을 눌러보세요.</div>
+
+  <div class="coinbar">
+    <div class="top"><span>까치 주머니</span><span id="cnt">0 / 4</span></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+
+  <div class="q"><div class="bx">V</div><div><div class="t">지금 폰을 2년 넘게 쓰고 있다</div>
+    <div class="d">약정이 끝났을 가능성이 높습니다</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">자급제나 중고폰으로 개통했다</div>
+    <div class="d">단말기 지원금을 받지 않았으면 바로 대상입니다</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">SKT·KT·LG U+를 쓰고 있다</div>
+    <div class="d">이 세 곳 가입자만 해당됩니다</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">요금이 2년 전과 똑같다</div>
+    <div class="d">할인이 끊긴 뒤 재약정을 안 했을 수 있어요</div></div></div>
+
+  <div class="verdict" id="vd"><div class="v">해당하는 것을 눌러보세요</div><div class="s">조회는 어차피 무료입니다</div></div>
+  <hr class="d">
+</section>
+
+<section id="s3">
+  <div class="sec-no">SECTION ③</div>
+  <div class="sec-t">조회하고 신청하기</div>
+  <div class="sec-lead">셋 중 편한 것으로 하시면 됩니다.</div>
+
+  <div class="card sum"><div class="n">1</div><div class="tx"><b>스마트초이스</b>
+    <span>smartchoice.or.kr · 방송통신위원회가 운영하는 공식 사이트입니다. 통신사 앱이 낯설면 여기가 깔끔해요</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx"><b>통신사 앱</b>
+    <span>가입정보 변경 또는 요금할인 재약정 메뉴에 있습니다. 앱 검색창에 '금리'가 아니라 '요금할인'을 치면 바로 나와요</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx"><b>전화 114</b>
+    <span>휴대폰에서 114를 누르면 내 통신사 고객센터로 연결됩니다. 상담원에게 "선택약정 대상인지 봐주세요"라고 하면 끝이에요</span></div></div>
+
+  <div class="warn">
+    <h4>약정 기간은 12개월을 권합니다</h4>
+    <p>12개월과 24개월 중 고를 수 있는데, <b>할인율은 같습니다.</b>
+    다만 중간에 해지하면 위약금이 붙는데 12개월 쪽이 훨씬 작아요.
+    폰을 바꿀 생각이 조금이라도 있다면 12개월이 안전합니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s4">
+  <div class="sec-no">SECTION ④</div>
+  <div class="sec-t">얼마나 아낄까</div>
+  <div class="sec-lead">지금 내는 월 요금을 넣어보세요.</div>
+
+  <div class="card ws">
+    <label>월 요금제 금액 (원)</label>
+    <input type="number" id="fee" inputmode="numeric" placeholder="예: 69000">
+    <div class="ws-out">
+      <div class="big" id="save">-</div>
+      <div class="cap" id="cap">금액을 넣어보세요</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <h4>할인은 월정액에만 붙어요</h4>
+    <p>단말기 할부금이나 부가서비스 요금에는 적용되지 않습니다.
+    청구서에서 <b>요금제 월정액</b>만 보고 계산하세요.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s5">
+  <div class="sec-no">SECTION ⑤</div>
+  <div class="sec-t">들어간 김에 같이 볼 것</div>
+
+  <div class="card sum"><div class="n">1</div><div class="tx"><b>통신요금 감면</b>은 따로 받습니다
+    <span>기초생활수급자·차상위·장애인·국가유공자·만 65세 이상 기초연금 수급자가 대상이고, 선택약정 25%와 겹쳐서 적용됩니다. 복지로, 정부24, ARS 1523, 114, 주민센터에서 신청하세요</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx"><b>안 쓰는 부가서비스</b>
+    <span>컬러링·안심옵션 같은 것이 몇 년째 붙어 있는 경우가 많습니다</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx"><b>실제 데이터 사용량</b>
+    <span>지난 3개월 사용량을 보면 요금제가 맞는지 바로 나옵니다. 매달 절반도 못 쓰고 있다면 낮은 요금제로 내려도 돼요</span></div></div>
+  <div class="card sum"><div class="n">4</div><div class="tx"><b>결합할인</b>
+    <span>인터넷·TV·가족 회선을 묶으면 추가 할인이 됩니다. 이미 묶여 있는데 회선이 빠져서 할인이 끊긴 경우도 흔해요</span></div></div>
+  <hr class="d">
+</section>
+
+<section id="s6">
+  <div class="sec-no">SECTION ⑥</div>
+  <div class="sec-t">자주 묻는 것</div>
+
+  <details><summary>지난 몇 년치를 소급해주나요?</summary>
+    <p>아니요. 신청한 날부터 일할로 적용됩니다. 이 제도가 아쉬운 점이자, 오늘 바로 해야 하는 이유입니다.</p></details>
+  <details><summary>알뜰폰도 되나요?</summary>
+    <p>선택약정 25%는 SKT·KT·LG U+ 가입자 대상입니다. 알뜰폰은 애초에 요금이 낮게 설계돼 있고, 사업자별로 자체 약정할인을 따로 운영하는 곳이 있으니 쓰시는 곳에 문의해보세요.</p></details>
+  <details><summary>폰이 고장 나서 바꾸면 어떻게 되나요?</summary>
+    <p>선택약정은 회선에 걸리는 할인이라 같은 통신사에서 기기만 바꾸면 대부분 유지되거나 재약정으로 이어집니다. 다만 새 폰을 지원금 받고 사면 그 순간 선택약정과 양립하지 않으니, 바꿀 때마다 어느 쪽이 큰지 비교해보세요.</p></details>
+  <details><summary>가족 것도 확인할 수 있나요?</summary>
+    <p>명의자 본인만 조회·신청할 수 있습니다. 부모님 회선은 함께 계실 때 114로 확인해드리는 게 가장 빠릅니다.</p></details>
+  <details><summary>위약금이 얼마나 나오나요?</summary>
+    <p>남은 약정 기간과 그동안 받은 할인액에 따라 달라집니다. 신청 화면이나 상담원을 통해 미리 확인할 수 있어요.</p></details>
+</section>
+
+<div class="src">
+  <b>출처</b><br>
+  · 방송통신위원회 스마트초이스 요금할인 안내<br>
+  · 각 통신사 선택약정할인 안내 페이지<br>
+  · 통신요금 정보포털 취약계층 감면 안내<br><br>
+  <b>기준일</b> 2026년 8월<br>
+  <b>주의</b> 단말기 유통 관련 제도는 최근 변화가 있었습니다.
+  기기를 새로 살 때는 <b>지원금과 선택약정 중 어느 쪽이 큰지 매장에서 비교</b>하세요.<br>
+  <b>고지</b> 특정 통신사·상품에 대한 추천이 아닙니다.
+</div>
+
+<footer>
+  저장해두고 <span style="color:var(--gold);font-weight:700">오늘 안에</span> 조회만 해보세요<br><br>
+  <span class="fb">돈까치 @donkkachi</span><br>
+  몰라서 손해 보는 돈, 물어다 주는 까치
+</footer>
+</div>
+
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a>
+</div>
+<a href="https://www.instagram.com/donkkachi/" style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">돈까치 팔로우하기</a>
+
+<script>
+document.querySelectorAll('.navbtn').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.go); if(!el) return;
+    var nav=document.querySelector('nav');
+    var off=(nav?nav.offsetHeight:0)+12;
+    window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});
+  });
+});
+var qs=document.querySelectorAll('.q'),fill=document.getElementById('fill'),
+    cnt=document.getElementById('cnt'),vd=document.getElementById('vd');
+function sync(){
+  var els=document.querySelectorAll('.q');
+  var n=document.querySelectorAll('.q.on').length;
+  fill.style.width=(n/qs.length*100)+'%';
+  cnt.textContent=n+' / '+qs.length;
+  var mno=els[2].classList.contains('on');
+  if(n===0){vd.innerHTML='<div class="v">해당하는 것을 눌러보세요</div><div class="s">조회는 어차피 무료입니다</div>';}
+  else if(!mno){vd.innerHTML='<div class="v" style="color:#C8603C">통신사부터 확인해주세요</div><div class="s">선택약정 25%는 SKT·KT·LG U+ 가입자 대상입니다. 알뜰폰이면 쓰시는 곳에 자체 약정할인이 있는지 물어보세요</div>';}
+  else if(n>=3){vd.innerHTML='<div class="v" style="color:#2E8C5A">지금 바로 조회해보세요</div><div class="s">③번 방법 중 하나로 1분이면 확인됩니다</div>';}
+  else{vd.innerHTML='<div class="v" style="color:#2E8C5A">조회해볼 가치가 있어요</div><div class="s">대상인지 아닌지는 조회하면 바로 나옵니다</div>';}
+}
+qs.forEach(function(q){q.addEventListener('click',function(){q.classList.toggle('on');sync();});});
+sync();
+
+var fee=document.getElementById('fee'),sv=document.getElementById('save'),cap=document.getElementById('cap');
+function calc(){
+  var v=parseFloat(fee.value);
+  if(!v||v<=0){sv.textContent='-';cap.textContent='금액을 넣어보세요';return;}
+  var m=Math.round(v*0.25);
+  sv.textContent=m.toLocaleString()+'원';
+  cap.textContent='매달 · 1년이면 '+(m*12).toLocaleString()+'원, 2년이면 '+(m*24).toLocaleString()+'원';
+}
+fee.addEventListener('input',calc);
+calc();
+</script>
+</body></html>
