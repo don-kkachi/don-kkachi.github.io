@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>환전 우대 95%, 얼마 아끼는 걸까 | 돈까치</title>
+<meta name="description" content="해외주식 환전 우대율의 실제 의미와 계산법. 왕복 수수료 계산기, 원화주문 비교까지.">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--cream:#F2EDE3;--paper:#FFFCF6;--ink:#23252B;--sub:#6B6357;--gold:#E0B93F;--orange:#C8603C;--red:#E1464B;--green:#2E8C5A;--blue:#5674C8;--line:#E4DCCB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-bottom:78px;font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,'Apple SD Gothic Neo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto}
+.hero{background:var(--ink);color:var(--cream);padding:38px 22px 30px}
+.chip{display:inline-block;background:var(--gold);color:var(--ink);font-size:13px;font-weight:800;padding:6px 13px;border-radius:999px}
+.hero h1{font-size:29px;line-height:1.32;font-weight:800;margin-top:16px;letter-spacing:-.7px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .by{margin-top:14px;font-size:13px;color:#A8A29A}
+.hero .stamp{margin-top:18px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 14px;font-size:13.5px;color:#E8E2D6;line-height:1.55}
+.hero .stamp b{color:var(--gold)}
+nav{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);padding:11px 0;overflow-x:auto;white-space:nowrap}
+nav .navbtn{display:inline-block;font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;margin-left:10px;padding:8px 15px;background:var(--paper);border:1px solid var(--line);border-radius:999px;font-size:13.5px;font-weight:700;color:var(--ink)}
+section{scroll-margin-top:76px;padding:34px 20px 6px}
+.sec-no{font-size:12px;font-weight:800;color:var(--sub);letter-spacing:1.2px}
+.sec-t{font-size:23px;font-weight:800;margin:6px 0 18px;letter-spacing:-.5px;line-height:1.35}
+.sec-lead{font-size:14.5px;color:var(--sub);margin:-10px 0 18px;line-height:1.6}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px 16px;margin-bottom:11px}
+.sum{display:flex;gap:13px;align-items:flex-start}
+.sum .n{flex:none;width:27px;height:27px;border-radius:50%;background:var(--ink);color:var(--gold);font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sum .tx{font-size:15.5px;font-weight:600;line-height:1.55}
+.sum .tx b{color:var(--red);font-weight:800}
+.sum .tx span{display:block;font-size:13px;color:var(--sub);font-weight:500;margin-top:3px}
+.q{display:flex;gap:13px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:15px 16px;margin-bottom:9px;cursor:pointer;user-select:none}
+.q.on{background:#FDF6E6;border-color:var(--gold)}
+.q .bx{flex:none;width:24px;height:24px;border:2px solid var(--orange);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;margin-top:2px}
+.q.on .bx{background:var(--orange)}
+.q .t{font-size:15.5px;font-weight:800;line-height:1.45}
+.q .d{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.6}
+.coinbar{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:13px}
+.coinbar .top{display:flex;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:9px}
+.track{height:11px;background:#E7E0D1;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:99px;transition:width .35s ease}
+.verdict{border-radius:15px;padding:17px;text-align:center;margin-top:4px;background:#EDE7DA}
+.verdict .v{font-size:18px;font-weight:800}
+.verdict .s{font-size:13.5px;color:var(--sub);margin-top:6px;line-height:1.6}
+.ws label{display:block;font-size:13.5px;font-weight:700;margin-bottom:5px}
+.ws input,.ws select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;font-size:16px;background:#fff;font-family:inherit;margin-bottom:13px;color:var(--ink)}
+.ws-out{background:var(--ink);color:var(--cream);border-radius:14px;padding:17px;text-align:center}
+.ws-out .big{font-size:31px;font-weight:800;color:var(--gold);letter-spacing:-1px}
+.ws-out .cap{font-size:13px;color:#A8A29A;margin-top:6px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:4px 0 12px;font-size:14px}
+th{background:#EDE7DA;text-align:left;padding:10px 12px;font-weight:800;font-size:13px;color:var(--sub)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+td:first-child{font-weight:700;width:38%}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}
+summary{padding:15px 16px;font-size:15px;font-weight:800;cursor:pointer;list-style:none;line-height:1.5}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'Q. ';color:var(--red);font-weight:800}
+details[open] summary{border-bottom:1px solid var(--line)}
+details p{padding:14px 16px;font-size:14px;color:var(--sub);line-height:1.75}
+details p::before{content:'A. ';color:var(--blue);font-weight:800}
+.warn{background:#FDF3DD;border:1px solid #EBD9A4;border-radius:14px;padding:15px 16px;margin-bottom:11px}
+.warn h4{font-size:14.5px;font-weight:800;color:#9A7212;margin-bottom:8px}
+.warn p{font-size:13.5px;color:var(--sub);line-height:1.7}
+.src{padding:26px 20px 16px;font-size:12.5px;color:var(--sub);line-height:1.85}
+.src b{color:var(--ink)}
+footer{background:var(--ink);color:#A8A29A;text-align:center;padding:30px 20px 38px;font-size:13px;line-height:1.8}
+footer .fb{color:var(--gold);font-weight:800;font-size:15px}
+hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
+</style></head>
+<body><div class="wrap">
+
+<div class="hero">
+  <span class="chip">환전 우대율</span>
+  <h1>우대 95%,<br><em>얼마 아끼는 걸까</em></h1>
+  <div class="by">@donkkachi · 몰라서 손해 보는 돈, 물어다 주는 까치</div>
+  <div class="stamp">
+    환전 우대율은 <b>환율을 깎아주는 게 아니라</b> 환전할 때 붙는 수수료(스프레드)를 깎아주는 비율입니다.<br>
+    수익률에는 잡히지 않지만 <b>살 때 한 번, 팔 때 한 번</b> 계속 새어 나가는 비용이에요.
+  </div>
+</div>
+
+<nav>
+  <button type="button" class="navbtn" data-go="s1">① 요약</button>
+  <button type="button" class="navbtn" data-go="s2">② 구조</button>
+  <button type="button" class="navbtn" data-go="s3">③ 계산기</button>
+  <button type="button" class="navbtn" data-go="s4">④ 확인 순서</button>
+  <button type="button" class="navbtn" data-go="s5">⑤ 원화주문</button>
+  <button type="button" class="navbtn" data-go="s6">⑥ FAQ</button>
+</nav>
+
+<section id="s1">
+  <div class="sec-no">SECTION ①</div>
+  <div class="sec-t">30초 요약</div>
+  <div class="card sum"><div class="n">1</div><div class="tx">우대율은 <b>수수료를 깎는 비율</b>
+    <span>환율 자체를 깎는 게 아닙니다. 스프레드의 몇 %를 빼주느냐예요</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">수수료는 대략 <b>1% 안팎</b>
+    <span>증권사마다 다릅니다. 우대 95%면 실질 0.05% 수준이 됩니다</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx"><b>왕복 두 번</b> 냅니다
+    <span>살 때 한 번, 팔 때 한 번. 우대가 없으면 왕복 2% 가까이 됩니다</span></div></div>
+
+  <div class="warn" style="margin-top:14px">
+    <h4>수익률에 안 잡히는 비용입니다</h4>
+    <p>매매 수수료는 눈에 보이는데 환전 비용은 <b>환율 안에 섞여 들어갑니다.</b>
+    "2% 벌었다"고 생각한 거래가 환전까지 넣으면 본전인 경우가 있어요.
+    자주 사고파는 사람일수록 차이가 커집니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s2">
+  <div class="sec-no">SECTION ②</div>
+  <div class="sec-t">숫자로 보는 구조</div>
+  <div class="sec-lead">매매기준율 1,400원, 수수료 1%로 가정한 예시입니다.</div>
+
+  <table>
+    <tr><th>우대율</th><th>살 때 환율</th><th>100만원당 수수료</th></tr>
+    <tr><td>0%</td><td>1,414원</td><td>약 14,000원</td></tr>
+    <tr><td>50%</td><td>1,407원</td><td>약 7,000원</td></tr>
+    <tr><td>90%</td><td>1,401.4원</td><td>약 1,400원</td></tr>
+    <tr><td>95%</td><td>1,400.7원</td><td>약 700원</td></tr>
+    <tr><td>100%</td><td>1,400원</td><td>0원</td></tr>
+  </table>
+
+  <div class="warn">
+    <h4>실제 수수료율은 증권사마다 다릅니다</h4>
+    <p>위 표는 이해를 돕기 위한 예시예요. 내 계좌에 적용되는 <b>수수료율과 우대율은 앱에서 직접</b> 확인해야 합니다.
+    통화별로도 다르고, 같은 증권사여도 계좌 종류나 이벤트 참여 여부에 따라 달라집니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s3">
+  <div class="sec-no">SECTION ③</div>
+  <div class="sec-t">내 경우 얼마일까</div>
+  <div class="sec-lead">환전 금액과 우대율을 넣어보세요. 왕복 기준으로 계산됩니다.</div>
+
+  <div class="card ws">
+    <label>환전 금액 (만원)</label>
+    <input type="number" id="amt" inputmode="numeric" placeholder="예: 500">
+    <label style="margin-top:10px">우대율 (%)</label>
+    <input type="number" id="rate" inputmode="numeric" placeholder="예: 95">
+    <div class="ws-out">
+      <div class="big" id="cost">-</div>
+      <div class="cap" id="cap">두 칸을 채워보세요</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <h4>수수료율 1% 기준입니다</h4>
+    <p>내 증권사 수수료율이 다르면 결과도 달라집니다.
+    <b>비교용</b>으로 쓰시고, 정확한 금액은 환전 화면의 적용 환율로 확인하세요.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s4">
+  <div class="sec-no">SECTION ④</div>
+  <div class="sec-t">내 우대율 확인하기</div>
+
+  <div class="card sum"><div class="n">1</div><div class="tx">증권사 앱에서 <b>환전</b> 화면 열기</div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx"><b>적용 환율</b>과 매매기준율 비교
+    <span>둘의 차이가 실제로 내가 내는 수수료입니다</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx"><b>우대율 안내</b> 문구 확인
+    <span>대부분 환전 화면이나 이벤트 안내에 적혀 있습니다</span></div></div>
+  <div class="card sum"><div class="n">4</div><div class="tx"><b>적용 기간</b>도 함께 보기
+    <span>이벤트성 우대는 보통 1년입니다. 만료되면 안내 없이 원래대로 돌아가요</span></div></div>
+
+  <div class="warn">
+    <h4>자동환전은 따로 볼 것</h4>
+    <p>직접 환전할 때와 자동환전(원화주문)일 때 우대율이 <b>다르게 적용되는 경우</b>가 있습니다.
+    평소 원화주문을 쓴다면 그쪽 조건을 확인하세요.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s5">
+  <div class="sec-no">SECTION ⑤</div>
+  <div class="sec-t">원화주문, 써도 될까</div>
+
+  <div class="card sum"><div class="n">1</div><div class="tx"><b>편합니다</b>
+    <span>환전 없이 원화로 바로 주문할 수 있어요. 환전 타이밍을 고민하지 않아도 됩니다</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">환율이 <b>그 자리에서 확정되지 않습니다</b>
+    <span>임시 환율로 먼저 처리하고 결제일에 정산합니다. 그 사이 환율이 움직이면 차액이 생겨요</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx">가끔 <b>미수금</b>이 생길 수 있어요
+    <span>정산 과정에서 원화가 모자라면 일시적으로 발생할 수 있습니다. 여유를 두는 편이 안전해요</span></div></div>
+
+  <div class="warn">
+    <h4>이렇게 나누면 편합니다</h4>
+    <p>금액이 크거나 환율을 보고 들어가고 싶으면 <b>직접 환전</b>,
+    소액을 자주 사거나 환율을 신경 쓰기 싫으면 <b>원화주문</b>.
+    다만 어느 쪽이든 <b>내 우대율이 얼마인지는 알고</b> 쓰는 게 좋습니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s6">
+  <div class="sec-no">SECTION ⑥</div>
+  <div class="sec-t">자주 묻는 것</div>
+
+  <details><summary>우대 100%면 완전 공짜인가요?</summary>
+    <p>환전 수수료는 0이 됩니다. 다만 매매 수수료나 현지 거래 비용은 별개예요.</p></details>
+  <details><summary>은행에서 환전해서 넣는 게 더 싼가요?</summary>
+    <p>경우에 따라 다릅니다. 은행 우대율이 더 높을 수 있지만 증권사 계좌로 옮기는 절차와 시간이 듭니다. 요즘은 증권사 우대율도 높아서 대부분 증권사 안에서 처리하는 편이 간단해요.</p></details>
+  <details><summary>달러를 그냥 들고 있어도 되나요?</summary>
+    <p>됩니다. 팔고 나서 바로 원화로 바꾸지 않으면 환전을 한 번 덜 하는 셈이에요. 다만 달러로 들고 있는 동안 환율 변동은 그대로 떠안습니다.</p></details>
+  <details><summary>환전에도 세금이 붙나요?</summary>
+    <p>개인의 환전 자체에는 세금이 없습니다. 다만 환차익이 크게 발생하는 경우 상황에 따라 과세 문제가 생길 수 있으니 금액이 크다면 확인이 필요합니다.</p></details>
+  <details><summary>밤에 환전하면 손해인가요?</summary>
+    <p>정규 외환시장 시간 외에는 적용 환율이나 조건이 달라질 수 있습니다. 증권사 안내를 확인하세요.</p></details>
+</section>
+
+<div class="src">
+  <b>출처</b><br>
+  · 각 증권사 환전 수수료 및 우대율 안내<br>
+  · 증권사 통합증거금·가환전 서비스 설명서<br>
+  · 은행권 환율 스프레드 안내 자료<br><br>
+  <b>기준일</b> 2026년 8월<br>
+  <b>주의</b> 수수료율·우대율·적용 조건은 회사와 계좌마다 다르고 수시로 바뀝니다.
+  <b>환전 전 앱의 적용 환율로 확인</b>하세요.<br>
+  <b>고지</b> 특정 증권사에 대한 추천이 아닙니다.
+</div>
+
+<footer>
+  저장해두고 <span style="color:var(--gold);font-weight:700">환전하기 전에</span> 한 번 더 보세요<br><br>
+  <span class="fb">돈까치 @donkkachi</span><br>
+  몰라서 손해 보는 돈, 물어다 주는 까치
+</footer>
+</div>
+
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a>
+</div>
+<a href="https://www.instagram.com/donkkachi/" style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">돈까치 팔로우하기</a>
+
+<script>
+document.querySelectorAll('.navbtn').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.go); if(!el) return;
+    var nav=document.querySelector('nav');
+    var off=(nav?nav.offsetHeight:0)+12;
+    window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});
+  });
+});
+var amt=document.getElementById('amt'),rate=document.getElementById('rate'),
+    cost=document.getElementById('cost'),cap=document.getElementById('cap');
+function calc(){
+  var a=parseFloat(amt.value),r=parseFloat(rate.value);
+  if(!a||a<=0||isNaN(r)||r<0||r>100){cost.textContent='-';cap.textContent='두 칸을 채워보세요';return;}
+  var won=a*10000;
+  var one=won*0.01*(1-r/100);
+  cost.textContent=Math.round(one*2).toLocaleString()+'원';
+  cap.textContent='왕복 기준 · 편도는 '+Math.round(one).toLocaleString()+'원 · 우대 0%였다면 왕복 '+Math.round(won*0.02).toLocaleString()+'원';
+}
+amt.addEventListener('input',calc);rate.addEventListener('input',calc);
+calc();
+</script>
+</body></html>
