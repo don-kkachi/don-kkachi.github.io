@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>물타기 했는데 왜 손실은 그대로지? | 돈까치</title>
+<meta name="description" content="평단가는 내려가는데 손실 금액은 그대로인 이유. 물타기 계산기와 자가진단.">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--cream:#F2EDE3;--paper:#FFFCF6;--ink:#23252B;--sub:#6B6357;--gold:#E0B93F;--orange:#C8603C;--red:#E1464B;--green:#2E8C5A;--blue:#5674C8;--line:#E4DCCB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-bottom:78px;font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,'Apple SD Gothic Neo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto}
+.hero{background:var(--ink);color:var(--cream);padding:38px 22px 30px}
+.chip{display:inline-block;background:var(--gold);color:var(--ink);font-size:13px;font-weight:800;padding:6px 13px;border-radius:999px}
+.hero h1{font-size:29px;line-height:1.32;font-weight:800;margin-top:16px;letter-spacing:-.7px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .by{margin-top:14px;font-size:13px;color:#A8A29A}
+.hero .stamp{margin-top:18px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 14px;font-size:13.5px;color:#E8E2D6;line-height:1.55}
+.hero .stamp b{color:var(--gold)}
+nav{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);padding:11px 0;overflow-x:auto;white-space:nowrap}
+nav .navbtn{display:inline-block;font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;margin-left:10px;padding:8px 15px;background:var(--paper);border:1px solid var(--line);border-radius:999px;font-size:13.5px;font-weight:700;color:var(--ink)}
+section{scroll-margin-top:76px;padding:34px 20px 6px}
+.sec-no{font-size:12px;font-weight:800;color:var(--sub);letter-spacing:1.2px}
+.sec-t{font-size:23px;font-weight:800;margin:6px 0 18px;letter-spacing:-.5px;line-height:1.35}
+.sec-lead{font-size:14.5px;color:var(--sub);margin:-10px 0 18px;line-height:1.6}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px 16px;margin-bottom:11px}
+.sum{display:flex;gap:13px;align-items:flex-start}
+.sum .n{flex:none;width:27px;height:27px;border-radius:50%;background:var(--ink);color:var(--gold);font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sum .tx{font-size:15.5px;font-weight:600;line-height:1.55}
+.sum .tx b{color:var(--red);font-weight:800}
+.sum .tx span{display:block;font-size:13px;color:var(--sub);font-weight:500;margin-top:3px}
+.q{display:flex;gap:13px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:15px 16px;margin-bottom:9px;cursor:pointer;user-select:none}
+.q.on{background:#FDF6E6;border-color:var(--gold)}
+.q .bx{flex:none;width:24px;height:24px;border:2px solid var(--orange);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;margin-top:2px}
+.q.on .bx{background:var(--orange)}
+.q .t{font-size:15.5px;font-weight:800;line-height:1.45}
+.q .d{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.6}
+.coinbar{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:13px}
+.coinbar .top{display:flex;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:9px}
+.track{height:11px;background:#E7E0D1;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:99px;transition:width .35s ease}
+.verdict{border-radius:15px;padding:17px;text-align:center;margin-top:4px;background:#EDE7DA}
+.verdict .v{font-size:18px;font-weight:800}
+.verdict .s{font-size:13.5px;color:var(--sub);margin-top:6px;line-height:1.6}
+.ws label{display:block;font-size:13.5px;font-weight:700;margin-bottom:5px}
+.ws input,.ws select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;font-size:16px;background:#fff;font-family:inherit;margin-bottom:13px;color:var(--ink)}
+.ws-out{background:var(--ink);color:var(--cream);border-radius:14px;padding:17px;text-align:center}
+.ws-out .big{font-size:31px;font-weight:800;color:var(--gold);letter-spacing:-1px}
+.ws-out .cap{font-size:13px;color:#A8A29A;margin-top:6px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:4px 0 12px;font-size:14px}
+th{background:#EDE7DA;text-align:left;padding:10px 12px;font-weight:800;font-size:13px;color:var(--sub)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+td:first-child{font-weight:700;width:38%}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}
+summary{padding:15px 16px;font-size:15px;font-weight:800;cursor:pointer;list-style:none;line-height:1.5}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'Q. ';color:var(--red);font-weight:800}
+details[open] summary{border-bottom:1px solid var(--line)}
+details p{padding:14px 16px;font-size:14px;color:var(--sub);line-height:1.75}
+details p::before{content:'A. ';color:var(--blue);font-weight:800}
+.warn{background:#FDF3DD;border:1px solid #EBD9A4;border-radius:14px;padding:15px 16px;margin-bottom:11px}
+.warn h4{font-size:14.5px;font-weight:800;color:#9A7212;margin-bottom:8px}
+.warn p{font-size:13.5px;color:var(--sub);line-height:1.7}
+.src{padding:26px 20px 16px;font-size:12.5px;color:var(--sub);line-height:1.85}
+.src b{color:var(--ink)}
+footer{background:var(--ink);color:#A8A29A;text-align:center;padding:30px 20px 38px;font-size:13px;line-height:1.8}
+footer .fb{color:var(--gold);font-weight:800;font-size:15px}
+hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
+</style></head>
+<body><div class="wrap">
+<div class="hero">
+  <span class="chip">주식 초보</span>
+  <h1>물타기 했는데<br><em>왜 손실은 그대로지?</em></h1>
+  <div class="by">@donkkachi · 몰라서 손해 보는 돈, 물어다 주는 까치</div>
+  <div class="stamp">
+    평단가는 확실히 내려갑니다. 그런데 <b>손실 금액은 1원도 줄지 않아요.</b><br>
+    물타기는 손실을 줄이는 게 아니라 <b>같은 종목에 돈을 더 넣는 것</b>입니다.
+  </div>
+</div>
+<nav>
+  <button type="button" class="navbtn" data-go="s1">① 요약</button>
+  <button type="button" class="navbtn" data-go="s2">② 계산기</button>
+  <button type="button" class="navbtn" data-go="s3">③ 왜 그럴까</button>
+  <button type="button" class="navbtn" data-go="s4">④ 자가진단</button>
+  <button type="button" class="navbtn" data-go="s5">⑤ FAQ</button>
+</nav>
+
+<section id="s1">
+  <div class="sec-no">SECTION ①</div>
+  <div class="sec-t">30초 요약</div>
+  <div class="card sum"><div class="n">1</div><div class="tx">줄어드는 건 <b>평단가와 손실률</b>
+    <span>손실 금액은 주가가 오르기 전까지 그대로입니다</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">대신 <b>본전까지가 가까워져요</b>
+    <span>필요한 상승률이 +100%에서 +50%로 줄어듭니다</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx">그만큼 <b>걸린 돈이 커집니다</b>
+    <span>투자금이 100만원에서 150만원이 돼요. 회복은 쉬워지고 위험은 커집니다</span></div></div>
+  <div class="warn" style="margin-top:14px">
+    <h4>숫자로 보면</h4>
+    <p>1만원에 100주를 샀는데 5천원이 됐다고 해볼게요. 평가손실은 50만원입니다.<br>
+    여기서 5천원에 100주를 더 사면 평단가는 7,500원이 되고 손실률은 -50%에서 -33%로 바뀝니다.<br>
+    그런데 <b>손실 금액은 여전히 50만원</b>이에요. 투자금이 150만원, 평가금액이 100만원이니까요.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s2">
+  <div class="sec-no">SECTION ②</div>
+  <div class="sec-t">내 경우로 계산해보기</div>
+  <div class="sec-lead">지금 보유 중인 값과 추가로 살 값을 넣어보세요.</div>
+  <div class="card ws">
+    <label>보유 수량 (주)</label>
+    <input type="number" id="q1" inputmode="numeric" placeholder="예: 100">
+    <label style="margin-top:10px">내 평단가 (원)</label>
+    <input type="number" id="p1" inputmode="numeric" placeholder="예: 10000">
+    <label style="margin-top:10px">현재가 (원)</label>
+    <input type="number" id="cur" inputmode="numeric" placeholder="예: 5000">
+    <label style="margin-top:10px">추가로 살 수량 (주)</label>
+    <input type="number" id="q2" inputmode="numeric" placeholder="예: 100">
+    <div class="ws-out">
+      <div class="big" id="avg">-</div>
+      <div class="cap" id="cap">네 칸을 채워보세요</div>
+    </div>
+  </div>
+  <div class="warn">
+    <h4>보실 곳</h4>
+    <p>평단가가 얼마나 내려가는지보다 <b>손실 금액이 그대로인지</b>, 그리고
+    <b>총 투자금이 얼마가 되는지</b>를 보세요. 이 두 개가 물타기의 진짜 결과입니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s3">
+  <div class="sec-no">SECTION ③</div>
+  <div class="sec-t">왜 손실이 안 줄어들까</div>
+  <div class="warn">
+    <h4>손실은 주가가 만드는 것이지 평단가가 만드는 게 아니에요</h4>
+    <p>손실 금액 = 투자한 돈 − 지금 가치입니다.<br>
+    물타기를 하면 투자한 돈도 늘고 지금 가치도 같이 늘어요.
+    <b>차이는 그대로</b>입니다. 손실이 줄어들려면 주가가 올라야 해요.</p>
+  </div>
+  <div class="warn">
+    <h4>손실률이 낮아지는 건 분모가 커져서예요</h4>
+    <p>-50%가 -33%가 된 건 손실이 줄어서가 아니라 <b>나눠지는 투자금이 커졌기 때문</b>입니다.
+    같은 50만원 손실이 100만원에 대해서는 50%, 150만원에 대해서는 33%인 거죠.</p>
+  </div>
+  <div class="warn">
+    <h4>그래도 얻는 게 있습니다</h4>
+    <p>본전까지 필요한 상승률이 줄어듭니다. 5,000원에서 10,000원으로 가려면 두 배가 올라야 하지만,
+    7,500원까지만 가면 되니까 50%면 됩니다. <b>회복 가능성은 실제로 높아져요.</b>
+    대신 그 종목이 계속 떨어지면 잃는 금액도 1.5배가 됩니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s4">
+  <div class="sec-no">SECTION ④</div>
+  <div class="sec-t">누르기 전 자가진단</div>
+  <div class="sec-lead">해당하는 것을 눌러보세요.</div>
+  <div class="coinbar">
+    <div class="top"><span>까치 주머니</span><span id="cnt">0 / 4</span></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+  <div class="q"><div class="bx">V</div><div><div class="t">이 회사에 얼마까지 넣을지 정해뒀다</div>
+    <div class="d">한도가 없으면 감정으로 계속 넣게 됩니다</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">왜 떨어졌는지 이유를 안다</div>
+    <div class="d">이유를 모르면 싼 게 아니라 위험한 겁니다</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">처음부터 나눠 살 계획이었다</div>
+    <div class="d">계획된 분할매수는 물타기가 아니라 원래 순서예요</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">이 돈은 몇 년 없어도 되는 돈이다</div>
+    <div class="d">회복 기간이 길어질 수 있습니다</div></div></div>
+  <div class="verdict" id="vd"><div class="v">해당하는 것을 눌러보세요</div><div class="s">네 개가 다 켜지면 계획된 매수에 가깝습니다</div></div>
+  <hr class="d">
+</section>
+
+<section id="s5">
+  <div class="sec-no">SECTION ⑤</div>
+  <div class="sec-t">자주 묻는 것</div>
+  <details><summary>그럼 물타기는 하면 안 되는 건가요?</summary>
+    <p>아니요. 회사는 그대로인데 가격만 빠졌다면 싸게 더 사는 게 맞습니다. 문제는 <b>불안해서 누르는 경우</b>예요. 같은 행동이지만 이유가 다릅니다.</p></details>
+  <details><summary>평단가를 낮추는 게 왜 좋게 느껴질까요?</summary>
+    <p>앱에서 가장 크게 보이는 숫자가 평단가와 손실률이기 때문입니다. 정작 중요한 손실 금액과 총 투자금은 눈에 덜 띄어요.</p></details>
+  <details><summary>물타기 대신 뭘 할 수 있나요?</summary>
+    <p>아무것도 안 하는 것도 선택입니다. 다른 종목을 사는 것, 일부를 정리하는 것도요. 물타기는 그중 하나일 뿐인데 유일한 선택처럼 느껴질 때가 많습니다.</p></details>
+  <details><summary>불타기(오를 때 추가매수)는요?</summary>
+    <p>구조는 같습니다. 평단가가 올라가고 투자금이 커져요. 방향만 반대일 뿐 <b>걸린 돈이 커진다</b>는 점은 동일합니다.</p></details>
+</section>
+
+<div class="src">
+  <b>기준일</b> 2026년 8월<br>
+  <b>주의</b> 이 글은 계산 구조를 설명한 것이며 <b>특정 종목의 매수·매도 권유가 아닙니다.</b>
+  투자 판단과 그 결과는 본인에게 있습니다.<br>
+  <b>고지</b> 특정 상품·증권사에 대한 추천이 아닙니다.
+</div>
+<footer>
+  평단가는 기분이고 <span style="color:var(--gold);font-weight:700">총 투자금이 사실</span>이에요<br><br>
+  <span class="fb">돈까치 @donkkachi</span><br>
+  몰라서 손해 보는 돈, 물어다 주는 까치
+</footer>
+</div>
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a>
+</div>
+<a href="https://www.instagram.com/donkkachi/" style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">돈까치 팔로우하기</a>
+<script>
+document.querySelectorAll('.navbtn').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.go); if(!el) return;
+    var nav=document.querySelector('nav');
+    var off=(nav?nav.offsetHeight:0)+12;
+    window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});
+  });
+});
+var ids=['q1','p1','cur','q2'].map(function(i){return document.getElementById(i);});
+var avg=document.getElementById('avg'),cap=document.getElementById('cap');
+function calc(){
+  var v=ids.map(function(e){return parseFloat(e.value);});
+  if(v.some(function(x){return !x||x<=0;})){avg.textContent='-';cap.textContent='네 칸을 채워보세요';return;}
+  var q1=v[0],p1=v[1],cur=v[2],q2=v[3];
+  var inv=q1*p1+q2*cur, tot=q1+q2, newAvg=inv/tot;
+  var lossBefore=q1*cur-q1*p1, lossAfter=tot*cur-inv;
+  var need=(newAvg/cur-1)*100, needBefore=(p1/cur-1)*100;
+  avg.textContent='평단 '+Math.round(newAvg).toLocaleString()+'원';
+  cap.textContent='손실 '+Math.round(lossBefore).toLocaleString()+'원 → '+Math.round(lossAfter).toLocaleString()+'원 (그대로) · '
+    +'총 투자금 '+Math.round(q1*p1).toLocaleString()+'원 → '+Math.round(inv).toLocaleString()+'원 · '
+    +'본전까지 +'+needBefore.toFixed(0)+'% → +'+need.toFixed(0)+'%';
+}
+ids.forEach(function(e){e.addEventListener('input',calc);});
+calc();
+var qs=document.querySelectorAll('.q'),fill=document.getElementById('fill'),
+    cnt=document.getElementById('cnt'),vd=document.getElementById('vd');
+function sync(){
+  var n=document.querySelectorAll('.q.on').length;
+  fill.style.width=(n/qs.length*100)+'%';
+  cnt.textContent=n+' / '+qs.length;
+  if(n===0){vd.innerHTML='<div class="v">해당하는 것을 눌러보세요</div><div class="s">네 개가 다 켜지면 계획된 매수에 가깝습니다</div>';}
+  else if(n===4){vd.innerHTML='<div class="v" style="color:#2E8C5A">계획된 매수에 가까워요</div><div class="s">그래도 총 투자금이 얼마가 되는지는 확인하고 누르세요</div>';}
+  else{vd.innerHTML='<div class="v" style="color:#C8603C">잠깐 멈춰보세요</div><div class="s">안 켜진 항목이 지금 물타기를 망설여야 하는 이유입니다</div>';}
+}
+qs.forEach(function(q){q.addEventListener('click',function(){q.classList.toggle('on');sync();});});
+sync();
+</script>
+</body></html>
