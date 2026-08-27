@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>주문은 넣었는데 체결이 안 돼요 | 돈까치</title>
+<meta name="description" content="지정가와 시장가 차이, 체결 우선순위, 시장가가 위험한 순간과 체결이 안 될 때 순서.">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--cream:#F2EDE3;--paper:#FFFCF6;--ink:#23252B;--sub:#6B6357;--gold:#E0B93F;--orange:#C8603C;--red:#E1464B;--green:#2E8C5A;--blue:#5674C8;--line:#E4DCCB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-bottom:78px;font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,'Apple SD Gothic Neo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto}
+.hero{background:var(--ink);color:var(--cream);padding:38px 22px 30px}
+.chip{display:inline-block;background:var(--gold);color:var(--ink);font-size:13px;font-weight:800;padding:6px 13px;border-radius:999px}
+.hero h1{font-size:29px;line-height:1.32;font-weight:800;margin-top:16px;letter-spacing:-.7px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .by{margin-top:14px;font-size:13px;color:#A8A29A}
+.hero .stamp{margin-top:18px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 14px;font-size:13.5px;color:#E8E2D6;line-height:1.55}
+.hero .stamp b{color:var(--gold)}
+nav{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);padding:11px 0;overflow-x:auto;white-space:nowrap}
+nav .navbtn{display:inline-block;font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;margin-left:10px;padding:8px 15px;background:var(--paper);border:1px solid var(--line);border-radius:999px;font-size:13.5px;font-weight:700;color:var(--ink)}
+section{scroll-margin-top:76px;padding:34px 20px 6px}
+.sec-no{font-size:12px;font-weight:800;color:var(--sub);letter-spacing:1.2px}
+.sec-t{font-size:23px;font-weight:800;margin:6px 0 18px;letter-spacing:-.5px;line-height:1.35}
+.sec-lead{font-size:14.5px;color:var(--sub);margin:-10px 0 18px;line-height:1.6}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px 16px;margin-bottom:11px}
+.sum{display:flex;gap:13px;align-items:flex-start}
+.sum .n{flex:none;width:27px;height:27px;border-radius:50%;background:var(--ink);color:var(--gold);font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sum .tx{font-size:15.5px;font-weight:600;line-height:1.55}
+.sum .tx b{color:var(--red);font-weight:800}
+.sum .tx span{display:block;font-size:13px;color:var(--sub);font-weight:500;margin-top:3px}
+.q{display:flex;gap:13px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:15px 16px;margin-bottom:9px;cursor:pointer;user-select:none}
+.q.on{background:#FDF6E6;border-color:var(--gold)}
+.q .bx{flex:none;width:24px;height:24px;border:2px solid var(--orange);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;margin-top:2px}
+.q.on .bx{background:var(--orange)}
+.q .t{font-size:15.5px;font-weight:800;line-height:1.45}
+.q .d{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.6}
+.coinbar{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:13px}
+.coinbar .top{display:flex;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:9px}
+.track{height:11px;background:#E7E0D1;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:99px;transition:width .35s ease}
+.verdict{border-radius:15px;padding:17px;text-align:center;margin-top:4px;background:#EDE7DA}
+.verdict .v{font-size:18px;font-weight:800}
+.verdict .s{font-size:13.5px;color:var(--sub);margin-top:6px;line-height:1.6}
+.ws label{display:block;font-size:13.5px;font-weight:700;margin-bottom:5px}
+.ws input,.ws select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;font-size:16px;background:#fff;font-family:inherit;margin-bottom:13px;color:var(--ink)}
+.ws-out{background:var(--ink);color:var(--cream);border-radius:14px;padding:17px;text-align:center}
+.ws-out .big{font-size:31px;font-weight:800;color:var(--gold);letter-spacing:-1px}
+.ws-out .cap{font-size:13px;color:#A8A29A;margin-top:6px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:4px 0 12px;font-size:14px}
+th{background:#EDE7DA;text-align:left;padding:10px 12px;font-weight:800;font-size:13px;color:var(--sub)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+td:first-child{font-weight:700;width:38%}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}
+summary{padding:15px 16px;font-size:15px;font-weight:800;cursor:pointer;list-style:none;line-height:1.5}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'Q. ';color:var(--red);font-weight:800}
+details[open] summary{border-bottom:1px solid var(--line)}
+details p{padding:14px 16px;font-size:14px;color:var(--sub);line-height:1.75}
+details p::before{content:'A. ';color:var(--blue);font-weight:800}
+.warn{background:#FDF3DD;border:1px solid #EBD9A4;border-radius:14px;padding:15px 16px;margin-bottom:11px}
+.warn h4{font-size:14.5px;font-weight:800;color:#9A7212;margin-bottom:8px}
+.warn p{font-size:13.5px;color:var(--sub);line-height:1.7}
+.src{padding:26px 20px 16px;font-size:12.5px;color:var(--sub);line-height:1.85}
+.src b{color:var(--ink)}
+footer{background:var(--ink);color:#A8A29A;text-align:center;padding:30px 20px 38px;font-size:13px;line-height:1.8}
+footer .fb{color:var(--gold);font-weight:800;font-size:15px}
+hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
+</style></head>
+<body><div class="wrap">
+<div class="hero">
+  <span class="chip">주식 초보</span>
+  <h1>주문은 넣었는데<br><em>체결이 안 돼요</em></h1>
+  <div class="by">@donkkachi · 몰라서 손해 보는 돈, 물어다 주는 까치</div>
+  <div class="stamp">
+    앱 고장이 아닙니다. <b>내가 부른 값에 팔 사람이 아직 없다</b>는 뜻이에요.<br>
+    급해서 시장가로 바꾸면 체결은 되지만 <b>생각보다 비싸게 살 수 있습니다.</b>
+  </div>
+</div>
+<nav>
+  <button type="button" class="navbtn" data-go="s1">① 요약</button>
+  <button type="button" class="navbtn" data-go="s2">② 두 주문</button>
+  <button type="button" class="navbtn" data-go="s3">③ 체결 순서</button>
+  <button type="button" class="navbtn" data-go="s4">④ 안 될 때</button>
+  <button type="button" class="navbtn" data-go="s5">⑤ FAQ</button>
+</nav>
+
+<section id="s1">
+  <div class="sec-no">SECTION ①</div>
+  <div class="sec-t">30초 요약</div>
+  <div class="card sum"><div class="n">1</div><div class="tx">주문은 <b>두 가지</b>뿐
+    <span>지정가는 가격을 정하고, 시장가는 체결을 정합니다. 둘 다 되는 건 없어요</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">체결 순서는 <b>가격 → 시간 → 수량</b>
+    <span>한 칸만 올려도 내 순서가 앞당겨집니다</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx">시장가는 <b>위로 훑고 올라갑니다</b>
+    <span>싼 매물부터 담고 모자라면 그 위 가격에서 삽니다</span></div></div>
+  <div class="warn" style="margin-top:14px">
+    <h4>체결이 안 되는 건 정상입니다</h4>
+    <p>지정가는 <b>내가 부른 값 이하로만</b> 사겠다는 약속이에요.
+    그 값에 팔겠다는 사람이 나타나기 전까지는 기다리는 게 맞습니다.
+    체결이 안 되는 게 아니라 <b>아직 안 된</b> 거예요.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s2">
+  <div class="sec-no">SECTION ②</div>
+  <div class="sec-t">지정가와 시장가</div>
+  <table>
+    <tr><th></th><th>지정가</th><th>시장가</th></tr>
+    <tr><td>가격</td><td>내가 정함</td><td>모르고 삼</td></tr>
+    <tr><td>체결</td><td>안 될 수 있음</td><td>거의 바로</td></tr>
+    <tr><td>쓸 때</td><td>가격이 중요할 때</td><td>지금 꼭 사야 할 때</td></tr>
+    <tr><td>위험</td><td>못 사고 지나감</td><td>비싸게 삼</td></tr>
+  </table>
+  <div class="warn">
+    <h4>시장가가 위험한 순간</h4>
+    <p>100주를 시장가로 사면 제일 싼 매물부터 담습니다.
+    그 가격에 10주밖에 없으면 나머지 90주는 <b>그 위 가격</b>에서 사요.
+    거래가 한산한 종목일수록 매물이 띄엄띄엄 있어서 한 번에 여러 칸을 올라갑니다.
+    <b>국내 ETF도 거래량이 적으면 똑같습니다.</b></p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s3">
+  <div class="sec-no">SECTION ③</div>
+  <div class="sec-t">누가 먼저 사는가</div>
+  <div class="card sum"><div class="n">1</div><div class="tx"><b>가격</b>
+    <span>매수는 비싸게 부른 사람이, 매도는 싸게 부른 사람이 먼저입니다</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx"><b>시간</b>
+    <span>같은 가격이면 먼저 넣은 주문이 앞섭니다</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx"><b>수량</b>
+    <span>가격과 시간이 같으면 수량이 많은 쪽이 우선입니다</span></div></div>
+  <div class="warn">
+    <h4>그래서 취소보다 정정입니다</h4>
+    <p>주문을 취소하고 새로 넣으면 <b>시간 순서가 맨 뒤로 밀립니다.</b>
+    가격만 바꾸고 싶으면 정정 기능을 쓰세요.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s4">
+  <div class="sec-no">SECTION ④</div>
+  <div class="sec-t">체결이 안 될 때 순서</div>
+  <div class="card sum"><div class="n">1</div><div class="tx"><b>미체결 내역</b>부터 확인
+    <span>주문이 들어가 있는지, 수량이 맞는지 먼저 봅니다</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">가격만 <b>한 칸 정정</b>
+    <span>취소하지 말고 정정하세요. 시간 순서가 유지됩니다</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx">수량을 <b>나눠서</b>
+    <span>큰 수량 한 번보다 나눠 넣는 편이 유리할 때가 많습니다</span></div></div>
+  <div class="card sum"><div class="n">4</div><div class="tx">그래도 급하면 <b>시장가</b>
+    <span>다만 거래량이 적은 종목이면 한 번 더 생각하세요</span></div></div>
+  <hr class="d">
+</section>
+
+<section id="s5">
+  <div class="sec-no">SECTION ⑤</div>
+  <div class="sec-t">자주 묻는 것</div>
+  <details><summary>주문이 하루 지나면 사라지나요?</summary>
+    <p>장이 끝나면 미체결 주문은 취소됩니다. 다음 날 다시 넣어야 해요.</p></details>
+  <details><summary>일부만 체결되기도 하나요?</summary>
+    <p>네. 100주 중 30주만 체결되고 70주가 남을 수 있습니다. 남은 수량은 계속 대기해요.</p></details>
+  <details><summary>시장가는 절대 쓰면 안 되나요?</summary>
+    <p>아니요. 거래가 활발한 종목이라면 가격 차이가 거의 없습니다. 문제는 거래량이 적은 종목이나 변동이 큰 시간대예요.</p></details>
+  <details><summary>장 시작 직후는 왜 조심하라고 하나요?</summary>
+    <p>개장 직후와 마감 직전은 가격이 크게 흔들리는 구간입니다. 급하지 않다면 조금 지난 뒤에 넣는 편이 편해요.</p></details>
+  <details><summary>미국주식도 똑같나요?</summary>
+    <p>지정가와 시장가라는 구조는 같습니다. 다만 거래 시간과 호가 방식이 달라서 세부 규칙은 증권사 안내를 확인하세요.</p></details>
+</section>
+
+<div class="src">
+  <b>출처</b><br>
+  · 유가증권시장 업무규정 (호가 우선순위: 가격 → 시간 → 수량)<br>
+  · 증권사 국내주식 거래 안내<br><br>
+  <b>기준일</b> 2026년 8월<br>
+  <b>주의</b> 세부 주문 유형과 정정·취소 방식은 증권사마다 다릅니다.
+  <b>특정 종목의 매매 권유가 아닙니다.</b><br>
+  <b>고지</b> 특정 상품·증권사에 대한 추천이 아닙니다.
+</div>
+<footer>
+  체결이 급한 게 아니라 <span style="color:var(--gold);font-weight:700">가격이 중요한</span> 거예요<br><br>
+  <span class="fb">돈까치 @donkkachi</span><br>
+  몰라서 손해 보는 돈, 물어다 주는 까치
+</footer>
+</div>
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a>
+</div>
+<a href="https://www.instagram.com/donkkachi/" style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">돈까치 팔로우하기</a>
+<script>
+document.querySelectorAll('.navbtn').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.go); if(!el) return;
+    var nav=document.querySelector('nav');
+    var off=(nav?nav.offsetHeight:0)+12;
+    window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});
+  });
+});
+</script>
+</body></html>

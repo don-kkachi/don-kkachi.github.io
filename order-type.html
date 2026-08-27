@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10,000원인 줄 알고 샀는데 10,105원에 샀다면 | 돈까치</title>
+<meta name="description" content="시장가와 지정가 차이, 호가창 읽는 법, 체결가 계산기.">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--cream:#F2EDE3;--paper:#FFFCF6;--ink:#23252B;--sub:#6B6357;--gold:#E0B93F;--orange:#C8603C;--red:#E1464B;--green:#2E8C5A;--blue:#5674C8;--line:#E4DCCB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-bottom:78px;font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,'Apple SD Gothic Neo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto}
+.hero{background:var(--ink);color:var(--cream);padding:38px 22px 30px}
+.chip{display:inline-block;background:var(--gold);color:var(--ink);font-size:13px;font-weight:800;padding:6px 13px;border-radius:999px}
+.hero h1{font-size:29px;line-height:1.32;font-weight:800;margin-top:16px;letter-spacing:-.7px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .by{margin-top:14px;font-size:13px;color:#A8A29A}
+.hero .stamp{margin-top:18px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 14px;font-size:13.5px;color:#E8E2D6;line-height:1.55}
+.hero .stamp b{color:var(--gold)}
+nav{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);padding:11px 0;overflow-x:auto;white-space:nowrap}
+nav .navbtn{display:inline-block;font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;margin-left:10px;padding:8px 15px;background:var(--paper);border:1px solid var(--line);border-radius:999px;font-size:13.5px;font-weight:700;color:var(--ink)}
+section{scroll-margin-top:76px;padding:34px 20px 6px}
+.sec-no{font-size:12px;font-weight:800;color:var(--sub);letter-spacing:1.2px}
+.sec-t{font-size:23px;font-weight:800;margin:6px 0 18px;letter-spacing:-.5px;line-height:1.35}
+.sec-lead{font-size:14.5px;color:var(--sub);margin:-10px 0 18px;line-height:1.6}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px 16px;margin-bottom:11px}
+.sum{display:flex;gap:13px;align-items:flex-start}
+.sum .n{flex:none;width:27px;height:27px;border-radius:50%;background:var(--ink);color:var(--gold);font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sum .tx{font-size:15.5px;font-weight:600;line-height:1.55}
+.sum .tx b{color:var(--red);font-weight:800}
+.sum .tx span{display:block;font-size:13px;color:var(--sub);font-weight:500;margin-top:3px}
+.q{display:flex;gap:13px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:15px 16px;margin-bottom:9px;cursor:pointer;user-select:none}
+.q.on{background:#FDF6E6;border-color:var(--gold)}
+.q .bx{flex:none;width:24px;height:24px;border:2px solid var(--orange);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;margin-top:2px}
+.q.on .bx{background:var(--orange)}
+.q .t{font-size:15.5px;font-weight:800;line-height:1.45}
+.q .d{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.6}
+.coinbar{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:13px}
+.coinbar .top{display:flex;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:9px}
+.track{height:11px;background:#E7E0D1;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:99px;transition:width .35s ease}
+.verdict{border-radius:15px;padding:17px;text-align:center;margin-top:4px;background:#EDE7DA}
+.verdict .v{font-size:18px;font-weight:800}
+.verdict .s{font-size:13.5px;color:var(--sub);margin-top:6px;line-height:1.6}
+.ws label{display:block;font-size:13.5px;font-weight:700;margin-bottom:5px}
+.ws input,.ws select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;font-size:16px;background:#fff;font-family:inherit;margin-bottom:13px;color:var(--ink)}
+.ws-out{background:var(--ink);color:var(--cream);border-radius:14px;padding:17px;text-align:center}
+.ws-out .big{font-size:31px;font-weight:800;color:var(--gold);letter-spacing:-1px}
+.ws-out .cap{font-size:13px;color:#A8A29A;margin-top:6px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:4px 0 12px;font-size:14px}
+th{background:#EDE7DA;text-align:left;padding:10px 12px;font-weight:800;font-size:13px;color:var(--sub)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+td:first-child{font-weight:700;width:38%}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}
+summary{padding:15px 16px;font-size:15px;font-weight:800;cursor:pointer;list-style:none;line-height:1.5}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'Q. ';color:var(--red);font-weight:800}
+details[open] summary{border-bottom:1px solid var(--line)}
+details p{padding:14px 16px;font-size:14px;color:var(--sub);line-height:1.75}
+details p::before{content:'A. ';color:var(--blue);font-weight:800}
+.warn{background:#FDF3DD;border:1px solid #EBD9A4;border-radius:14px;padding:15px 16px;margin-bottom:11px}
+.warn h4{font-size:14.5px;font-weight:800;color:#9A7212;margin-bottom:8px}
+.warn p{font-size:13.5px;color:var(--sub);line-height:1.7}
+.src{padding:26px 20px 16px;font-size:12.5px;color:var(--sub);line-height:1.85}
+.src b{color:var(--ink)}
+footer{background:var(--ink);color:#A8A29A;text-align:center;padding:30px 20px 38px;font-size:13px;line-height:1.8}
+footer .fb{color:var(--gold);font-weight:800;font-size:15px}
+hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
+</style></head>
+<body><div class="wrap">
+<div class="hero">
+  <span class="chip">주식 초보</span>
+  <h1>10,000원인 줄 알고 샀는데<br><em>10,105원에 샀다면</em></h1>
+  <div class="by">@donkkachi · 몰라서 손해 보는 돈, 물어다 주는 까치</div>
+  <div class="stamp">
+    앱이 잘못된 게 아닙니다. <b>현재가는 방금 거래된 가격</b>이고,
+    지금 그 가격에 팔겠다는 사람이 없을 수 있어요.<br>
+    시장가는 <b>싼 것부터 순서대로 다 담기</b> 때문에 예상보다 비싸게 사집니다.
+  </div>
+</div>
+<nav>
+  <button type="button" class="navbtn" data-go="s1">① 요약</button>
+  <button type="button" class="navbtn" data-go="s2">② 계산기</button>
+  <button type="button" class="navbtn" data-go="s3">③ 호가창 읽기</button>
+  <button type="button" class="navbtn" data-go="s4">④ 언제 쓸까</button>
+  <button type="button" class="navbtn" data-go="s5">⑤ FAQ</button>
+</nav>
+
+<section id="s1">
+  <div class="sec-no">SECTION ①</div>
+  <div class="sec-t">30초 요약</div>
+  <div class="card sum"><div class="n">1</div><div class="tx"><b>현재가</b>는 지금 살 수 있는 가격이 아니에요
+    <span>방금 체결된 가격입니다. 지금 그 값에 파는 사람이 없을 수 있어요</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx"><b>시장가</b>는 싼 것부터 순서대로 담습니다
+    <span>내 수량을 채울 때까지 위 호가로 계속 올라가요</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx"><b>지정가</b>는 내가 적은 값에만 삽니다
+    <span>대신 그 가격까지 안 내려오면 안 사질 수 있어요</span></div></div>
+  <div class="warn" style="margin-top:14px">
+    <h4>수수료보다 여기서 더 샙니다</h4>
+    <p>증권사 수수료는 0.01% 안팎입니다. 그런데 시장가로 급하게 사면
+    한 번에 <b>0.5~1%</b>가 벌어지기도 해요. 100만원어치면 만원 단위입니다.
+    수수료 무료 이벤트를 찾는 것보다 <b>주문 방식을 바꾸는 게</b> 훨씬 큽니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s2">
+  <div class="sec-no">SECTION ②</div>
+  <div class="sec-t">체결가 계산해보기</div>
+  <div class="sec-lead">호가창에 보이는 매도 물량을 위에서부터 넣어보세요.</div>
+  <div class="card ws">
+    <label>사려는 수량 (주)</label>
+    <input type="number" id="need" inputmode="numeric" placeholder="예: 100">
+    <label style="margin-top:10px">1호가 — 가격 / 수량</label>
+    <input type="number" id="p1" inputmode="numeric" placeholder="10050">
+    <input type="number" id="q1" inputmode="numeric" placeholder="20" style="margin-top:6px">
+    <label style="margin-top:10px">2호가 — 가격 / 수량</label>
+    <input type="number" id="p2" inputmode="numeric" placeholder="10100">
+    <input type="number" id="q2" inputmode="numeric" placeholder="50" style="margin-top:6px">
+    <label style="margin-top:10px">3호가 — 가격 / 수량</label>
+    <input type="number" id="p3" inputmode="numeric" placeholder="10150">
+    <input type="number" id="q3" inputmode="numeric" placeholder="100" style="margin-top:6px">
+    <div class="ws-out">
+      <div class="big" id="avgp">-</div>
+      <div class="cap" id="cap">수량과 1호가만 넣어도 계산돼요</div>
+    </div>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s3">
+  <div class="sec-no">SECTION ③</div>
+  <div class="sec-t">호가창 읽는 법</div>
+  <table>
+    <tr><th>보이는 것</th><th>뜻</th></tr>
+    <tr><td>위쪽 파란 줄</td><td>팔겠다는 사람들 (매도호가)</td></tr>
+    <tr><td>아래쪽 빨간 줄</td><td>사겠다는 사람들 (매수호가)</td></tr>
+    <tr><td>옆의 숫자</td><td>그 가격에 걸려 있는 수량</td></tr>
+    <tr><td>가운데 굵은 값</td><td>방금 체결된 가격 (현재가)</td></tr>
+  </table>
+  <div class="warn">
+    <h4>딱 하나만 보신다면</h4>
+    <p><b>내가 사려는 수량이 첫 줄 안에 들어가는지</b>만 보세요.
+    100주를 사려는데 첫 줄에 20주밖에 없으면, 나머지 80주는 더 비싼 값에 사집니다.</p>
+  </div>
+  <div class="warn">
+    <h4>거래량이 적은 종목일수록 심합니다</h4>
+    <p>줄마다 몇 주씩만 걸려 있는 종목은 100주만 사도 몇 % 위로 올라가요.
+    반대로 삼성전자처럼 거래가 많은 종목은 차이가 거의 없습니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s4">
+  <div class="sec-no">SECTION ④</div>
+  <div class="sec-t">그럼 뭘 쓰나</div>
+  <div class="card sum"><div class="n">1</div><div class="tx">평소에는 <b>지정가</b>
+    <span>현재가나 그보다 조금 아래를 적어두세요. 몇 분 안에 체결되는 경우가 많습니다</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">꼭 사야 할 때만 <b>시장가</b>
+    <span>가격보다 체결이 중요한 순간이 있습니다. 그때만 쓰세요</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx">많이 살 땐 <b>나눠서</b>
+    <span>한 번에 다 넣으면 내가 스스로 가격을 올리게 됩니다</span></div></div>
+  <div class="card sum"><div class="n">4</div><div class="tx">팔 때도 <b>똑같습니다</b>
+    <span>시장가 매도는 비싼 것부터가 아니라 사겠다는 값 중 높은 것부터 내려가며 팔려요</span></div></div>
+  <div class="warn">
+    <h4>지정가의 단점도 있어요</h4>
+    <p>가격이 안 내려오면 <b>하루 종일 안 사질 수 있습니다.</b>
+    오르는 종목을 기다리다 못 사는 것도 손해예요. 그래서 "급하지 않으면"이라는 조건이 붙습니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s5">
+  <div class="sec-no">SECTION ⑤</div>
+  <div class="sec-t">자주 묻는 것</div>
+  <details><summary>현재가에 샀는데 왜 체결 가격이 다르죠?</summary>
+    <p>현재가는 <b>방금 거래된 값</b>입니다. 지금 그 값에 팔겠다는 물량이 남아 있지 않으면 그 위 가격에 사지게 돼요.</p></details>
+  <details><summary>시장가는 항상 손해인가요?</summary>
+    <p>아니요. 거래가 활발한 종목에서 소액을 살 때는 차이가 거의 없습니다. 문제는 거래량이 적은 종목이나 큰 금액을 한 번에 넣을 때예요.</p></details>
+  <details><summary>미국주식도 똑같나요?</summary>
+    <p>구조는 같습니다. 다만 한국 시간 밤에 거래되고 종목별 거래량 차이가 커서, 거래가 적은 종목은 차이가 더 벌어질 수 있어요.</p></details>
+  <details><summary>지정가로 걸어두면 언제까지 유효한가요?</summary>
+    <p>보통 그날 장 마감까지입니다. 체결되지 않으면 주문이 취소되고 예수금이 돌아와요.</p></details>
+</section>
+
+<div class="src">
+  <b>기준일</b> 2026년 8월<br>
+  <b>주의</b> 예시의 숫자는 설명을 위한 가정이며, 실제 호가와 체결 결과는 종목·시점마다 다릅니다.
+  <b>특정 종목의 매수·매도 권유가 아닙니다.</b><br>
+  <b>고지</b> 특정 증권사에 대한 추천이 아닙니다.
+</div>
+<footer>
+  수수료 찾는 것보다 <span style="color:var(--gold);font-weight:700">주문 방식 바꾸는 게</span> 큽니다<br><br>
+  <span class="fb">돈까치 @donkkachi</span><br>
+  몰라서 손해 보는 돈, 물어다 주는 까치
+</footer>
+</div>
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a>
+</div>
+<a href="https://www.instagram.com/donkkachi/" style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">돈까치 팔로우하기</a>
+<script>
+document.querySelectorAll('.navbtn').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.go); if(!el) return;
+    var nav=document.querySelector('nav');
+    var off=(nav?nav.offsetHeight:0)+12;
+    window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});
+  });
+});
+var E=function(i){return document.getElementById(i);};
+var fields=['need','p1','q1','p2','q2','p3','q3'].map(E);
+var avgp=E('avgp'),cap=E('cap');
+function calc(){
+  var need=parseFloat(E('need').value);
+  var book=[[E('p1'),E('q1')],[E('p2'),E('q2')],[E('p3'),E('q3')]]
+    .map(function(x){return [parseFloat(x[0].value),parseFloat(x[1].value)];})
+    .filter(function(x){return x[0]>0&&x[1]>0;});
+  if(!need||need<=0||!book.length){avgp.textContent='-';cap.textContent='수량과 1호가만 넣어도 계산돼요';return;}
+  var got=0,cost=0;
+  for(var i=0;i<book.length&&got<need;i++){
+    var take=Math.min(book[i][1],need-got);
+    cost+=book[i][0]*take; got+=take;
+  }
+  if(got<need){
+    avgp.textContent='물량 부족';
+    cap.textContent='넣으신 호가로는 '+got+'주만 체결돼요. 나머지는 더 위 가격에 사집니다';
+    return;
+  }
+  var avg=cost/need, base=book[0][0];
+  avgp.textContent=Math.round(avg).toLocaleString()+'원';
+  cap.textContent='총 '+Math.round(cost).toLocaleString()+'원 · 1호가('+base.toLocaleString()+'원)로만 샀다면 '
+    +Math.round(base*need).toLocaleString()+'원 · 차이 '+Math.round(cost-base*need).toLocaleString()+'원';
+}
+fields.forEach(function(e){e.addEventListener('input',calc);});
+calc();
+</script>
+</body></html>
