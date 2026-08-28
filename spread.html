@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>주식 사자마자 바로 마이너스인 이유 | 돈까치</title>
-<meta name="description" content="사는 값과 파는 값이 다른 이유. 스프레드 계산기와 비용 줄이는 법.">
+<title>사자마자 마이너스인데 제가 잘못 산 거예요? | 돈까치</title>
+<meta name="description" content="매수 직후 평가손익이 마이너스인 이유. 두 가격의 차이와 수수료, 줄이는 법까지.">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
 :root{--cream:#F2EDE3;--paper:#FFFCF6;--ink:#23252B;--sub:#6B6357;--gold:#E0B93F;--orange:#C8603C;--red:#E1464B;--green:#2E8C5A;--blue:#5674C8;--line:#E4DCCB}
@@ -71,17 +71,17 @@ hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
 <body><div class="wrap">
 <div class="hero">
   <span class="chip">주식 초보</span>
-  <h1>주식 사자마자<br><em>바로 마이너스인 이유</em></h1>
+  <h1>사자마자 마이너스인데<br><em>제가 잘못 산 거예요?</em></h1>
   <div class="by">@donkkachi · 몰라서 손해 보는 돈, 물어다 주는 까치</div>
   <div class="stamp">
-    주가가 떨어진 게 아닙니다. 주식에는 <b>사는 값과 파는 값이 따로</b> 있어요.<br>
-    사는 값이 더 비싸기 때문에 <b>주가가 1원도 안 움직여도</b> 마이너스로 시작합니다.
+    아니요. <b>주가는 1원도 안 움직였는데도</b> 마이너스로 보이는 게 정상입니다.<br>
+    주식엔 항상 두 가격이 붙어 있고, <b>살 때는 비싼 쪽을 주기 때문</b>이에요.
   </div>
 </div>
 <nav>
   <button type="button" class="navbtn" data-go="s1">① 요약</button>
-  <button type="button" class="navbtn" data-go="s2">② 비용 계산기</button>
-  <button type="button" class="navbtn" data-go="s3">③ 무엇이 붙나</button>
+  <button type="button" class="navbtn" data-go="s2">② 계산기</button>
+  <button type="button" class="navbtn" data-go="s3">③ 왜 생기나</button>
   <button type="button" class="navbtn" data-go="s4">④ 줄이는 법</button>
   <button type="button" class="navbtn" data-go="s5">⑤ FAQ</button>
 </nav>
@@ -89,65 +89,64 @@ hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
 <section id="s1">
   <div class="sec-no">SECTION ①</div>
   <div class="sec-t">30초 요약</div>
-  <div class="card sum"><div class="n">1</div><div class="tx">값이 <b>두 개</b>예요
-    <span>사려면 파는 사람이 부른 값을, 팔려면 사는 사람이 부른 값을 받습니다</span></div></div>
-  <div class="card sum"><div class="n">2</div><div class="tx">그 차이가 <b>스프레드</b>
-    <span>사는 순간 이미 이만큼 마이너스입니다. 고장이 아니에요</span></div></div>
-  <div class="card sum"><div class="n">3</div><div class="tx">여기에 <b>수수료와 세금</b>이 더해집니다
-    <span>왕복 한 번에 한 세트씩 쌓여요. 자주 사고팔수록 커집니다</span></div></div>
+  <div class="card sum"><div class="n">1</div><div class="tx">주식엔 <b>두 가격</b>이 있어요
+    <span>사려는 사람이 부른 값과 팔려는 사람이 부른 값입니다</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">살 때는 <b>비싼 쪽</b>을 줍니다
+    <span>그런데 평가는 그보다 아래에서 되니 바로 마이너스로 보여요</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx">여기에 <b>수수료</b>가 얹힙니다
+    <span>그래서 시작점이 0%가 아니라 조금 아래예요</span></div></div>
   <div class="warn" style="margin-top:14px">
-    <h4>가게에서 물건 사는 것과 같아요</h4>
-    <p>가게에서 만원에 산 물건을 바로 되팔면 만원을 못 받죠.
-    주식도 마찬가지입니다. <b>사는 창구와 파는 창구의 가격이 다릅니다.</b>
-    그 차이가 거래를 성사시켜주는 시장의 몫이에요.</p>
+    <h4>손해를 본 게 아닙니다</h4>
+    <p>10,000원에 1주를 샀는데 현재가가 9,990원이면 평가손익은 -10원입니다.
+    이 사이에 <b>주가는 한 번도 움직이지 않았어요.</b>
+    두 가격의 차이(스프레드)가 그대로 보이는 것뿐입니다.</p>
   </div>
   <hr class="d">
 </section>
 
 <section id="s2">
   <div class="sec-no">SECTION ②</div>
-  <div class="sec-t">내 경우로 계산해보기</div>
-  <div class="sec-lead">호가창에 뜨는 두 값을 넣어보세요.</div>
+  <div class="sec-t">내 시작 손익 계산</div>
+  <div class="sec-lead">산 값과 지금 화면에 뜬 값을 넣어보세요.</div>
   <div class="card ws">
-    <label>사려면 내야 하는 값 (원)</label>
-    <input type="number" id="ask" inputmode="numeric" placeholder="예: 10010">
-    <label style="margin-top:10px">팔면 받는 값 (원)</label>
-    <input type="number" id="bid" inputmode="numeric" placeholder="예: 10000">
-    <label style="margin-top:10px">살 수량 (주)</label>
-    <input type="number" id="qty" inputmode="numeric" placeholder="예: 100">
+    <label>내가 산 값 (원)</label>
+    <input type="number" id="buy" inputmode="numeric" placeholder="예: 10000">
+    <label style="margin-top:10px">화면 속 현재가 (원)</label>
+    <input type="number" id="now" inputmode="numeric" placeholder="예: 9990">
+    <label style="margin-top:10px">수량 (주)</label>
+    <input type="number" id="qty" inputmode="numeric" placeholder="예: 10">
     <div class="ws-out">
       <div class="big" id="res">-</div>
       <div class="cap" id="cap">세 칸을 채워보세요</div>
     </div>
   </div>
   <div class="warn">
-    <h4>호가창에서 보는 법</h4>
-    <p>주문 화면의 가격표에서 <b>위쪽이 파는 사람들이 부른 값</b>, <b>아래쪽이 사는 사람들이 부른 값</b>입니다.
-    지금 사려면 위쪽 맨 아래 값을, 지금 팔려면 아래쪽 맨 위 값을 받게 돼요.</p>
+    <h4>본전은 0%가 아니에요</h4>
+    <p>여기에 매수 수수료가 더해지고, 팔 때는 수수료와 거래세가 또 붙습니다.
+    <b>주가가 시작점보다 조금 더 올라야</b> 진짜 본전이에요.</p>
   </div>
   <hr class="d">
 </section>
 
 <section id="s3">
   <div class="sec-no">SECTION ③</div>
-  <div class="sec-t">무엇이 붙나</div>
-  <table>
-    <tr><th>항목</th><th>언제</th><th>메모</th></tr>
-    <tr><td>스프레드</td><td>살 때</td><td>가격 차이. 거래량 적을수록 큼</td></tr>
-    <tr><td>증권사 수수료</td><td>살 때·팔 때</td><td>증권사·채널마다 다름</td></tr>
-    <tr><td>유관기관 비용</td><td>살 때·팔 때</td><td>수수료 무료여도 남는 경우 있음</td></tr>
-    <tr><td>증권거래세</td><td>팔 때만</td><td>손해를 봐도 부과됨</td></tr>
-  </table>
+  <div class="sec-t">왜 이런 차이가 생기나</div>
   <div class="warn">
-    <h4>세율은 여기 적지 않았습니다</h4>
-    <p>증권거래세율은 시장(코스피·코스닥)과 시점에 따라 다르고 최근에도 조정이 있었습니다.
-    <b>정확한 금액은 앱의 거래내역에서 직접 확인</b>하세요. 매매 한 건을 열어보면
-    수수료와 세금이 항목별로 찍혀 있습니다.</p>
+    <h4>시장은 경매장에 가깝습니다</h4>
+    <p>"사고 싶은 사람은 9,990원까지 내겠다", "팔고 싶은 사람은 10,000원은 받아야겠다"
+    이렇게 두 줄이 마주 보고 있어요. 지금 당장 사려면 <b>파는 사람이 부른 10,000원</b>을 줘야 합니다.
+    그 순간 내 주식의 가치는 <b>사려는 사람이 부르는 9,990원</b>으로 평가돼요.</p>
   </div>
   <div class="warn">
-    <h4>수익률에는 안 잡혀요</h4>
-    <p>앱에 표시되는 수익률은 대부분 이 비용을 반영하지 않습니다.
-    <b>화면상 +1%인데 실제로는 본전</b>인 경우가 생기는 이유예요.</p>
+    <h4>거래가 한산할수록 벌어집니다</h4>
+    <p>사람이 많으면 두 줄이 바짝 붙어서 차이가 거의 없습니다.
+    거래가 뜸한 종목은 그 사이가 크게 벌어져 있어서 <b>시작 마이너스가 눈에 띄게 커져요.</b>
+    국내 ETF도 거래량이 적으면 똑같습니다.</p>
+  </div>
+  <div class="warn">
+    <h4>왕복할 때마다 다시 생깁니다</h4>
+    <p>한 번 사고팔 때마다 이 차이와 수수료가 한 번씩 붙어요.
+    짧게 자주 사고파는 게 불리한 이유 중 하나입니다.</p>
   </div>
   <hr class="d">
 </section>
@@ -155,39 +154,38 @@ hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
 <section id="s4">
   <div class="sec-no">SECTION ④</div>
   <div class="sec-t">줄이는 법</div>
-  <div class="card sum"><div class="n">1</div><div class="tx"><b>지정가</b>로 주문하기
-    <span>시장가는 지금 나와 있는 아무 값에나 체결됩니다. 가격을 직접 적으면 원치 않는 값에 안 잡혀요</span></div></div>
-  <div class="card sum"><div class="n">2</div><div class="tx"><b>거래량 많은 종목</b>
-    <span>사려는 사람과 팔려는 사람이 많을수록 두 값의 차이가 좁습니다</span></div></div>
-  <div class="card sum"><div class="n">3</div><div class="tx"><b>장 시작·마감 직후</b> 피하기
-    <span>가격이 급하게 움직이는 구간이라 차이가 벌어질 수 있어요</span></div></div>
-  <div class="card sum"><div class="n">4</div><div class="tx"><b>매매 횟수 줄이기</b>
-    <span>가장 확실한 방법입니다. 왕복 한 번에 한 세트씩 붙으니까요</span></div></div>
+  <div class="card sum"><div class="n">1</div><div class="tx"><b>거래량</b>을 먼저 보세요
+    <span>거래가 활발하면 두 가격이 붙어 있어서 시작점이 0에 가깝습니다</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">급하지 않으면 <b>지정가</b>로
+    <span>내가 부른 값에 걸어두면 비싼 쪽을 안 줘도 될 때가 있어요</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx"><b>횟수</b>를 줄이세요
+    <span>왕복할 때마다 다시 붙습니다</span></div></div>
+  <div class="card sum"><div class="n">4</div><div class="tx">산 직후 숫자는 <b>보지 마세요</b>
+    <span>그 마이너스는 주가가 아니라 계산 방식입니다</span></div></div>
   <hr class="d">
 </section>
 
 <section id="s5">
   <div class="sec-no">SECTION ⑤</div>
   <div class="sec-t">자주 묻는 것</div>
-  <details><summary>지정가로 하면 스프레드가 없어지나요?</summary>
-    <p>없어지진 않습니다. 다만 내가 원하는 값을 적어두고 기다릴 수 있어요. 대신 그 값에 도달하지 않으면 체결이 안 됩니다.</p></details>
-  <details><summary>ETF도 마찬가지인가요?</summary>
-    <p>네. ETF도 거래소에서 사고파는 상품이라 같은 구조입니다. 다만 거래량이 많은 대표 ETF는 차이가 좁은 편이에요.</p></details>
-  <details><summary>미국주식은요?</summary>
-    <p>같은 구조에 환전 비용이 하나 더 붙습니다. 그래서 왕복 비용이 국내보다 큰 경우가 많아요.</p></details>
-  <details><summary>수수료 평생 무료면 비용이 없는 건가요?</summary>
-    <p>증권사 몫이 없다는 뜻입니다. 유관기관 비용이나 매도 시 세금은 별개로 남는 경우가 많아요. 앱 거래내역에서 확인하는 게 정확합니다.</p></details>
+  <details><summary>증권사가 수수료를 더 떼간 건가요?</summary>
+    <p>아니요. 수수료도 반영되지만 대부분은 두 가격의 차이 때문입니다. 수수료를 0원으로 해도 이 마이너스는 남아요.</p></details>
+  <details><summary>미국주식도 똑같나요?</summary>
+    <p>구조는 같습니다. 여기에 환전까지 얽혀서 체감이 더 클 수 있어요.</p></details>
+  <details><summary>얼마나 지나면 없어지나요?</summary>
+    <p>시간이 지나서 없어지는 게 아니라 주가가 그만큼 올라야 사라집니다. 다만 금액이 작아서 하루만 지나도 잘 안 보이게 돼요.</p></details>
+  <details><summary>ETF는 왜 더 크게 느껴지죠?</summary>
+    <p>거래량이 적은 ETF는 두 가격 사이가 벌어져 있습니다. 같은 지수를 따라가는 ETF라도 거래가 활발한 쪽을 고르면 차이가 줄어요.</p></details>
 </section>
 
 <div class="src">
   <b>기준일</b> 2026년 8월<br>
-  <b>주의</b> 수수료율과 세율은 증권사·시장·시점에 따라 다릅니다.
-  <b>실제 금액은 거래내역에서 확인</b>하세요.
-  이 글은 계산 구조를 설명한 것이며 <b>특정 종목의 매수·매도 권유가 아닙니다.</b><br>
+  <b>주의</b> 평가 기준과 수수료는 증권사마다 다릅니다.
+  <b>특정 종목의 매매 권유가 아닙니다.</b><br>
   <b>고지</b> 특정 상품·증권사에 대한 추천이 아닙니다.
 </div>
 <footer>
-  사자마자 마이너스는 <span style="color:var(--gold);font-weight:700">고장이 아니에요</span><br><br>
+  빨간 숫자가 떠도 <span style="color:var(--gold);font-weight:700">잘못 산 게 아니에요</span><br><br>
   <span class="fb">돈까치 @donkkachi</span><br>
   몰라서 손해 보는 돈, 물어다 주는 까치
 </footer>
@@ -205,17 +203,17 @@ document.querySelectorAll('.navbtn').forEach(function(b){
     window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});
   });
 });
-var ask=document.getElementById('ask'),bid=document.getElementById('bid'),
+var buy=document.getElementById('buy'),now=document.getElementById('now'),
     qty=document.getElementById('qty'),res=document.getElementById('res'),cap=document.getElementById('cap');
 function calc(){
-  var a=parseFloat(ask.value),b=parseFloat(bid.value),q=parseFloat(qty.value);
-  if(!a||!b||!q||a<=0||b<=0||q<=0){res.textContent='-';cap.textContent='세 칸을 채워보세요';return;}
-  if(a<b){res.textContent='-';cap.textContent='사는 값이 파는 값보다 낮게 들어갔어요';return;}
-  var gap=(a-b)*q, pct=(a-b)/a*100;
-  res.textContent='-'+Math.round(gap).toLocaleString()+'원';
-  cap.textContent='사는 순간 시작하는 마이너스 · 약 -'+pct.toFixed(2)+'% · 수수료와 세금은 별도예요';
+  var b=parseFloat(buy.value),n=parseFloat(now.value),q=parseFloat(qty.value);
+  if(!b||!n||!q||b<=0||n<=0||q<=0){res.textContent='-';cap.textContent='세 칸을 채워보세요';return;}
+  var diff=(n-b)*q, pct=(n/b-1)*100;
+  res.textContent=Math.round(diff).toLocaleString()+'원';
+  cap.textContent='주당 '+Math.round(n-b).toLocaleString()+'원 차이 · '+pct.toFixed(2)+'% · 주가가 '
+    +Math.round(b).toLocaleString()+'원까지 오면 이 차이는 사라져요';
 }
-[ask,bid,qty].forEach(function(e){e.addEventListener('input',calc);});
+[buy,now,qty].forEach(function(e){e.addEventListener('input',calc);});
 calc();
 </script>
 </body></html>
