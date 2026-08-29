@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>주식 시작하고 첫 3개월, 이 순서로 겪어요 | 돈까치</title>
+<meta name="description" content="주식 초보가 지나가는 12단계 로드맵. 지금 내 위치 확인하고 단계별로 필요한 것 찾기.">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--cream:#F2EDE3;--paper:#FFFCF6;--ink:#23252B;--sub:#6B6357;--gold:#E0B93F;--orange:#C8603C;--red:#E1464B;--green:#2E8C5A;--blue:#5674C8;--line:#E4DCCB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-bottom:78px;font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,'Apple SD Gothic Neo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto}
+.hero{background:var(--ink);color:var(--cream);padding:38px 22px 30px}
+.chip{display:inline-block;background:var(--gold);color:var(--ink);font-size:13px;font-weight:800;padding:6px 13px;border-radius:999px}
+.hero h1{font-size:29px;line-height:1.32;font-weight:800;margin-top:16px;letter-spacing:-.7px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .by{margin-top:14px;font-size:13px;color:#A8A29A}
+.hero .stamp{margin-top:18px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 14px;font-size:13.5px;color:#E8E2D6;line-height:1.55}
+.hero .stamp b{color:var(--gold)}
+nav{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);padding:11px 0;overflow-x:auto;white-space:nowrap}
+nav .navbtn{display:inline-block;font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;margin-left:10px;padding:8px 15px;background:var(--paper);border:1px solid var(--line);border-radius:999px;font-size:13.5px;font-weight:700;color:var(--ink)}
+section{scroll-margin-top:76px;padding:34px 20px 6px}
+.sec-no{font-size:12px;font-weight:800;color:var(--sub);letter-spacing:1.2px}
+.sec-t{font-size:23px;font-weight:800;margin:6px 0 18px;letter-spacing:-.5px;line-height:1.35}
+.sec-lead{font-size:14.5px;color:var(--sub);margin:-10px 0 18px;line-height:1.6}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px 16px;margin-bottom:11px}
+.sum{display:flex;gap:13px;align-items:flex-start}
+.sum .n{flex:none;width:27px;height:27px;border-radius:50%;background:var(--ink);color:var(--gold);font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sum .tx{font-size:15.5px;font-weight:600;line-height:1.55}
+.sum .tx b{color:var(--red);font-weight:800}
+.sum .tx span{display:block;font-size:13px;color:var(--sub);font-weight:500;margin-top:3px}
+.q{display:flex;gap:13px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:15px 16px;margin-bottom:9px;cursor:pointer;user-select:none}
+.q.on{background:#FDF6E6;border-color:var(--gold)}
+.q .bx{flex:none;width:24px;height:24px;border:2px solid var(--orange);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;margin-top:2px}
+.q.on .bx{background:var(--orange)}
+.q .t{font-size:15.5px;font-weight:800;line-height:1.45}
+.q .d{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.6}
+.coinbar{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:13px}
+.coinbar .top{display:flex;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:9px}
+.track{height:11px;background:#E7E0D1;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:99px;transition:width .35s ease}
+.verdict{border-radius:15px;padding:17px;text-align:center;margin-top:4px;background:#EDE7DA}
+.verdict .v{font-size:18px;font-weight:800}
+.verdict .s{font-size:13.5px;color:var(--sub);margin-top:6px;line-height:1.6}
+.ws label{display:block;font-size:13.5px;font-weight:700;margin-bottom:5px}
+.ws input,.ws select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;font-size:16px;background:#fff;font-family:inherit;margin-bottom:13px;color:var(--ink)}
+.ws-out{background:var(--ink);color:var(--cream);border-radius:14px;padding:17px;text-align:center}
+.ws-out .big{font-size:31px;font-weight:800;color:var(--gold);letter-spacing:-1px}
+.ws-out .cap{font-size:13px;color:#A8A29A;margin-top:6px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:4px 0 12px;font-size:14px}
+th{background:#EDE7DA;text-align:left;padding:10px 12px;font-weight:800;font-size:13px;color:var(--sub)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+td:first-child{font-weight:700;width:38%}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}
+summary{padding:15px 16px;font-size:15px;font-weight:800;cursor:pointer;list-style:none;line-height:1.5}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'Q. ';color:var(--red);font-weight:800}
+details[open] summary{border-bottom:1px solid var(--line)}
+details p{padding:14px 16px;font-size:14px;color:var(--sub);line-height:1.75}
+details p::before{content:'A. ';color:var(--blue);font-weight:800}
+.warn{background:#FDF3DD;border:1px solid #EBD9A4;border-radius:14px;padding:15px 16px;margin-bottom:11px}
+.warn h4{font-size:14.5px;font-weight:800;color:#9A7212;margin-bottom:8px}
+.warn p{font-size:13.5px;color:var(--sub);line-height:1.7}
+.src{padding:26px 20px 16px;font-size:12.5px;color:var(--sub);line-height:1.85}
+.src b{color:var(--ink)}
+footer{background:var(--ink);color:#A8A29A;text-align:center;padding:30px 20px 38px;font-size:13px;line-height:1.8}
+footer .fb{color:var(--gold);font-weight:800;font-size:15px}
+hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
+</style></head>
+<body><div class="wrap">
+<div class="hero">
+  <span class="chip">주식 초보 로드맵</span>
+  <h1>주식 시작하고 첫 3개월<br><em>이 순서로 겪어요</em></h1>
+  <div class="by">@donkkachi · 몰라서 손해 보는 돈, 물어다 주는 까치</div>
+  <div class="stamp">
+    혼자만 헤매는 것 같지만 <b>다들 같은 순서로 지나갑니다.</b><br>
+    실력 차이가 아니라 <b>아직 안 지나온 단계</b>일 뿐이에요.
+  </div>
+</div>
+<nav>
+  <button type="button" class="navbtn" data-go="s1">① 내 단계</button>
+  <button type="button" class="navbtn" data-go="s2">② 12단계</button>
+  <button type="button" class="navbtn" data-go="s3">③ 멈추는 곳</button>
+  <button type="button" class="navbtn" data-go="s4">④ FAQ</button>
+</nav>
+
+<section id="s1">
+  <div class="sec-no">SECTION ①</div>
+  <div class="sec-t">지금 몇 번째세요?</div>
+  <div class="sec-lead">이미 지나온 단계를 눌러보세요. 빠르고 느린 게 아니라 위치일 뿐입니다.</div>
+  <div class="coinbar">
+    <div class="top"><span>지나온 단계</span><span id="cnt">0 / 12</span></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+  <div class="q"><div class="bx">V</div><div><div class="t">① 계좌를 만들었다</div><div class="d">여기까지는 다들 금방 옵니다</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">② 뭘 살지 몰라 검색만 했다</div><div class="d">이 구간이 생각보다 길어요</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">③ 유명한 걸 1주 사봤다</div><div class="d">삼성전자나 S&amp;P500이 많죠</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">④ 사자마자 마이너스라 놀랐다</div><div class="d">주가는 안 움직였어요. 계산 방식입니다</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">⑤ 하루에 몇 번씩 앱을 연다</div><div class="d">가장 많은 분이 오래 머무는 구간</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">⑥ 조금 오르면 팔았다</div><div class="d">손실은 오래 들고 수익은 짧게 끊게 돼요</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">⑦ 떨어져서 물타기를 했다</div><div class="d">평단가는 내려가는데 손실 금액은 그대로</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">⑧ 평단가만 보게 됐다</div><div class="d">총 투자금은 잘 안 보게 되죠</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">⑨ 급해서 시장가를 눌렀다</div><div class="d">싼 것부터 사고 모자라면 위로 올라갑니다</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">⑩ ETF로 눈을 돌렸다</div><div class="d">한 종목에 다 넣는 게 무섭다는 걸 알게 돼요</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">⑪ 배당금을 받아봤다</div><div class="d">적어도 좋아요. 기다림에 익숙해지는 계기</div></div></div>
+  <div class="q"><div class="bx">V</div><div><div class="t">⑫ 내 기준이 생겼다</div><div class="d">얼마까지 넣을지 미리 정하게 되면 다 온 거예요</div></div></div>
+  <div class="verdict" id="vd"><div class="v">지나온 단계를 눌러보세요</div><div class="s">개수에 따라 지금 필요한 게 나옵니다</div></div>
+  <hr class="d">
+</section>
+
+<section id="s2">
+  <div class="sec-no">SECTION ②</div>
+  <div class="sec-t">단계별로 더 보기</div>
+  <div class="sec-lead">각 단계에서 막히는 지점을 따로 정리해뒀어요.</div>
+  <div class="card sum"><div class="n">4</div><div class="tx">사자마자 <b>마이너스</b>
+    <span>주식엔 두 가격이 붙어 있고 살 때는 비싼 쪽을 줍니다. 주가는 1원도 안 움직였어요</span></div></div>
+  <div class="card sum"><div class="n">7</div><div class="tx"><b>물타기</b>와 손실
+    <span>평단가와 손실률은 내려가지만 손실 금액은 그대로입니다. 본전까지는 가까워지고 걸린 돈은 커져요</span></div></div>
+  <div class="card sum"><div class="n">9</div><div class="tx">급하면 <b>시장가</b>
+    <span>제일 싼 매물부터 담고 모자라면 그 위 가격에서 삽니다. 거래가 한산할수록 크게 올라가요</span></div></div>
+  <div class="card sum"><div class="n">10</div><div class="tx"><b>ETF</b> 고를 때
+    <span>이름은 운용사 + 지수 + 옵션 세 덩어리입니다. 뒷글자가 다르면 다른 상품이에요</span></div></div>
+  <div class="warn">
+    <h4>순서가 정해져 있는 건 아니에요</h4>
+    <p>사람마다 건너뛰거나 되돌아가기도 합니다. 다만 <b>대부분 비슷한 곳에서 비슷하게 막혀요.</b>
+    내가 이상한 게 아니라는 걸 아는 것만으로 조급함이 줄어듭니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s3">
+  <div class="sec-no">SECTION ③</div>
+  <div class="sec-t">제일 많이 멈추는 곳</div>
+  <div class="warn">
+    <h4>⑤번 · 하루에 몇 번씩 앱 열기</h4>
+    <p>자주 볼수록 자주 사고팔게 됩니다. 그리고 한 번 왕복할 때마다
+    수수료와 두 가격의 차이가 다시 붙어요.<br>
+    <b>앱을 하루 한 번만 열어도 ⑥⑦⑨번이 같이 줄어듭니다.</b>
+    실력을 올리는 것보다 횟수를 줄이는 게 훨씬 쉬워요.</p>
+  </div>
+  <div class="warn">
+    <h4>⑫번이 목적지입니다</h4>
+    <p>목적지는 수익률이 아니라 <b>기준</b>이에요.
+    이 회사에 얼마까지 넣을지 미리 정해두는 것.
+    그게 되면 ⑦번(불안해서 물타기)도, ⑨번(급해서 시장가)도 자연히 줄어듭니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s4">
+  <div class="sec-no">SECTION ④</div>
+  <div class="sec-t">자주 묻는 것</div>
+  <details><summary>12개 다 지나왔으면 잘하고 있는 건가요?</summary>
+    <p>기준이 생겼다는 뜻이지 수익이 보장된다는 뜻은 아닙니다. 다만 큰 실수를 할 확률은 확실히 줄어들어요.</p></details>
+  <details><summary>3개월 안에 다 지나가야 하나요?</summary>
+    <p>아니요. 사람마다 다릅니다. ⑤~⑧단계에서 1년 넘게 머무는 경우도 흔해요.</p></details>
+  <details><summary>순서를 건너뛰어도 되나요?</summary>
+    <p>됩니다. 다만 ④⑦⑨번은 대부분 한 번씩 겪습니다. 미리 알고 겪는 것과 모르고 겪는 것은 다르니 이 목록이 도움이 될 거예요.</p></details>
+</section>
+
+<div class="src">
+  <b>기준일</b> 2026년 8월<br>
+  <b>주의</b> 이 로드맵은 흔한 경로를 정리한 것이며 <b>특정 종목이나 상품의 매매 권유가 아닙니다.</b>
+  투자 판단과 결과는 본인에게 있습니다.<br>
+  <b>고지</b> 특정 상품·증권사에 대한 추천이 아닙니다.
+</div>
+<footer>
+  지금 몇 번째세요? <span style="color:var(--gold);font-weight:700">댓글에 번호만 남겨주세요</span><br><br>
+  <span class="fb">돈까치 @donkkachi</span><br>
+  몰라서 손해 보는 돈, 물어다 주는 까치
+</footer>
+</div>
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a>
+</div>
+<a href="https://www.instagram.com/donkkachi/" style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">돈까치 팔로우하기</a>
+<script>
+document.querySelectorAll('.navbtn').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.go); if(!el) return;
+    var nav=document.querySelector('nav');
+    var off=(nav?nav.offsetHeight:0)+12;
+    window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});
+  });
+});
+var qs=document.querySelectorAll('.q'),fill=document.getElementById('fill'),
+    cnt=document.getElementById('cnt'),vd=document.getElementById('vd');
+function sync(){
+  var n=document.querySelectorAll('.q.on').length;
+  fill.style.width=(n/qs.length*100)+'%';
+  cnt.textContent=n+' / '+qs.length;
+  if(n===0){vd.innerHTML='<div class="v">지나온 단계를 눌러보세요</div><div class="s">개수에 따라 지금 필요한 게 나옵니다</div>';}
+  else if(n<=4){vd.innerHTML='<div class="v" style="color:#2E8C5A">1~4단계 · 시작 구간이에요</div><div class="s">일단 소액으로 겪어보세요. 금액이 작으면 실수도 작습니다</div>';}
+  else if(n<=8){vd.innerHTML='<div class="v" style="color:#C8603C">5~8단계 · 가장 흔들리는 구간</div><div class="s">앱 여는 횟수부터 줄여보세요. ⑥⑦⑨번이 같이 줄어듭니다</div>';}
+  else{vd.innerHTML='<div class="v" style="color:#2E8C5A">9~12단계 · 한 고비 넘겼어요</div><div class="s">이제 한도와 기준을 문장으로 적어두면 됩니다</div>';}
+}
+qs.forEach(function(q){q.addEventListener('click',function(){q.classList.toggle('on');sync();});});
+sync();
+</script>
+</body></html>
