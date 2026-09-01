@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>배당금 받으려면 언제까지 사야 할까 | 돈까치</title>
+<meta name="description" content="배당기준일 2영업일 전까지. 매수 마감일 계산기와 배당락 함정까지.">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--cream:#F2EDE3;--paper:#FFFCF6;--ink:#23252B;--sub:#6B6357;--gold:#E0B93F;--orange:#C8603C;--red:#E1464B;--green:#2E8C5A;--blue:#5674C8;--line:#E4DCCB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-bottom:78px;font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,'Apple SD Gothic Neo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto}
+.hero{background:var(--ink);color:var(--cream);padding:38px 22px 30px}
+.chip{display:inline-block;background:var(--gold);color:var(--ink);font-size:13px;font-weight:800;padding:6px 13px;border-radius:999px}
+.hero h1{font-size:29px;line-height:1.32;font-weight:800;margin-top:16px;letter-spacing:-.7px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .by{margin-top:14px;font-size:13px;color:#A8A29A}
+.hero .stamp{margin-top:18px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 14px;font-size:13.5px;color:#E8E2D6;line-height:1.55}
+.hero .stamp b{color:var(--gold)}
+nav{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);padding:11px 0;overflow-x:auto;white-space:nowrap}
+nav .navbtn{display:inline-block;font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;margin-left:10px;padding:8px 15px;background:var(--paper);border:1px solid var(--line);border-radius:999px;font-size:13.5px;font-weight:700;color:var(--ink)}
+section{scroll-margin-top:76px;padding:34px 20px 6px}
+.sec-no{font-size:12px;font-weight:800;color:var(--sub);letter-spacing:1.2px}
+.sec-t{font-size:23px;font-weight:800;margin:6px 0 18px;letter-spacing:-.5px;line-height:1.35}
+.sec-lead{font-size:14.5px;color:var(--sub);margin:-10px 0 18px;line-height:1.6}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px 16px;margin-bottom:11px}
+.sum{display:flex;gap:13px;align-items:flex-start}
+.sum .n{flex:none;width:27px;height:27px;border-radius:50%;background:var(--ink);color:var(--gold);font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sum .tx{font-size:15.5px;font-weight:600;line-height:1.55}
+.sum .tx b{color:var(--red);font-weight:800}
+.sum .tx span{display:block;font-size:13px;color:var(--sub);font-weight:500;margin-top:3px}
+.q{display:flex;gap:13px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:15px 16px;margin-bottom:9px;cursor:pointer;user-select:none}
+.q.on{background:#FDF6E6;border-color:var(--gold)}
+.q .bx{flex:none;width:24px;height:24px;border:2px solid var(--orange);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;margin-top:2px}
+.q.on .bx{background:var(--orange)}
+.q .t{font-size:15.5px;font-weight:800;line-height:1.45}
+.q .d{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.6}
+.coinbar{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:13px}
+.coinbar .top{display:flex;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:9px}
+.track{height:11px;background:#E7E0D1;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:99px;transition:width .35s ease}
+.verdict{border-radius:15px;padding:17px;text-align:center;margin-top:4px;background:#EDE7DA}
+.verdict .v{font-size:18px;font-weight:800}
+.verdict .s{font-size:13.5px;color:var(--sub);margin-top:6px;line-height:1.6}
+.ws label{display:block;font-size:13.5px;font-weight:700;margin-bottom:5px}
+.ws input,.ws select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;font-size:16px;background:#fff;font-family:inherit;margin-bottom:13px;color:var(--ink)}
+.ws-out{background:var(--ink);color:var(--cream);border-radius:14px;padding:17px;text-align:center}
+.ws-out .big{font-size:31px;font-weight:800;color:var(--gold);letter-spacing:-1px}
+.ws-out .cap{font-size:13px;color:#A8A29A;margin-top:6px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:4px 0 12px;font-size:14px}
+th{background:#EDE7DA;text-align:left;padding:10px 12px;font-weight:800;font-size:13px;color:var(--sub)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+td:first-child{font-weight:700;width:38%}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}
+summary{padding:15px 16px;font-size:15px;font-weight:800;cursor:pointer;list-style:none;line-height:1.5}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'Q. ';color:var(--red);font-weight:800}
+details[open] summary{border-bottom:1px solid var(--line)}
+details p{padding:14px 16px;font-size:14px;color:var(--sub);line-height:1.75}
+details p::before{content:'A. ';color:var(--blue);font-weight:800}
+.warn{background:#FDF3DD;border:1px solid #EBD9A4;border-radius:14px;padding:15px 16px;margin-bottom:11px}
+.warn h4{font-size:14.5px;font-weight:800;color:#9A7212;margin-bottom:8px}
+.warn p{font-size:13.5px;color:var(--sub);line-height:1.7}
+.src{padding:26px 20px 16px;font-size:12.5px;color:var(--sub);line-height:1.85}
+.src b{color:var(--ink)}
+footer{background:var(--ink);color:#A8A29A;text-align:center;padding:30px 20px 38px;font-size:13px;line-height:1.8}
+footer .fb{color:var(--gold);font-weight:800;font-size:15px}
+hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
+</style></head>
+<body><div class="wrap">
+<div class="hero">
+  <span class="chip">주식 초보</span>
+  <h1>배당금 받으려면<br><em>언제까지 사야 할까</em></h1>
+  <div class="by">@donkkachi · 몰라서 손해 보는 돈, 물어다 주는 까치</div>
+  <div class="stamp">
+    국내주식은 산 뒤 <b>2영업일</b>이 지나야 내 이름이 주주명부에 올라갑니다.<br>
+    그래서 <b>배당기준일 당일에 사면 늦어요.</b> 2영업일 전이 마감입니다.
+  </div>
+</div>
+<nav>
+  <button type="button" class="navbtn" data-go="s1">① 요약</button>
+  <button type="button" class="navbtn" data-go="s2">② 마감일 계산</button>
+  <button type="button" class="navbtn" data-go="s3">③ 팔 때</button>
+  <button type="button" class="navbtn" data-go="s4">④ 함정</button>
+  <button type="button" class="navbtn" data-go="s5">⑤ FAQ</button>
+</nav>
+
+<section id="s1">
+  <div class="sec-no">SECTION ①</div>
+  <div class="sec-t">30초 요약</div>
+  <div class="card sum"><div class="n">1</div><div class="tx">살 때는 기준일 <b>2영업일 전</b>까지
+    <span>T+2 결제라 산 날 바로 내 것이 되지 않습니다</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx"><b>배당락일</b>에 사면 못 받아요
+    <span>배당락일은 기준일 직전 영업일입니다</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx">팔 때는 <b>배당락일부터</b> 팔아도 받아요
+    <span>권리는 그 전날 장 마감으로 이미 확정됩니다</span></div></div>
+  <div class="warn" style="margin-top:14px">
+    <h4>날짜로 보면</h4>
+    <p>배당기준일이 <b>6월 30일 화요일</b>이라면<br>
+    · <b>6월 26일 금요일</b>까지 사야 받습니다<br>
+    · 6월 29일 월요일은 배당락일이라 사면 못 받아요<br>
+    공휴일이 끼면 하루 더 당겨야 안전합니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s2">
+  <div class="sec-no">SECTION ②</div>
+  <div class="sec-t">내 종목 마감일 계산</div>
+  <div class="sec-lead">배당기준일을 넣으면 언제까지 사야 하는지 나옵니다.</div>
+  <div class="card ws">
+    <label>배당기준일</label>
+    <input type="date" id="base">
+    <div class="ws-out">
+      <div class="big" id="res">-</div>
+      <div class="cap" id="cap">날짜를 골라보세요</div>
+    </div>
+  </div>
+  <div class="warn">
+    <h4>공휴일은 직접 확인하세요</h4>
+    <p>이 계산은 <b>주말만</b> 빼고 셉니다. 설·추석·공휴일이 끼면 하루씩 더 당겨야 해요.
+    한국거래소 휴장일을 함께 보시는 게 안전합니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s3">
+  <div class="sec-no">SECTION ③</div>
+  <div class="sec-t">팔 때는 반대예요</div>
+  <div class="warn">
+    <h4>배당락일부터는 팔아도 받습니다</h4>
+    <p>배당받을 권리는 <b>배당락일 전날 장이 끝나면서</b> 확정됩니다.
+    그래서 배당락일에 팔아도 이번 배당금은 들어와요.<br>
+    정리하면 <b>살 때는 2영업일 전, 팔 때는 배당락일부터</b>입니다.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s4">
+  <div class="sec-no">SECTION ④</div>
+  <div class="sec-t">배당만 보고 들어가면</div>
+  <div class="card sum"><div class="n">1</div><div class="tx">배당락일에 <b>주가가 내려갑니다</b>
+    <span>받을 배당금만큼 빠지는 게 보통이에요</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">그래서 <b>공짜 배당은 없어요</b>
+    <span>주가 하락과 배당금이 서로 상쇄됩니다</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx">세금 <b>15.4%</b>를 뗍니다
+    <span>통장에 들어올 때는 이미 뗀 금액이에요</span></div></div>
+  <div class="warn">
+    <h4>그럼 배당주는 의미가 없나요</h4>
+    <p>아니요. 다만 <b>기준일 직전에 사서 배당만 받고 나오는 전략</b>은 대부분 남는 게 없습니다.
+    배당주는 오래 들고 가면서 받는 게 원래 방식이에요.</p>
+  </div>
+  <hr class="d">
+</section>
+
+<section id="s5">
+  <div class="sec-no">SECTION ⑤</div>
+  <div class="sec-t">자주 묻는 것</div>
+  <details><summary>배당기준일은 어디서 보나요?</summary>
+    <p>그 회사의 공시나 증권사 앱 종목 정보에 나옵니다. 기업마다 다르고, 분기배당은 3·6·9·12월 말이 많아요.</p></details>
+  <details><summary>미국주식도 2영업일 전인가요?</summary>
+    <p>미국은 결제 주기와 기준일 규정이 달라서 이 계산이 그대로 적용되지 않습니다. 종목별 배당 정보를 따로 확인하세요.</p></details>
+  <details><summary>기준일 당일에 사면 정말 못 받나요?</summary>
+    <p>네. 그날 사면 결제가 기준일 이후로 넘어가서 주주명부에 이름이 올라가지 않습니다.</p></details>
+  <details><summary>배당금은 언제 들어오나요?</summary>
+    <p>기준일과 지급일은 다릅니다. 국내주식은 결산 배당의 경우 주주총회 이후 지급되는 경우가 많아 몇 달 걸리기도 해요.</p></details>
+</section>
+
+<div class="src">
+  <b>출처</b><br>
+  · 한국거래소 T+2 결제 제도<br>
+  · 각 기업 배당 관련 공시<br><br>
+  <b>기준일</b> 2026년 9월<br>
+  <b>주의</b> 배당기준일과 지급일은 기업마다 다릅니다. 공휴일이 끼면 매수 마감일이 앞당겨집니다.
+  <b>특정 종목의 매매 권유가 아닙니다.</b><br>
+  <b>고지</b> 특정 상품·증권사에 대한 추천이 아닙니다.
+</div>
+<footer>
+  하루 차이로 <span style="color:var(--gold);font-weight:700">1년을 기다리게</span> 돼요<br><br>
+  <span class="fb">돈까치 @donkkachi</span><br>
+  몰라서 손해 보는 돈, 물어다 주는 까치
+</footer>
+</div>
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a>
+</div>
+<a href="https://www.instagram.com/donkkachi/" style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">돈까치 팔로우하기</a>
+<script>
+document.querySelectorAll('.navbtn').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.go); if(!el) return;
+    var nav=document.querySelector('nav');
+    var off=(nav?nav.offsetHeight:0)+12;
+    window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});
+  });
+});
+var base=document.getElementById('base'),res=document.getElementById('res'),cap=document.getElementById('cap');
+function fmt(d){return (d.getMonth()+1)+'월 '+d.getDate()+'일 ('+'일월화수목금토'[d.getDay()]+')';}
+function prevBiz(d){var x=new Date(d);do{x.setDate(x.getDate()-1);}while(x.getDay()===0||x.getDay()===6);return x;}
+function calc(){
+  if(!base.value){res.textContent='-';cap.textContent='날짜를 골라보세요';return;}
+  var d=new Date(base.value+'T00:00:00');
+  if(isNaN(d)){res.textContent='-';return;}
+  var ex=prevBiz(d), buy=prevBiz(ex);
+  res.textContent=fmt(buy)+'까지';
+  cap.textContent='배당락일 '+fmt(ex)+' · 기준일 '+fmt(d)+' · 주말만 반영한 계산이라 공휴일이 끼면 하루 더 당기세요';
+}
+base.addEventListener('change',calc);base.addEventListener('input',calc);
+calc();
+</script>
+</body></html>
