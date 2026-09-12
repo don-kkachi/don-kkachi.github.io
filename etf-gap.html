@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>지수는 올랐는데 내 ETF만 덜 올랐다면 | 돈까치</title>
+<meta name="description" content="ETF 시장가격과 NAV, 괴리율. 지수 대비 덜 오른 이유와 확인법. KRX 자료 기준.">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--cream:#F2EDE3;--paper:#FFFCF6;--ink:#23252B;--sub:#6B6357;--gold:#E0B93F;--orange:#C8603C;--red:#E1464B;--green:#2E8C5A;--blue:#5674C8;--line:#E4DCCB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-bottom:78px;font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,'Apple SD Gothic Neo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto}
+.hero{background:var(--ink);color:var(--cream);padding:38px 22px 30px}
+.chip{display:inline-block;background:var(--gold);color:var(--ink);font-size:13px;font-weight:800;padding:6px 13px;border-radius:999px}
+.hero h1{font-size:29px;line-height:1.32;font-weight:800;margin-top:16px;letter-spacing:-.7px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .by{margin-top:14px;font-size:13px;color:#A8A29A}
+.hero .stamp{margin-top:18px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 14px;font-size:13.5px;color:#E8E2D6;line-height:1.55}
+.hero .stamp b{color:var(--gold)}
+nav{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);padding:11px 0;overflow-x:auto;white-space:nowrap}
+nav .navbtn{display:inline-block;font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;margin-left:10px;padding:8px 15px;background:var(--paper);border:1px solid var(--line);border-radius:999px;font-size:13.5px;font-weight:700;color:var(--ink)}
+section{scroll-margin-top:76px;padding:34px 20px 6px}
+.sec-no{font-size:12px;font-weight:800;color:var(--sub);letter-spacing:1.2px}
+.sec-t{font-size:23px;font-weight:800;margin:6px 0 18px;letter-spacing:-.5px;line-height:1.35}
+.sec-lead{font-size:14.5px;color:var(--sub);margin:-10px 0 18px;line-height:1.6}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px 16px;margin-bottom:11px}
+.sum{display:flex;gap:13px;align-items:flex-start}
+.sum .n{flex:none;width:27px;height:27px;border-radius:50%;background:var(--ink);color:var(--gold);font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sum .tx{font-size:15.5px;font-weight:600;line-height:1.55}
+.sum .tx b{color:var(--red);font-weight:800}
+.sum .tx span{display:block;font-size:13px;color:var(--sub);font-weight:500;margin-top:3px}
+.q{display:flex;gap:13px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:15px 16px;margin-bottom:9px;cursor:pointer;user-select:none}
+.q.on{background:#FDF6E6;border-color:var(--gold)}
+.q .bx{flex:none;width:24px;height:24px;border:2px solid var(--orange);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;margin-top:2px}
+.q.on .bx{background:var(--orange)}
+.q .t{font-size:15.5px;font-weight:800;line-height:1.45}
+.q .d{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.6}
+.coinbar{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:13px}
+.coinbar .top{display:flex;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:9px}
+.track{height:11px;background:#E7E0D1;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:99px;transition:width .35s ease}
+.verdict{border-radius:15px;padding:17px;text-align:center;margin-top:4px;background:#EDE7DA}
+.verdict .v{font-size:18px;font-weight:800}
+.verdict .s{font-size:13.5px;color:var(--sub);margin-top:6px;line-height:1.6}
+.ws label{display:block;font-size:13.5px;font-weight:700;margin-bottom:5px}
+.ws input,.ws select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;font-size:16px;background:#fff;font-family:inherit;margin-bottom:13px;color:var(--ink)}
+.ws-out{background:var(--ink);color:var(--cream);border-radius:14px;padding:17px;text-align:center}
+.ws-out .big{font-size:31px;font-weight:800;color:var(--gold);letter-spacing:-1px}
+.ws-out .cap{font-size:13px;color:#A8A29A;margin-top:6px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:4px 0 12px;font-size:14px}
+th{background:#EDE7DA;text-align:left;padding:10px 12px;font-weight:800;font-size:13px;color:var(--sub)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+td:first-child{font-weight:700;width:38%}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}
+summary{padding:15px 16px;font-size:15px;font-weight:800;cursor:pointer;list-style:none;line-height:1.5}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'Q. ';color:var(--red);font-weight:800}
+details[open] summary{border-bottom:1px solid var(--line)}
+details p{padding:14px 16px;font-size:14px;color:var(--sub);line-height:1.75}
+details p::before{content:'A. ';color:var(--blue);font-weight:800}
+.warn{background:#FDF3DD;border:1px solid #EBD9A4;border-radius:14px;padding:15px 16px;margin-bottom:11px}
+.warn h4{font-size:14.5px;font-weight:800;color:#9A7212;margin-bottom:8px}
+.warn p{font-size:13.5px;color:var(--sub);line-height:1.7}
+.src{padding:26px 20px 16px;font-size:12.5px;color:var(--sub);line-height:1.85}
+.src b{color:var(--ink)}
+footer{background:var(--ink);color:#A8A29A;text-align:center;padding:30px 20px 38px;font-size:13px;line-height:1.8}
+footer .fb{color:var(--gold);font-weight:800;font-size:15px}
+hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
+</style></head><body><div class="wrap">
+<div class="hero">
+  <span class="chip">알 돈 · 주식 초보 #1</span>
+  <h1>지수는 올랐는데<br><em>내 ETF만 덜 올랐다면</em></h1>
+  <div class="by">@donkkachi · 몰라서 손해 보는 돈, 물어다 주는 까치</div>
+  <div class="stamp">
+    잘못 산 게 아니에요. ETF엔 <b>시장가격과 NAV</b> 두 값이 있고,
+    그 차이(<b>괴리율</b>) 때문에 덜 오른 것처럼 보일 수 있어요.
+  </div>
+</div>
+<nav>
+  <button type="button" class="navbtn" data-go="s1">① 요약</button>
+  <button type="button" class="navbtn" data-go="s2">② 괴리율 계산</button>
+  <button type="button" class="navbtn" data-go="s3">③ 확인 순서</button>
+  <button type="button" class="navbtn" data-go="s4">④ FAQ</button>
+</nav>
+<section id="s1"><div class="sec-no">SECTION ①</div><div class="sec-t">30초 요약</div>
+  <div class="card sum"><div class="n">1</div><div class="tx">ETF엔 <b>가격이 두 개</b>
+    <span>시장가격(사고팔리는 값)과 NAV(속 자산의 진짜 값)</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">둘 차이가 <b>괴리율</b>
+    <span>시장가격이 NAV보다 비싸거나 싸게 거래되는 정도예요</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx">해외 ETF는 <b>시간차</b> 때문에 커요
+    <span>우리 낮에 미국 시장은 닫혀 있으니까요</span></div></div>
+  <div class="warn" style="margin-top:14px"><h4>덜 오른 게 아닐 수 있어요</h4>
+    <p>지수는 실제 자산을 따라가지만, 내 ETF의 <b>시장가격</b>은 사고파는 사람이 정해요.
+    수요가 몰리면 NAV보다 높게, 식으면 낮게 거래됩니다. 그래서 <b>지수 대비 덜 오른 것처럼</b> 보일 수 있어요.
+    다만 수익률 차이는 <b>환율·추적오차</b> 같은 다른 요인일 수도 있습니다.</p></div>
+  <hr class="d"></section>
+<section id="s2"><div class="sec-no">SECTION ②</div><div class="sec-t">괴리율 계산</div>
+  <div class="sec-lead">현재가와 iNAV를 넣어보세요.</div>
+  <div class="card ws">
+    <label>현재가 (원)</label>
+    <input type="number" id="price" inputmode="numeric" placeholder="예: 31020">
+    <label style="margin-top:10px">iNAV (원)</label>
+    <input type="number" id="nav" inputmode="numeric" placeholder="예: 29706">
+    <div class="ws-out"><div class="big" id="gap">-</div><div class="cap" id="cap">두 칸을 채워보세요</div></div>
+  </div>
+  <div class="warn"><h4>양수면 비싸게, 음수면 싸게</h4>
+    <p>괴리율이 <b>플러스</b>면 시장가격이 NAV보다 높다는 뜻이에요(비싸게 거래 중).
+    <b>마이너스</b>면 그 반대입니다. 잠깐 벌어지는 건 정상이에요.</p></div>
+  <hr class="d"></section>
+<section id="s3"><div class="sec-no">SECTION ③</div><div class="sec-t">확인 순서</div>
+  <div class="card sum"><div class="n">1</div><div class="tx">현재가만 보지 말기
+    <span>시장가격은 수급에 따라 흔들려요</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx"><b>iNAV</b>와 비교
+    <span>ETF 상세 화면이나 KRX에서 실시간으로 볼 수 있어요</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx"><b>괴리율</b> 크기와 지속성
+    <span>잠깐이면 정상, 오래·크게 벌어져 있으면 주의</span></div></div>
+  <div class="card sum"><div class="n">4</div><div class="tx"><b>거래량</b>도 함께
+    <span>거래가 한산할수록 괴리가 커지기 쉬워요</span></div></div>
+  <hr class="d"></section>
+<section id="s4"><div class="sec-no">SECTION ④</div><div class="sec-t">자주 묻는 것</div>
+  <details><summary>괴리율이 있으면 나쁜 ETF인가요?</summary><p>아니요. 잠깐 벌어졌다 좁혀지는 건 정상이에요. <b>오래, 크게</b> 벌어져 있는 게 문제입니다.</p></details>
+  <details><summary>지수보다 덜 오르면 전부 괴리율 탓인가요?</summary><p>아니요. <b>환율, 추적오차, 거래시간</b> 같은 다른 요인도 있어요. 괴리율은 그중 하나일 뿐입니다.</p></details>
+  <details><summary>iNAV는 어디서 보나요?</summary><p>증권사 앱 ETF 상세 화면이나 한국거래소(KRX) ETF 가격지표에서 현재가·iNAV·괴리율을 함께 볼 수 있어요.</p></details>
+  <details><summary>해외 ETF는 왜 괴리가 큰가요?</summary><p>우리 시장이 열릴 때 해외 시장은 닫혀 있어서, 실제 자산 가격이 실시간으로 반영되기 어렵기 때문이에요.</p></details>
+</section>
+<div class="src"><b>출처</b><br>· 한국거래소(KRX) ETF 가격지표·NAV·괴리율 안내<br><br>
+  <b>기준일</b> 2026년 9월<br>
+  <b>주의</b> 수익률 차이는 괴리율 외에 환율·추적오차·거래시간 등 여러 요인이 있습니다.<br>
+  <b>고지</b> 특정 ETF·종목에 대한 추천이 아닙니다.</div>
+<footer>수익률이 이상하면 <span style="color:var(--gold);font-weight:700">괴리율부터</span> 확인<br><br>
+  <span class="fb">돈까치 @donkkachi</span><br>몰라서 손해 보는 돈, 물어다 주는 까치</footer>
+</div>
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a></div>
+<a href="https://www.instagram.com/donkkachi/" style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">돈까치 팔로우하기</a>
+<script>
+document.querySelectorAll('.navbtn').forEach(function(b){b.addEventListener('click',function(){var el=document.getElementById(b.dataset.go);if(!el)return;var nav=document.querySelector('nav');var off=(nav?nav.offsetHeight:0)+12;window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});});});
+var price=document.getElementById('price'),nav=document.getElementById('nav'),gap=document.getElementById('gap'),cap=document.getElementById('cap');
+function calc(){var p=parseFloat(price.value),n=parseFloat(nav.value);if(!p||!n||p<=0||n<=0){gap.textContent='-';cap.textContent='두 칸을 채워보세요';return;}
+var g=(p-n)/n*100;gap.textContent=(g>=0?'+':'')+g.toFixed(2)+'%';
+cap.textContent=g>=0?'시장가격이 iNAV보다 높아요 (비싸게 거래 중)':'시장가격이 iNAV보다 낮아요 (싸게 거래 중)';}
+price.addEventListener('input',calc);nav.addEventListener('input',calc);calc();
+</script></body></html>
