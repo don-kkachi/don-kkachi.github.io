@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>주식 팔았는데 돈이 바로 안 들어왔다면 | 돈까치</title>
+<meta name="description" content="주식 매도 후 입금 시점. T+2 결제, 요일별 결제일 계산기. 금융위 자료 기준.">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--cream:#F2EDE3;--paper:#FFFCF6;--ink:#23252B;--sub:#6B6357;--gold:#E0B93F;--orange:#C8603C;--red:#E1464B;--green:#2E8C5A;--blue:#5674C8;--line:#E4DCCB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-bottom:78px;font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,'Apple SD Gothic Neo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto}
+.hero{background:var(--ink);color:var(--cream);padding:38px 22px 30px}
+.chip{display:inline-block;background:var(--gold);color:var(--ink);font-size:13px;font-weight:800;padding:6px 13px;border-radius:999px}
+.hero h1{font-size:29px;line-height:1.32;font-weight:800;margin-top:16px;letter-spacing:-.7px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .by{margin-top:14px;font-size:13px;color:#A8A29A}
+.hero .stamp{margin-top:18px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 14px;font-size:13.5px;color:#E8E2D6;line-height:1.55}
+.hero .stamp b{color:var(--gold)}
+nav{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);padding:11px 0;overflow-x:auto;white-space:nowrap}
+nav .navbtn{display:inline-block;font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;margin-left:10px;padding:8px 15px;background:var(--paper);border:1px solid var(--line);border-radius:999px;font-size:13.5px;font-weight:700;color:var(--ink)}
+section{scroll-margin-top:76px;padding:34px 20px 6px}
+.sec-no{font-size:12px;font-weight:800;color:var(--sub);letter-spacing:1.2px}
+.sec-t{font-size:23px;font-weight:800;margin:6px 0 18px;letter-spacing:-.5px;line-height:1.35}
+.sec-lead{font-size:14.5px;color:var(--sub);margin:-10px 0 18px;line-height:1.6}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px 16px;margin-bottom:11px}
+.sum{display:flex;gap:13px;align-items:flex-start}
+.sum .n{flex:none;width:27px;height:27px;border-radius:50%;background:var(--ink);color:var(--gold);font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sum .tx{font-size:15.5px;font-weight:600;line-height:1.55}
+.sum .tx b{color:var(--red);font-weight:800}
+.sum .tx span{display:block;font-size:13px;color:var(--sub);font-weight:500;margin-top:3px}
+.q{display:flex;gap:13px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:15px 16px;margin-bottom:9px;cursor:pointer;user-select:none}
+.q.on{background:#FDF6E6;border-color:var(--gold)}
+.q .bx{flex:none;width:24px;height:24px;border:2px solid var(--orange);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;margin-top:2px}
+.q.on .bx{background:var(--orange)}
+.q .t{font-size:15.5px;font-weight:800;line-height:1.45}
+.q .d{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.6}
+.coinbar{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:13px}
+.coinbar .top{display:flex;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:9px}
+.track{height:11px;background:#E7E0D1;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:99px;transition:width .35s ease}
+.verdict{border-radius:15px;padding:17px;text-align:center;margin-top:4px;background:#EDE7DA}
+.verdict .v{font-size:18px;font-weight:800}
+.verdict .s{font-size:13.5px;color:var(--sub);margin-top:6px;line-height:1.6}
+.ws label{display:block;font-size:13.5px;font-weight:700;margin-bottom:5px}
+.ws input,.ws select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;font-size:16px;background:#fff;font-family:inherit;margin-bottom:13px;color:var(--ink)}
+.ws-out{background:var(--ink);color:var(--cream);border-radius:14px;padding:17px;text-align:center}
+.ws-out .big{font-size:31px;font-weight:800;color:var(--gold);letter-spacing:-1px}
+.ws-out .cap{font-size:13px;color:#A8A29A;margin-top:6px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:4px 0 12px;font-size:14px}
+th{background:#EDE7DA;text-align:left;padding:10px 12px;font-weight:800;font-size:13px;color:var(--sub)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+td:first-child{font-weight:700;width:38%}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}
+summary{padding:15px 16px;font-size:15px;font-weight:800;cursor:pointer;list-style:none;line-height:1.5}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'Q. ';color:var(--red);font-weight:800}
+details[open] summary{border-bottom:1px solid var(--line)}
+details p{padding:14px 16px;font-size:14px;color:var(--sub);line-height:1.75}
+details p::before{content:'A. ';color:var(--blue);font-weight:800}
+.warn{background:#FDF3DD;border:1px solid #EBD9A4;border-radius:14px;padding:15px 16px;margin-bottom:11px}
+.warn h4{font-size:14.5px;font-weight:800;color:#9A7212;margin-bottom:8px}
+.warn p{font-size:13.5px;color:var(--sub);line-height:1.7}
+.src{padding:26px 20px 16px;font-size:12.5px;color:var(--sub);line-height:1.85}
+.src b{color:var(--ink)}
+footer{background:var(--ink);color:#A8A29A;text-align:center;padding:30px 20px 38px;font-size:13px;line-height:1.8}
+footer .fb{color:var(--gold);font-weight:800;font-size:15px}
+hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
+</style></head><body><div class="wrap">
+<div class="hero">
+  <span class="chip">알 돈 · 주식 초보 #2</span>
+  <h1>주식 팔았는데<br><em>돈이 바로 안 들어왔다면</em></h1>
+  <div class="by">@donkkachi · 몰라서 손해 보는 돈, 물어다 주는 까치</div>
+  <div class="stamp">
+    오류가 아니에요. 국내 주식은 <b>T+2 결제</b>라 매도 체결과 입금 사이에
+    <b>2거래일</b>이 걸립니다. 요일별로 언제 들어오는지 계산해보세요.
+  </div>
+</div>
+<nav>
+  <button type="button" class="navbtn" data-go="s1">① 요약</button>
+  <button type="button" class="navbtn" data-go="s2">② 결제일 계산</button>
+  <button type="button" class="navbtn" data-go="s3">③ 확인 순서</button>
+  <button type="button" class="navbtn" data-go="s4">④ FAQ</button>
+</nav>
+<section id="s1"><div class="sec-no">SECTION ①</div><div class="sec-t">30초 요약</div>
+  <div class="card sum"><div class="n">1</div><div class="tx"><b>매도 체결 ≠ 결제 완료</b>
+    <span>주문이 체결된 거랑 돈이 들어오는 건 다른 과정이에요</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">국내 주식은 <b>T+2 결제</b>
+    <span>거래일(T)로부터 2거래일 뒤에 돈이 들어옵니다</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx"><b>거래일 기준</b>이에요
+    <span>주말·공휴일은 빼고 셉니다. 달력 이틀 뒤가 아니에요</span></div></div>
+  <div class="warn" style="margin-top:14px"><h4>월요일에 팔면?</h4>
+    <p>월(T) → 화(T+1) → <b>수(T+2) 결제</b>. 수요일에 돈이 들어와요.
+    금요일에 팔면 주말을 빼고 월(T+1) → <b>화(T+2)</b>, 다음 주 화요일입니다.</p></div>
+  <hr class="d"></section>
+<section id="s2"><div class="sec-no">SECTION ②</div><div class="sec-t">결제일 계산</div>
+  <div class="sec-lead">판 요일을 골라보세요. (공휴일은 제외 못 함)</div>
+  <div class="card ws">
+    <label>매도한 요일</label>
+    <select id="day" style="width:100%;padding:14px;border:2px solid var(--ink);border-radius:12px;font:inherit;font-size:16px;margin-top:6px">
+      <option value="1">월요일</option><option value="2">화요일</option>
+      <option value="3">수요일</option><option value="4">목요일</option>
+      <option value="5">금요일</option>
+    </select>
+    <div class="ws-out"><div class="big" id="pay">-</div><div class="cap" id="cap">요일을 골라보세요</div></div>
+  </div>
+  <div class="warn"><h4>공휴일 주의</h4>
+    <p>이 계산은 <b>주말만</b> 뺀 거예요. 중간에 공휴일이 끼면 그만큼 더 밀립니다.
+    정확한 날짜는 증권사 거래내역의 <b>결제예정일</b>을 확인하세요.</p></div>
+  <hr class="d"></section>
+<section id="s3"><div class="sec-no">SECTION ③</div><div class="sec-t">돈이 안 보일 때 확인 순서</div>
+  <div class="card sum"><div class="n">1</div><div class="tx"><b>매도 체결</b> 확인
+    <span>미체결이면 아직 안 팔린 거예요</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx"><b>결제 예정일</b> 확인
+    <span>거래내역에 결제예정일이 적혀 있어요</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx"><b>출금가능금액</b> 확인
+    <span>예수금에 보여도 결제 전이면 못 빼요</span></div></div>
+  <div class="card sum"><div class="n">4</div><div class="tx">그래도 이상하면 <b>고객센터</b>
+    <span>증권사 앱마다 표시가 조금씩 달라요</span></div></div>
+  <hr class="d"></section>
+<section id="s4"><div class="sec-no">SECTION ④</div><div class="sec-t">자주 묻는 것</div>
+  <details><summary>예수금에 돈이 있는데 왜 출금이 안 되나요?</summary><p>결제 전 매도대금은 <b>예수금</b>엔 잡혀도 <b>출금가능금액</b>엔 안 들어와요. T+2가 지나야 뺄 수 있습니다.</p></details>
+  <details><summary>그 돈으로 다른 주식을 바로 살 수 있나요?</summary><p>대개 매수는 가능하지만, 예수금만 믿고 더 사면 <b>미수</b>가 날 수 있어요. 출금가능금액을 함께 보세요.</p></details>
+  <details><summary>해외 주식도 T+2인가요?</summary><p>나라마다 달라요. 미국·일본·홍콩 등은 T+2, 싱가포르·인도네시아·멕시코·캐나다 등은 T+3입니다.</p></details>
+  <details><summary>공휴일이 끼면 어떻게 되나요?</summary><p>거래일만 세기 때문에 공휴일 수만큼 결제일이 뒤로 밀립니다.</p></details>
+</section>
+<div class="src"><b>출처</b><br>· 금융위원회 금융용어설명 「T+2일 결제제도」<br><br>
+  <b>기준일</b> 2026년 9월<br>
+  <b>주의</b> 공휴일에 따라 결제일이 달라집니다. 증권사 거래내역의 결제예정일을 확인하세요.<br>
+  <b>고지</b> 특정 증권사·상품에 대한 추천이 아닙니다.</div>
+<footer>돈이 안 보이면 <span style="color:var(--gold);font-weight:700">T+2부터</span> 확인<br><br>
+  <span class="fb">돈까치 @donkkachi</span><br>몰라서 손해 보는 돈, 물어다 주는 까치</footer>
+</div>
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a></div>
+<a href="https://www.instagram.com/donkkachi/" style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">돈까치 팔로우하기</a>
+<script>
+document.querySelectorAll('.navbtn').forEach(function(b){b.addEventListener('click',function(){var el=document.getElementById(b.dataset.go);if(!el)return;var nav=document.querySelector('nav');var off=(nav?nav.offsetHeight:0)+12;window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});});});
+var day=document.getElementById('day'),pay=document.getElementById('pay'),cap=document.getElementById('cap');
+var names=['','월','화','수','목','금'];
+function calc(){var t=parseInt(day.value);
+// T+2 거래일, 주말 스킵
+var count=0, d=t;
+while(count<2){ d++; if(d>5) d-=5; /* 다음주로 */ if(d>=1&&d<=5) count++; }
+pay.textContent=names[d]+'요일';
+var wk = (t>=4) ? '다음 주 ' : '';
+cap.textContent=names[t]+'요일에 팔면 '+wk+names[d]+'요일에 들어와요 (공휴일 제외)';}
+day.addEventListener('change',calc);calc();
+</script></body></html>
