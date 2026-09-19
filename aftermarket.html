@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>국내 주식 애프터마켓 정리 | 돈까치</title>
+<meta name="description" content="2026년 9월 14일 시행된 국내 주식 애프터마켓. 거래시간, 대상 제외 종목, 주문 방식. 한국거래소 자료 기준.">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--cream:#F2EDE3;--paper:#FFFCF6;--ink:#23252B;--sub:#6B6357;--gold:#E0B93F;--orange:#C8603C;--red:#E1464B;--green:#2E8C5A;--blue:#5674C8;--line:#E4DCCB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-bottom:78px;font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,'Apple SD Gothic Neo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto}
+.hero{background:var(--ink);color:var(--cream);padding:38px 22px 30px}
+.chip{display:inline-block;background:var(--gold);color:var(--ink);font-size:13px;font-weight:800;padding:6px 13px;border-radius:999px}
+.hero h1{font-size:29px;line-height:1.32;font-weight:800;margin-top:16px;letter-spacing:-.7px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .by{margin-top:14px;font-size:13px;color:#A8A29A}
+.hero .stamp{margin-top:18px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 14px;font-size:13.5px;color:#E8E2D6;line-height:1.55}
+.hero .stamp b{color:var(--gold)}
+nav{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);padding:11px 0;overflow-x:auto;white-space:nowrap}
+nav .navbtn{display:inline-block;font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;margin-left:10px;padding:8px 15px;background:var(--paper);border:1px solid var(--line);border-radius:999px;font-size:13.5px;font-weight:700;color:var(--ink)}
+section{scroll-margin-top:76px;padding:34px 20px 6px}
+.sec-no{font-size:12px;font-weight:800;color:var(--sub);letter-spacing:1.2px}
+.sec-t{font-size:23px;font-weight:800;margin:6px 0 18px;letter-spacing:-.5px;line-height:1.35}
+.sec-lead{font-size:14.5px;color:var(--sub);margin:-10px 0 18px;line-height:1.6}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px 16px;margin-bottom:11px}
+.sum{display:flex;gap:13px;align-items:flex-start}
+.sum .n{flex:none;width:27px;height:27px;border-radius:50%;background:var(--ink);color:var(--gold);font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sum .tx{font-size:15.5px;font-weight:600;line-height:1.55}
+.sum .tx b{color:var(--red);font-weight:800}
+.sum .tx span{display:block;font-size:13px;color:var(--sub);font-weight:500;margin-top:3px}
+.q{display:flex;gap:13px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:15px 16px;margin-bottom:9px;cursor:pointer;user-select:none}
+.q.on{background:#FDF6E6;border-color:var(--gold)}
+.q .bx{flex:none;width:24px;height:24px;border:2px solid var(--orange);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;margin-top:2px}
+.q.on .bx{background:var(--orange)}
+.q .t{font-size:15.5px;font-weight:800;line-height:1.45}
+.q .d{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.6}
+.coinbar{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:13px}
+.coinbar .top{display:flex;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:9px}
+.track{height:11px;background:#E7E0D1;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:99px;transition:width .35s ease}
+.verdict{border-radius:15px;padding:17px;text-align:center;margin-top:4px;background:#EDE7DA}
+.verdict .v{font-size:18px;font-weight:800}
+.verdict .s{font-size:13.5px;color:var(--sub);margin-top:6px;line-height:1.6}
+.ws label{display:block;font-size:13.5px;font-weight:700;margin-bottom:5px}
+.ws input,.ws select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;font-size:16px;background:#fff;font-family:inherit;margin-bottom:13px;color:var(--ink)}
+.ws-out{background:var(--ink);color:var(--cream);border-radius:14px;padding:17px;text-align:center}
+.ws-out .big{font-size:31px;font-weight:800;color:var(--gold);letter-spacing:-1px}
+.ws-out .cap{font-size:13px;color:#A8A29A;margin-top:6px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:4px 0 12px;font-size:14px}
+th{background:#EDE7DA;text-align:left;padding:10px 12px;font-weight:800;font-size:13px;color:var(--sub)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+td:first-child{font-weight:700;width:38%}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}
+summary{padding:15px 16px;font-size:15px;font-weight:800;cursor:pointer;list-style:none;line-height:1.5}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'Q. ';color:var(--red);font-weight:800}
+details[open] summary{border-bottom:1px solid var(--line)}
+details p{padding:14px 16px;font-size:14px;color:var(--sub);line-height:1.75}
+details p::before{content:'A. ';color:var(--blue);font-weight:800}
+.warn{background:#FDF3DD;border:1px solid #EBD9A4;border-radius:14px;padding:15px 16px;margin-bottom:11px}
+.warn h4{font-size:14.5px;font-weight:800;color:#9A7212;margin-bottom:8px}
+.warn p{font-size:13.5px;color:var(--sub);line-height:1.7}
+.src{padding:26px 20px 16px;font-size:12.5px;color:var(--sub);line-height:1.85}
+.src b{color:var(--ink)}
+footer{background:var(--ink);color:#A8A29A;text-align:center;padding:30px 20px 38px;font-size:13px;line-height:1.8}
+footer .fb{color:var(--gold);font-weight:800;font-size:15px}
+hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
+</style></head><body><div class="wrap">
+<div class="hero">
+  <span class="chip">알 돈</span>
+  <h1>장 끝났는데<br><em>주가가 움직였다?!</em></h1>
+  <div class="by">@donkkachi · 몰라서 손해 보는 돈, 물어다 주는 까치</div>
+  <div class="stamp">
+    오류가 아니에요. <b>2026년 9월 14일부터 애프터마켓이 생겼습니다.</b>
+    정규장 끝난 뒤 16:00~20:00에도 거래할 수 있어요.
+  </div>
+</div>
+<nav>
+  <button type="button" class="navbtn" data-go="s1">① 요약</button>
+  <button type="button" class="navbtn" data-go="s2">② 정규장과 차이</button>
+  <button type="button" class="navbtn" data-go="s3">③ 주의할 것</button>
+  <button type="button" class="navbtn" data-go="s4">④ FAQ</button>
+</nav>
+<section id="s1"><div class="sec-no">SECTION ①</div><div class="sec-t">30초 요약</div>
+  <div class="card sum"><div class="n">1</div><div class="tx"><b>2026년 9월 14일(월)</b>부터 시행
+    <span>한국거래소가 9월 9일 발표, 금융위원회 승인</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">거래 시간 <b>16:00 ~ 20:00</b>
+    <span>정규장(09:00~15:30) 끝난 뒤에도 거래할 수 있어요</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx"><b>ETF·ETN은 대상이 아니에요</b>
+    <span>개별 주식만 해당됩니다</span></div></div>
+  <div class="warn" style="margin-top:14px"><h4>기존과 뭐가 다른가</h4>
+    <p>예전엔 오후 4~6시 <b>시간외단일가</b>(10분마다 한 번씩 가격 결정)만 있었어요.
+    이제는 <b>정규장처럼 실시간으로 바로 체결</b>되고, 시간도 8시까지 늘어났습니다.</p></div>
+  <hr class="d"></section>
+<section id="s2"><div class="sec-no">SECTION ②</div><div class="sec-t">정규장과 차이</div>
+  <table>
+    <tr><th>구분</th><th>정규장</th><th>애프터마켓</th></tr>
+    <tr><td>시간</td><td>09:00~15:30</td><td>16:00~20:00</td></tr>
+    <tr><td>체결 방식</td><td>실시간</td><td>실시간</td></tr>
+    <tr><td>주문 방식</td><td>지정가·시장가</td><td>지정가만</td></tr>
+    <tr><td>대상</td><td>개별 주식 전체</td><td>개별 주식 (ETF·ETN 제외)</td></tr>
+  </table>
+  <div class="warn"><h4>시장가 주문이 안 돼요</h4>
+    <p>애프터마켓에서는 <b>지정가 주문만</b> 가능합니다. "얼마든 상관없이 사겠다"는 시장가 주문은 낼 수 없어요.</p></div>
+  <hr class="d"></section>
+<section id="s3"><div class="sec-no">SECTION ③</div><div class="sec-t">주의할 것</div>
+  <div class="card sum"><div class="n">1</div><div class="tx"><b>ETF·ETN은 거래 불가</b>
+    <span>개별 종목 주식만 애프터마켓 대상이에요</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">거래량이 <b>정규장보다 적을 수 있어요</b>
+    <span>참여자가 적으면 원하는 가격에 체결 안 될 수 있어요</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx">장 끝났다고 <b>가격이 안 움직일 거라 생각하면 안 돼요</b>
+    <span>4시 이후에도 뉴스·공시에 따라 가격이 바뀔 수 있어요</span></div></div>
+  <hr class="d"></section>
+<section id="s4"><div class="sec-no">SECTION ④</div><div class="sec-t">자주 묻는 것</div>
+  <details><summary>애프터마켓이 처음 생긴 건가요?</summary><p>완전히 새로운 건 아니에요. 기존 오후 4~6시 <b>시간외단일가</b>를 <b>실시간 체결 방식으로 바꾸고 8시까지 늘린 것</b>입니다.</p></details>
+  <details><summary>모든 종목이 대상인가요?</summary><p>개별 주식이 대상이고, <b>ETF·ETN은 제외</b>됩니다.</p></details>
+  <details><summary>시장가로 주문할 수 없나요?</summary><p>네, 애프터마켓에서는 <b>지정가 주문만</b> 가능해요.</p></details>
+  <details><summary>왜 이런 제도가 생겼나요?</summary><p>정규장 마감 후 나온 뉴스·실적 발표 등을 당일 반영할 수 있게 하기 위해서예요.</p></details>
+</section>
+<div class="src"><b>출처</b><br>· 한국거래소 애프터마켓 시행 발표 (2026.9.9, 시행 2026.9.14)<br><br>
+  <b>기준일</b> 2026년 9월<br>
+  <b>주의</b> 거래량이 정규장보다 적을 수 있어 체결이 원활하지 않을 수 있습니다.<br>
+  <b>고지</b> 특정 종목·상품에 대한 추천이 아닙니다.</div>
+<footer>장 끝났다고 <span style="color:var(--gold);font-weight:700">방심하지 마세요</span><br><br>
+  <span class="fb">돈까치 @donkkachi</span><br>몰라서 손해 보는 돈, 물어다 주는 까치</footer>
+</div>
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a></div>
+<a href="https://www.instagram.com/donkkachi/" style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">돈까치 팔로우하기</a>
+<script>
+document.querySelectorAll('.navbtn').forEach(function(b){b.addEventListener('click',function(){var el=document.getElementById(b.dataset.go);if(!el)return;var nav=document.querySelector('nav');var off=(nav?nav.offsetHeight:0)+12;window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});});});
+</script></body></html>
