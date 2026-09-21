@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETF 세금 차이 정리 | 돈까치</title>
+<meta name="description" content="같은 국내상장 ETF인데 세금이 다른 이유. 국내주식형 vs 기타 ETF 과세 차이. 한국거래소 자료 기준.">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--cream:#F2EDE3;--paper:#FFFCF6;--ink:#23252B;--sub:#6B6357;--gold:#E0B93F;--orange:#C8603C;--red:#E1464B;--green:#2E8C5A;--blue:#5674C8;--line:#E4DCCB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-bottom:78px;font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,'Apple SD Gothic Neo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto}
+.hero{background:var(--ink);color:var(--cream);padding:38px 22px 30px}
+.chip{display:inline-block;background:var(--gold);color:var(--ink);font-size:13px;font-weight:800;padding:6px 13px;border-radius:999px}
+.hero h1{font-size:29px;line-height:1.32;font-weight:800;margin-top:16px;letter-spacing:-.7px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .by{margin-top:14px;font-size:13px;color:#A8A29A}
+.hero .stamp{margin-top:18px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 14px;font-size:13.5px;color:#E8E2D6;line-height:1.55}
+.hero .stamp b{color:var(--gold)}
+nav{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);padding:11px 0;overflow-x:auto;white-space:nowrap}
+nav .navbtn{display:inline-block;font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;margin-left:10px;padding:8px 15px;background:var(--paper);border:1px solid var(--line);border-radius:999px;font-size:13.5px;font-weight:700;color:var(--ink)}
+section{scroll-margin-top:76px;padding:34px 20px 6px}
+.sec-no{font-size:12px;font-weight:800;color:var(--sub);letter-spacing:1.2px}
+.sec-t{font-size:23px;font-weight:800;margin:6px 0 18px;letter-spacing:-.5px;line-height:1.35}
+.sec-lead{font-size:14.5px;color:var(--sub);margin:-10px 0 18px;line-height:1.6}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px 16px;margin-bottom:11px}
+.sum{display:flex;gap:13px;align-items:flex-start}
+.sum .n{flex:none;width:27px;height:27px;border-radius:50%;background:var(--ink);color:var(--gold);font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sum .tx{font-size:15.5px;font-weight:600;line-height:1.55}
+.sum .tx b{color:var(--red);font-weight:800}
+.sum .tx span{display:block;font-size:13px;color:var(--sub);font-weight:500;margin-top:3px}
+.q{display:flex;gap:13px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:15px 16px;margin-bottom:9px;cursor:pointer;user-select:none}
+.q.on{background:#FDF6E6;border-color:var(--gold)}
+.q .bx{flex:none;width:24px;height:24px;border:2px solid var(--orange);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;margin-top:2px}
+.q.on .bx{background:var(--orange)}
+.q .t{font-size:15.5px;font-weight:800;line-height:1.45}
+.q .d{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.6}
+.coinbar{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:13px}
+.coinbar .top{display:flex;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:9px}
+.track{height:11px;background:#E7E0D1;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:99px;transition:width .35s ease}
+.verdict{border-radius:15px;padding:17px;text-align:center;margin-top:4px;background:#EDE7DA}
+.verdict .v{font-size:18px;font-weight:800}
+.verdict .s{font-size:13.5px;color:var(--sub);margin-top:6px;line-height:1.6}
+.ws label{display:block;font-size:13.5px;font-weight:700;margin-bottom:5px}
+.ws input,.ws select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;font-size:16px;background:#fff;font-family:inherit;margin-bottom:13px;color:var(--ink)}
+.ws-out{background:var(--ink);color:var(--cream);border-radius:14px;padding:17px;text-align:center}
+.ws-out .big{font-size:31px;font-weight:800;color:var(--gold);letter-spacing:-1px}
+.ws-out .cap{font-size:13px;color:#A8A29A;margin-top:6px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:4px 0 12px;font-size:14px}
+th{background:#EDE7DA;text-align:left;padding:10px 12px;font-weight:800;font-size:13px;color:var(--sub)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+td:first-child{font-weight:700;width:38%}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}
+summary{padding:15px 16px;font-size:15px;font-weight:800;cursor:pointer;list-style:none;line-height:1.5}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'Q. ';color:var(--red);font-weight:800}
+details[open] summary{border-bottom:1px solid var(--line)}
+details p{padding:14px 16px;font-size:14px;color:var(--sub);line-height:1.75}
+details p::before{content:'A. ';color:var(--blue);font-weight:800}
+.warn{background:#FDF3DD;border:1px solid #EBD9A4;border-radius:14px;padding:15px 16px;margin-bottom:11px}
+.warn h4{font-size:14.5px;font-weight:800;color:#9A7212;margin-bottom:8px}
+.warn p{font-size:13.5px;color:var(--sub);line-height:1.7}
+.src{padding:26px 20px 16px;font-size:12.5px;color:var(--sub);line-height:1.85}
+.src b{color:var(--ink)}
+footer{background:var(--ink);color:#A8A29A;text-align:center;padding:30px 20px 38px;font-size:13px;line-height:1.8}
+footer .fb{color:var(--gold);font-weight:800;font-size:15px}
+hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
+</style></head><body><div class="wrap">
+<div class="hero">
+  <span class="chip">지킬 돈</span>
+  <h1>같이 ETF 샀는데<br><em>왜 얘만 세금이 빠지지?!</em></h1>
+  <div class="by">@donkkachi · 몰라서 손해 보는 돈, 물어다 주는 까치</div>
+  <div class="stamp">
+    <b>국내상장이라고 세금이 다 같지 않아요.</b> 국내주식형 ETF는 매매차익 비과세,
+    기타 ETF는 매매차익도 과세될 수 있습니다.
+  </div>
+</div>
+<nav>
+  <button type="button" class="navbtn" data-go="s1">① 요약</button>
+  <button type="button" class="navbtn" data-go="s2">② 유형별 비교</button>
+  <button type="button" class="navbtn" data-go="s3">③ 구분하는 법</button>
+  <button type="button" class="navbtn" data-go="s4">④ FAQ</button>
+</nav>
+<section id="s1"><div class="sec-no">SECTION ①</div><div class="sec-t">30초 요약</div>
+  <div class="card sum"><div class="n">1</div><div class="tx"><b>국내주식형 ETF</b> — 매매차익 비과세
+    <span>코스피200 같은 국내 주식 지수를 추종하는 ETF예요</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx"><b>기타 ETF</b> — 매매차익도 과세 가능
+    <span>해외주식·채권·원자재 등을 담은 ETF는 국내상장이어도 달라요</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx">분배금은 <b>둘 다 15.4%</b>
+    <span>배당소득세는 유형과 무관하게 동일하게 붙어요</span></div></div>
+  <div class="warn" style="margin-top:14px"><h4>예시로 보면</h4>
+    <p>매매차익 100만원 기준, 국내주식형은 <b>세금 0원</b>이지만
+    기타 ETF는 <b>약 15만4천원</b>의 세금이 빠질 수 있어요. 같은 "국내상장"이라도 결과가 다릅니다.</p></div>
+  <hr class="d"></section>
+<section id="s2"><div class="sec-no">SECTION ②</div><div class="sec-t">유형별 비교</div>
+  <table>
+    <tr><th>구분</th><th>국내주식형 ETF</th><th>기타 ETF</th></tr>
+    <tr><td>매매차익</td><td>비과세</td><td>과세 가능</td></tr>
+    <tr><td>분배금</td><td>15.4%</td><td>15.4%</td></tr>
+    <tr><td>담는 자산</td><td>국내 주식</td><td>해외주식·채권·원자재 등</td></tr>
+  </table>
+  <div class="warn"><h4>이름만 보고 판단하면 안 돼요</h4>
+    <p>ETF 이름에 "국내상장"이라는 표시가 있어도, <b>실제로 담고 있는 자산(운용대상)</b>에 따라
+    세금이 완전히 달라질 수 있어요.</p></div>
+  <hr class="d"></section>
+<section id="s3"><div class="sec-no">SECTION ③</div><div class="sec-t">구분하는 법</div>
+  <div class="card sum"><div class="n">1</div><div class="tx">상품 설명서나 <b>운용대상 확인</b>
+    <span>가장 확실한 방법이에요</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">해외주식·채권·원자재를 담으면
+    <b>기타 ETF일 가능성</b>
+    <span>먼저 의심해보세요</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx">팔고 돈이 덜 들어오면 <b>세금 항목 먼저 확인</b>
+    <span>수수료만 보지 말고 세금 항목도 같이 보세요</span></div></div>
+  <hr class="d"></section>
+<section id="s4"><div class="sec-no">SECTION ④</div><div class="sec-t">자주 묻는 것</div>
+  <details><summary>해외 ETF에 직접 투자하는 것과 뭐가 다른가요?</summary><p>국내상장 기타 ETF는 국내 거래소에서 원화로 거래되지만, 담고 있는 자산이 해외/채권/원자재라서 <b>세금 체계가 해외 직접투자와 비슷하게 적용</b>될 수 있어요.</p></details>
+  <details><summary>매매차익 과세는 항상 15.4%인가요?</summary><p>매매차익 과세 방식과 세율은 상품·보유기간 등에 따라 다를 수 있어요. 상품 설명서·공시를 확인하세요.</p></details>
+  <details><summary>국내주식형 ETF는 분배금도 안 내나요?</summary><p>아니요. <b>분배금(배당소득)은 15.4%로 동일하게</b> 부과됩니다. 비과세는 매매차익에만 적용돼요.</p></details>
+  <details><summary>ETF 이름으로 유형을 알 수 없나요?</summary><p>이름만으로는 부족해요. <b>운용대상(실제 담고 있는 자산)</b>을 상품 설명서에서 확인하는 게 정확합니다.</p></details>
+</section>
+<div class="src"><b>출처</b><br>· 한국거래소 ETF 세제 안내<br><br>
+  <b>기준일</b> 2026년 9월<br>
+  <b>주의</b> 세부 과세 방식은 상품 설명서·공시를 확인하세요.<br>
+  <b>고지</b> 특정 ETF·상품에 대한 추천이 아닙니다.</div>
+<footer>이름보다 <span style="color:var(--gold);font-weight:700">유형을 먼저</span> 확인하세요<br><br>
+  <span class="fb">돈까치 @donkkachi</span><br>몰라서 손해 보는 돈, 물어다 주는 까치</footer>
+</div>
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a></div>
+<a href="https://www.instagram.com/donkkachi/" style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">돈까치 팔로우하기</a>
+<script>
+document.querySelectorAll('.navbtn').forEach(function(b){b.addEventListener('click',function(){var el=document.getElementById(b.dataset.go);if(!el)return;var nav=document.querySelector('nav');var off=(nav?nav.offsetHeight:0)+12;window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});});});
+</script></body></html>
