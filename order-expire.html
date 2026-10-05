@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>어제 넣은 주문이 사라졌다? 주문 유효시간 정리 | 돈까치</title>
+<meta name="description" content="같은 월 50만원을 넣어도 정부기여금 6%와 12%로 갈리는 어제 넣은 주문이 사라졌다? 주문 유효시간 정리와 신청 전 체크 4가지.">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--cream:#F2EDE3;--paper:#FFFCF6;--ink:#23252B;--sub:#6B6357;--gold:#E0B93F;--orange:#C8603C;--red:#E1464B;--green:#2E8C5A;--blue:#5674C8;--line:#E4DCCB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{padding-bottom:78px;font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,'Apple SD Gothic Neo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto}
+.hero{background:var(--ink);color:var(--cream);padding:38px 22px 30px}
+.chip{display:inline-block;background:var(--gold);color:var(--ink);font-size:13px;font-weight:800;padding:6px 13px;border-radius:999px}
+.hero h1{font-size:29px;line-height:1.32;font-weight:800;margin-top:16px;letter-spacing:-.7px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .by{margin-top:14px;font-size:13px;color:#A8A29A}
+.hero .stamp{margin-top:18px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 14px;font-size:13.5px;color:#E8E2D6;line-height:1.55}
+.hero .stamp b{color:var(--gold)}
+nav{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);padding:11px 0;overflow-x:auto;white-space:nowrap}
+nav .navbtn{display:inline-block;font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;margin-left:10px;padding:8px 15px;background:var(--paper);border:1px solid var(--line);border-radius:999px;font-size:13.5px;font-weight:700;color:var(--ink)}
+section{scroll-margin-top:76px;padding:34px 20px 6px}
+.sec-no{font-size:12px;font-weight:800;color:var(--sub);letter-spacing:1.2px}
+.sec-t{font-size:23px;font-weight:800;margin:6px 0 18px;letter-spacing:-.5px;line-height:1.35}
+.sec-lead{font-size:14.5px;color:var(--sub);margin:-10px 0 18px;line-height:1.6}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px 16px;margin-bottom:11px}
+.sum{display:flex;gap:13px;align-items:flex-start}
+.sum .n{flex:none;width:27px;height:27px;border-radius:50%;background:var(--ink);color:var(--gold);font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sum .tx{font-size:15.5px;font-weight:600;line-height:1.55}
+.sum .tx b{color:var(--red);font-weight:800}
+.sum .tx span{display:block;font-size:13px;color:var(--sub);font-weight:500;margin-top:3px}
+.q{display:flex;gap:13px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:15px 16px;margin-bottom:9px;cursor:pointer;user-select:none}
+.q.on{background:#FDF6E6;border-color:var(--gold)}
+.q .bx{flex:none;width:24px;height:24px;border:2px solid var(--orange);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;margin-top:2px}
+.q.on .bx{background:var(--orange)}
+.q .t{font-size:15.5px;font-weight:800;line-height:1.45}
+.q .d{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.6}
+.coinbar{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:13px}
+.coinbar .top{display:flex;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:9px}
+.track{height:11px;background:#E7E0D1;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:99px;transition:width .35s ease}
+.verdict{border-radius:15px;padding:17px;text-align:center;margin-top:4px;background:#EDE7DA}
+.verdict .v{font-size:18px;font-weight:800}
+.verdict .s{font-size:13.5px;color:var(--sub);margin-top:6px;line-height:1.6}
+.ws label{display:block;font-size:13.5px;font-weight:700;margin-bottom:5px}
+.ws input,.ws select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;font-size:16px;background:#fff;font-family:inherit;margin-bottom:13px;color:var(--ink)}
+.ws-out{background:var(--ink);color:var(--cream);border-radius:14px;padding:17px;text-align:center}
+.ws-out .big{font-size:31px;font-weight:800;color:var(--gold);letter-spacing:-1px}
+.ws-out .cap{font-size:13px;color:#A8A29A;margin-top:6px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:4px 0 12px;font-size:14px}
+th{background:#EDE7DA;text-align:left;padding:10px 12px;font-weight:800;font-size:13px;color:var(--sub)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+td:first-child{font-weight:700;width:38%}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}
+summary{padding:15px 16px;font-size:15px;font-weight:800;cursor:pointer;list-style:none;line-height:1.5}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'Q. ';color:var(--red);font-weight:800}
+details[open] summary{border-bottom:1px solid var(--line)}
+details p{padding:14px 16px;font-size:14px;color:var(--sub);line-height:1.75}
+details p::before{content:'A. ';color:var(--blue);font-weight:800}
+.warn{background:#FDF3DD;border:1px solid #EBD9A4;border-radius:14px;padding:15px 16px;margin-bottom:11px}
+.warn h4{font-size:14.5px;font-weight:800;color:#9A7212;margin-bottom:8px}
+.warn p{font-size:13.5px;color:var(--sub);line-height:1.7}
+.src{padding:26px 20px 16px;font-size:12.5px;color:var(--sub);line-height:1.85}
+.src b{color:var(--ink)}
+footer{background:var(--ink);color:#A8A29A;text-align:center;padding:30px 20px 38px;font-size:13px;line-height:1.8}
+footer .fb{color:var(--gold);font-weight:800;font-size:15px}
+hr.d{border:none;border-top:1px solid var(--line);margin:26px 0 0}
+</style></head><body><div class="wrap">
+<div class="hero">
+  <span class="chip">알 돈</span>
+  <h1>어제 넣은 내 주문,<br><em>어디 갔어?!</em></h1>
+  <div class="by">@donkkachi · 몰라서 손해 보는 돈, 물어다 주는 까치</div>
+  <div class="stamp">
+    지정가는 <b>가격</b> 조건이고, 언제까지 유효한지는 <b>별개</b>예요. KRX 정규장 일반 지정가 주문은 다음 날까지 자동으로 줄 서 있지 않아요.
+  </div>
+</div>
+<nav>
+  <button type="button" class="navbtn" data-go="s1">① 요약</button>
+  <button type="button" class="navbtn" data-go="s2">② KRX vs NXT</button>
+  <button type="button" class="navbtn" data-go="s3">③ 확인 순서</button>
+  <button type="button" class="navbtn" data-go="s4">④ FAQ</button>
+</nav>
+<section id="s1"><div class="sec-no">SECTION ①</div><div class="sec-t">30초 요약</div>
+  <div class="card sum"><div class="n">1</div><div class="tx">KRX 정규장 주문은 <b>15:30에 효력 종료</b>
+    <span>미체결분은 장 마감 후 증권사 처리 절차에 따라 자동 취소돼요</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx">KRX 애프터마켓으로 <b>자동 이사 X</b>
+    <span>16:00~20:00 애프터마켓에서 거래하려면 새 주문을 넣어야 해요 (2026.9.14 개장)</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx">NXT 주문은 <b>규칙이 달라요</b>
+    <span>NXT 프리·메인마켓 일반 지정가는 취소하지 않으면 20:00 애프터마켓 종료까지 유효해요</span></div></div>
+  <hr class="d"></section>
+<section id="s2"><div class="sec-no">SECTION ②</div><div class="sec-t">KRX vs NXT 주문 유효시간</div>
+  <table>
+    <tr><th></th><th>KRX 정규장 주문</th><th>NXT 프리·메인 일반 지정가</th></tr>
+    <tr><td>효력</td><td>15:30 정규장 종료까지</td><td>20:00 애프터마켓 종료까지</td></tr>
+    <tr><td>애프터에서</td><td>새로 주문해야 함</td><td>취소 안 하면 계속 유효</td></tr>
+    <tr><td>다음 날</td><td>없음 (다시 주문)</td><td>없음 (다시 주문)</td></tr>
+  </table>
+  <div class="warn"><h4>중복 주문 주의</h4>
+    <p>NXT 주문이 아직 살아 있는데 '사라졌겠지' 하고 같은 주문을 또 넣으면 <b>두 번 체결</b>될 수 있어요. 새로 넣기 전에 미체결 목록부터 확인하세요.</p></div>
+  <hr class="d"></section>
+<section id="s3"><div class="sec-no">SECTION ③</div><div class="sec-t">내 주문 실종? 이 순서로 확인</div>
+  <div class="card sum"><div class="n">1</div><div class="tx"><b>화면</b>
+    <span>'현재 미체결'만 보고 있는지, 일자별 주문·취소내역인지</span></div></div>
+  <div class="card sum"><div class="n">2</div><div class="tx"><b>접수시장</b>
+    <span>KRX인지 NXT인지, SOR로 넣었다면 실제 어디로 접수됐는지</span></div></div>
+  <div class="card sum"><div class="n">3</div><div class="tx"><b>주문조건</b>
+    <span>일반 지정가인지, GTP·예약·기간 주문 같은 별도 설정인지</span></div></div>
+  <div class="card sum"><div class="n">4</div><div class="tx"><b>상태·시점</b>
+    <span>체결·일부체결·취소·효력 종료 중 무엇인지, 조회 일자는 맞는지</span></div></div>
+  <hr class="d"></section>
+<section id="s4"><div class="sec-no">SECTION ④</div><div class="sec-t">자주 묻는 것</div>
+  <details><summary>현재 미체결 목록에 없으면 기록도 지워진 건가요?</summary><p>아니요. 지난 주문은 <b>일자별 주문·체결 내역</b>에서 볼 수 있어요.</p></details>
+  <details><summary>여러 날 유지되는 주문은 없나요?</summary><p>증권사에 따라 예약주문·기간주문 같은 기능이 있을 수 있어요. 이름과 조건이 증권사마다 달라서 쓰는 앱에서 확인하세요.</p></details>
+  <details><summary>애프터마켓에서 시장가 주문도 되나요?</summary><p>KRX 애프터마켓은 지정가·최유리·최우선 지정가만 받아요. 시장가·조건부지정가는 안 돼요.</p></details>
+  <details><summary>SOR이 뭐예요?</summary><p>증권사가 주문을 KRX와 NXT 중 어디로 보낼지 자동으로 고르는 방식이에요. 다음 편(#8)에서 다뤄요.</p></details>
+</section>
+<div class="src"><b>출처</b><br>· 한국거래소 애프터마켓 개설 안내 (2026.9.14)<br>· 이투데이 「정규장 주문 그대로 남아 있을까… KRX·NXT 미체결 처리 제각각」<br><br>
+  <b>기준일</b> 2026년 10월<br>
+  <b>주의</b> 실제 표시·처리 시각은 증권사마다 다를 수 있어요.<br>
+  <b>고지</b> 특정 종목에 대한 추천이 아닙니다.</div>
+<footer>지정가는 가격, <span style="color:var(--gold);font-weight:700">유효시간은 별개</span><br><br>
+  <span class="fb">돈까치 @donkkachi</span><br>몰라서 손해 보는 돈, 물어다 주는 까치</footer>
+</div>
+<div style="text-align:center;padding:0 20px 26px;font-size:12.5px;font-family:inherit">
+<a href="index.html" style="color:#6B6357;text-decoration:underline">다른 자료집도 보기 →</a></div>
+<a href="https://www.instagram.com/donkkachi/" style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:999;background:#E0B93F;color:#23252B;font-size:14px;font-weight:800;padding:13px 24px;border-radius:99px;text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.22);font-family:inherit">돈까치 팔로우하기</a>
+<script>
+document.querySelectorAll('.navbtn').forEach(function(b){b.addEventListener('click',function(){var el=document.getElementById(b.dataset.go);if(!el)return;var nav=document.querySelector('nav');var off=(nav?nav.offsetHeight:0)+12;window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});});});
+</script></body></html>
